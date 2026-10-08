@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T00:29:56.052Z",
+  "updatedAt": "2026-10-08T00:35:49.510Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "working",
-      "task": "Bringing the live office online",
-      "lastActive": "2026-10-08T00:29:56.052Z"
+      "task": "Keeping the live office updated",
+      "lastActive": "2026-10-08T00:35:49.510Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "working",
       "task": "Redoing BTC and ASTER chart analysis from your call",
-      "lastActive": "2026-10-08T00:29:56.052Z"
+      "lastActive": "2026-10-08T00:35:49.510Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
-      "status": "idle",
-      "task": "Three Vastu house options ready, waiting for your pick",
-      "lastActive": "2026-10-08T00:29:56.052Z"
+      "status": "working",
+      "task": "Making photorealistic renders of house options A and B",
+      "lastActive": "2026-10-08T00:35:49.510Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Developer build brief for the LinkedIn tool delivered",
-      "lastActive": "2026-10-08T00:29:56.052Z"
+      "lastActive": "2026-10-08T00:35:49.510Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
-      "status": "idle",
-      "task": "Study furniture design and cost sheets delivered",
-      "lastActive": "2026-10-08T00:29:56.052Z"
+      "status": "working",
+      "task": "Adding your mirror above the study desk in the render",
+      "lastActive": "2026-10-08T00:35:49.510Z"
     }
   ],
   "events": [
@@ -67,6 +67,16 @@
       "time": "2026-10-08T00:29:56.052Z",
       "agentId": "furniture-designer",
       "text": "Delivered study drawings, cut list and costs"
+    },
+    {
+      "time": "2026-10-08T00:35:49.510Z",
+      "agentId": "grok-bot",
+      "text": "Shared golden-hour renders of options A and B"
+    },
+    {
+      "time": "2026-10-08T00:35:49.510Z",
+      "agentId": "furniture-designer",
+      "text": "Updating study design to keep the wall mirror"
     }
   ]
 }
