@@ -1,40 +1,50 @@
 {
-  "updatedAt": "2026-10-08T10:28:08.647Z",
+  "updatedAt": "2026-10-08T10:31:03.149Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "idle",
       "task": "Wrapped up a voice call with Sidatreya",
-      "lastActive": "2026-10-08T10:28:08.647Z"
+      "lastActive": "2026-10-08T10:31:03.149Z",
+      "source": "inferred",
+      "reportedAt": null
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished a round of BTC and ASTER chart analysis",
-      "lastActive": "2026-10-08T10:28:08.647Z"
+      "lastActive": "2026-10-08T10:31:03.149Z",
+      "source": "inferred",
+      "reportedAt": null
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
-      "status": "idle",
-      "task": "Finished revising the final site zoning diagram",
-      "lastActive": "2026-10-08T10:28:08.647Z"
+      "status": "working",
+      "task": "Upgrading the office: glass walls, ocean view and big agent screens",
+      "lastActive": "2026-10-08T10:30:47.440Z",
+      "source": "reported",
+      "reportedAt": "2026-10-08T10:30:47.440Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-08T10:28:08.647Z"
+      "lastActive": "2026-10-08T10:31:03.149Z",
+      "source": "inferred",
+      "reportedAt": null
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "idle",
       "task": "Finished rendering design options for the study built-in",
-      "lastActive": "2026-10-08T10:28:08.647Z"
+      "lastActive": "2026-10-08T10:31:03.149Z",
+      "source": "inferred",
+      "reportedAt": null
     }
   ],
   "events": [
@@ -152,6 +162,11 @@
       "time": "2026-10-08T10:23:26.996Z",
       "agentId": "gk",
       "text": "Took a voice call with Sidatreya"
+    },
+    {
+      "time": "2026-10-08T10:30:47.440Z",
+      "agentId": "grok-bot",
+      "text": "Started the ocean-view + big-screens upgrade"
     }
   ]
 }
