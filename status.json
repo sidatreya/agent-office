@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T00:35:49.510Z",
+  "updatedAt": "2026-10-08T00:41:33.498Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "working",
       "task": "Keeping the live office updated",
-      "lastActive": "2026-10-08T00:35:49.510Z"
+      "lastActive": "2026-10-08T00:41:33.498Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "working",
       "task": "Redoing BTC and ASTER chart analysis from your call",
-      "lastActive": "2026-10-08T00:35:49.510Z"
+      "lastActive": "2026-10-08T00:41:33.498Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
-      "status": "working",
-      "task": "Making photorealistic renders of house options A and B",
-      "lastActive": "2026-10-08T00:35:49.510Z"
+      "status": "idle",
+      "task": "Shared photorealistic renders of house options A and B",
+      "lastActive": "2026-10-08T00:41:33.498Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
-      "status": "idle",
-      "task": "Developer build brief for the LinkedIn tool delivered",
-      "lastActive": "2026-10-08T00:35:49.510Z"
+      "status": "working",
+      "task": "Setting up LinkedIn access in the browser",
+      "lastActive": "2026-10-08T00:41:33.498Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
-      "status": "working",
-      "task": "Adding your mirror above the study desk in the render",
-      "lastActive": "2026-10-08T00:35:49.510Z"
+      "status": "idle",
+      "task": "Updated the study design to keep your wall mirror",
+      "lastActive": "2026-10-08T00:41:33.498Z"
     }
   ],
   "events": [
@@ -77,6 +77,11 @@
       "time": "2026-10-08T00:35:49.510Z",
       "agentId": "furniture-designer",
       "text": "Updating study design to keep the wall mirror"
+    },
+    {
+      "time": "2026-10-08T00:41:33.498Z",
+      "agentId": "linkedin",
+      "text": "Started setting up LinkedIn access in the browser"
     }
   ]
 }
