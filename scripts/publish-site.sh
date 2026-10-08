@@ -7,6 +7,7 @@ cd "$ROOT"
 if [ -f dist/status.json ]; then cp dist/status.json public/status.json; fi
 [ -f public/status.json ] || node scripts/update-status.mjs --init >/dev/null
 npx vite build --logLevel error
+git_lock
 ensure_checkout
 # replace everything except .git with the fresh build
 find "$PAGES" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +

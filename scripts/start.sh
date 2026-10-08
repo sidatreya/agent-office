@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# (Re)start the static server (port 8080) and the Cloudflare quick tunnel if they aren't running.
-# Idempotent: safe to run any time. Prints the current public URL.
-#   scripts/start.sh            start whatever is missing
-#   scripts/start.sh --restart-tunnel   force a new tunnel (NOTE: gives a NEW public URL)
+# Ensure the local static server (port 8080) is running. Idempotent: safe to run any time.
+#   scripts/start.sh                    server only (default). Also stops any stray cloudflared tunnels.
+#   scripts/start.sh --tunnel           also start a Cloudflare quick tunnel (does NOT work on this box:
+#                                       outbound port 7844 is blocked; the public site is GitHub Pages)
+#   scripts/start.sh --restart-tunnel   force a new tunnel (gives a NEW public URL)
 set -u
 cd "$(dirname "$0")/.."
 ROOT="$PWD"
@@ -30,7 +31,15 @@ else
   echo "server: started on :$PORT (pid $(cat "$LOGS/server.pid"))"
 fi
 
-# 3. tunnel
+# 3. tunnel (opt-in only)
+case "${1:-}" in
+  --tunnel|--restart-tunnel) ;;
+  *)
+    if pgrep -f "cloudflared tunnel" >/dev/null 2>&1; then pkill -f "cloudflared tunnel"; echo "tunnel: stopped stray cloudflared process(es)"; fi
+    rm -f "$LOGS/tunnel.pid" public-url.txt
+    echo "local site: http://localhost:$PORT/   public site: https://sidatreya.github.io/agent-office/"
+    exit 0 ;;
+esac
 if [ "${1:-}" = "--restart-tunnel" ] && alive "$LOGS/tunnel.pid"; then
   kill "$(cat "$LOGS/tunnel.pid")"; sleep 1
 fi

@@ -6,16 +6,17 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
-import { AGENTS, OFFICE } from './data/agents.js';
+import { AGENTS, OFFICE, ROOMS } from './data/agents.js';
 import { createSimulatedFeed } from './data/feed.js';
 import { createLiveFeed } from './data/live.js';
 import { buildWorld, fmtTime } from './world.js';
 
 // ── data source ──
-// Live: polls ./status.json every 20s. Add ?demo=1 to the URL for the simulated feed.
+// Live: polls ./status.json every 15s. Add ?demo=1 to the URL for the simulated feed.
 const DEMO = new URLSearchParams(location.search).get('demo') === '1';
-const feed = DEMO ? createSimulatedFeed({ intervalMs: 3200 }) : createLiveFeed({ url: './status.json', intervalMs: 20000 });
+const feed = DEMO ? createSimulatedFeed({ intervalMs: 3200 }) : createLiveFeed({ url: './status.json', intervalMs: 15000 });
 
 // ── renderer / scene / camera ──
 const app = document.getElementById('app');
@@ -25,7 +26,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.05;
+renderer.toneMappingExposure = 1.0;
 app.appendChild(renderer.domElement);
 
 const labelRenderer = new CSS2DRenderer();
@@ -34,8 +35,8 @@ labelRenderer.domElement.className = 'css2d';
 app.appendChild(labelRenderer.domElement);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 200);
-const HOME = { pos: new THREE.Vector3(7.6, 14.2, 19.8), target: new THREE.Vector3(0.2, 1.9, -1.4) };
+const camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 300);
+const HOME = { pos: new THREE.Vector3(6.0, 13.2, 27.5), target: new THREE.Vector3(-1.6, 1.8, -2.0) };
 camera.position.copy(HOME.pos);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -43,17 +44,30 @@ controls.target.copy(HOME.target);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.minDistance = 4;
-controls.maxDistance = 45;
+controls.maxDistance = 34;
 controls.maxPolarAngle = Math.PI * 0.47;
 controls.update();
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.55, 0.5, 0.82);
+const bloom = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.6, 0.55, 1.0);
 composer.addPass(bloom);
+// subtle colour grade + vignette
+composer.addPass(new ShaderPass({
+  uniforms: { tDiffuse: { value: null } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+  fragmentShader: `uniform sampler2D tDiffuse; varying vec2 vUv;
+    void main(){ vec4 c = texture2D(tDiffuse, vUv);
+      float l = dot(c.rgb, vec3(0.2126,0.7152,0.0722));
+      c.rgb = mix(c.rgb, c.rgb * vec3(1.04,0.98,1.06), 0.6);              // slight warm-magenta grade
+      c.rgb += vec3(0.004,0.002,0.012) * (1.0 - smoothstep(0.0, 0.25, l));  // lift shadows towards indigo
+      float v = smoothstep(0.95, 0.35, distance(vUv, vec2(0.5)));
+      c.rgb *= mix(0.72, 1.0, v);
+      gl_FragColor = c; }`,
+}));
 composer.addPass(new OutputPass());
 
-const world = buildWorld(scene, AGENTS);
+const world = buildWorld(scene, AGENTS, { renderer, camPos: HOME.pos, rooms: ROOMS });
 
 // ── UI ──
 document.getElementById('title').textContent = OFFICE.title;
@@ -84,7 +98,11 @@ function renderAgent(id) {
   el.querySelector('.task').textContent = s.task;
   el.querySelector('.bar').style.visibility = s.status === 'working' && s.hasProgress !== false && s.progress > 0 ? 'visible' : 'hidden';
   el.querySelector('.bar > i').style.width = `${Math.round(s.progress * 100)}%`;
-  world.stations.get(id).setStatus(s.status);
+  world.stations.get(id).setData({
+    ...s,
+    updatedAt: feed.updatedAt || null,
+    events: feed.history.filter((e) => e.agentId === id).slice(-2),
+  });
   if (selected === id) renderInfo(id);
 }
 
@@ -125,9 +143,13 @@ function flyTo(pos, target, ms = 900) {
 function focusAgent(id) {
   selected = id;
   cards.forEach((el, k) => el.classList.toggle('selected', k === id));
-  const p = world.stations.get(id).worldPos();
-  const target = p.clone().add(new THREE.Vector3(0, 1.2, 0.3));
-  flyTo(target.clone().add(new THREE.Vector3(4.4, 3.8, 7.0)), target);
+  // frame the agent's screen head-on so its text is crisp (screen fills ~half the view width)
+  const v = world.stations.get(id).screenView();
+  const hfov = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect);
+  const dist = Math.max(2.2, (v.width * 1.05) / (2 * Math.tan(hfov / 2) * (window.innerWidth > 900 ? 0.52 : 0.9)));
+  const target = v.center.clone();
+  const pos = target.clone().add(v.normal.clone().multiplyScalar(dist)).add(new THREE.Vector3(0, dist * 0.12, 0));
+  flyTo(pos, target);
   renderInfo(id);
   info.classList.remove('hidden');
 }
@@ -196,8 +218,10 @@ renderLive();
 
 // clock (top bar + wall screen)
 const clockEl = document.getElementById('clock');
+let tickN = 0;
 const tickClock = () => {
   clockEl.textContent = fmtTime(new Date());
+  if (++tickN % 30 === 0) AGENTS.forEach((a) => renderAgent(a.id));
   drawWall();
   renderLive();
 };
@@ -231,4 +255,4 @@ renderer.setAnimationLoop(() => {
 });
 
 // handy for debugging / wiring real data from the console
-window.office = { feed, focusAgent, clearFocus };
+window.office = { feed, focusAgent, clearFocus, scene, camera };

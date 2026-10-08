@@ -10,15 +10,16 @@ export const OFFICE = {
   subtitle: 'Live view of your agents at work',
 };
 
-// desk: position on the floor (x, z) in world units. The room spans
-// x ∈ [-12, 12], z ∈ [-9, 9]; the back wall (with the feed screen) is at z = -9.
+// desk: position on the floor (x, z) in world units. The building spans
+// x ∈ [-15, 15], z ∈ [-9, 9] and is split into three rooms along x (see ROOMS).
+// The back (z = -9) and left (x = -15) walls are glass with the ocean behind.
 export const AGENTS = [
   {
     id: 'gk',
     name: 'GK',
     role: 'Coordinator',
     color: '#a78bfa',
-    desk: { x: 0, z: 2.4, wide: true },
+    desk: { x: 1.6, z: 1.2, wide: true },
     status: 'working',
     task: 'Coordinating the team and routing new requests',
     tasks: [
@@ -41,7 +42,7 @@ export const AGENTS = [
     name: 'Pro Trader',
     role: 'Markets & trading research',
     color: '#34d399',
-    desk: { x: -6.6, z: -2.6 },
+    desk: { x: -10.2, z: -2.6 },
     status: 'idle',
     task: 'Standing by for the market open',
     tasks: [
@@ -63,7 +64,7 @@ export const AGENTS = [
     name: 'Grok Bot',
     role: 'Executor \u2014 builds & research',
     color: '#38bdf8',
-    desk: { x: -2.3, z: -3.7 },
+    desk: { x: -2.4, z: -3.6 },
     status: 'idle',
     task: 'Waiting for the next delegated task',
     tasks: [
@@ -85,7 +86,7 @@ export const AGENTS = [
     name: 'Linkedin',
     role: 'Content & engagement',
     color: '#fbbf24',
-    desk: { x: 2.3, z: -3.7 },
+    desk: { x: 7.4, z: -3.6 },
     status: 'idle',
     task: 'No post scheduled right now',
     tasks: [
@@ -107,7 +108,7 @@ export const AGENTS = [
     name: 'Furniture Designer',
     role: 'Product & furniture design',
     color: '#f472b6',
-    desk: { x: 6.6, z: -2.6 },
+    desk: { x: 12.0, z: -0.6 },
     status: 'idle',
     task: 'No design brief assigned yet',
     tasks: [
@@ -124,6 +125,12 @@ export const AGENTS = [
       'Picked a brass finish for the handles',
     ],
   },
+];
+
+export const ROOMS = [
+  { id: 'trading', name: 'Trading Room', x0: -15, x1: -5 },
+  { id: 'command', name: 'Command Center', x0: -5, x1: 5 },
+  { id: 'studio', name: 'Creative Studio', x0: 5, x1: 15 },
 ];
 
 export const IDLE_TASKS = [

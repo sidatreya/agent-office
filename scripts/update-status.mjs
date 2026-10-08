@@ -1,11 +1,18 @@
 #!/usr/bin/env node
 // Merge an update into status.json (dist/ + public/), atomically.
 //
-//   node scripts/update-status.mjs <input.json>      (or "-" to read stdin)
-//   node scripts/update-status.mjs --init            (reset to the seed state)
+//   node scripts/update-status.mjs <input.json>              inferred update (default; e.g. the 5-min check-in)
+//   node scripts/update-status.mjs --reported <input.json>   first-hand report from the agent itself
+//   node scripts/update-status.mjs - [--reported]            read the input from stdin
+//   node scripts/update-status.mjs --init                    reset to the seed state
 //
-// input: { agents: [{ id, status: 'working'|'idle', task, progress? }], newEvents: [{ agentId, text }] }
+// input: { agents: [{ id, status: 'working'|'idle', task, progress?, detail?, source? }], newEvents: [{ agentId, text }] }
 // Both keys are optional. Agents not listed keep their previous state.
+//
+// Report protection: an agent whose state came from a report (source 'reported') less than
+// 30 minutes ago is NOT changed by inferred updates (its agent entry and events are skipped).
+// Per-agent fields written: status, task, progress?, detail?, source ('reported'|'inferred'),
+// reportedAt (time of the last report), lastActive.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TARGETS = [path.join(ROOT, 'dist', 'status.json'), path.join(ROOT, 'public', 'status.json')];
 const MAX_EVENTS = 40;
+const FRESH_MS = 30 * 60 * 1000;
 const ROSTER = [
   ['gk', 'GK'],
   ['pro-trader', 'Pro Trader'],
@@ -25,7 +33,7 @@ const NAMES = Object.fromEntries(ROSTER);
 function seed(now) {
   return {
     updatedAt: now,
-    agents: ROSTER.map(([id, name]) => ({ id, name, status: 'idle', task: 'Waiting for first check-in', lastActive: null })),
+    agents: ROSTER.map(([id, name]) => ({ id, name, status: 'idle', task: 'Waiting for first check-in', source: 'inferred', reportedAt: null, lastActive: null })),
     events: [{ time: now, agentId: 'gk', text: 'Office went live' }],
   };
 }
@@ -43,8 +51,10 @@ function writeAtomic(file, obj) {
 
 function die(msg) { console.error(`update-status: ${msg}`); process.exit(1); }
 
-const arg = process.argv[2];
-if (!arg) die('usage: node scripts/update-status.mjs <input.json | - | --init>');
+const argv = process.argv.slice(2);
+const REPORTED = argv.includes('--reported');
+const arg = argv.find((a) => a === '-' || a === '--init' || !a.startsWith('--'));
+if (!arg) die('usage: node scripts/update-status.mjs [--reported] <input.json | -> | --init');
 const now = new Date().toISOString();
 
 let state;
@@ -67,9 +77,19 @@ if (arg === '--init') {
 
   const warn = (m) => console.warn(`update-status: warning: ${m}`);
   let applied = 0;
+  const nowMs = Date.parse(now);
+  const freshReport = (a) => a && a.source === 'reported' && a.reportedAt && nowMs - Date.parse(a.reportedAt) < FRESH_MS;
+  const protectedIds = new Set();
   for (const u of Array.isArray(input.agents) ? input.agents : []) {
     if (!u || !NAMES[u.id]) { warn(`unknown agent id ${JSON.stringify(u && u.id)} (skipped); valid: ${Object.keys(NAMES).join(', ')}`); continue; }
     const a = state.agents.find((x) => x.id === u.id);
+    const src = REPORTED || u.source === 'reported' ? 'reported' : 'inferred';
+    if (src === 'inferred' && freshReport(a)) {
+      protectedIds.add(u.id);
+      console.log(`update-status: kept ${u.id} (reported ${a.reportedAt}, < 30 min old) — inferred update skipped`);
+      continue;
+    }
+    const prevTask = a.task;
     if (u.status !== undefined) {
       if (u.status !== 'working' && u.status !== 'idle') { warn(`${u.id}: status must be 'working' or 'idle' (got ${JSON.stringify(u.status)})`); }
       else a.status = u.status;
@@ -81,6 +101,11 @@ if (arg === '--init') {
       if (Number.isFinite(p)) a.progress = Math.max(0, Math.min(1, p));
       else warn(`${u.id}: progress must be a number 0..1`);
     } else if (u.status === 'idle') delete a.progress;
+    if (u.detail === null || (u.detail === undefined && a.task !== prevTask)) delete a.detail;
+    else if (typeof u.detail === 'string' && u.detail.trim()) a.detail = u.detail.trim().slice(0, 160);
+    a.source = src;
+    if (src === 'reported') a.reportedAt = now;
+    else if (a.reportedAt === undefined) a.reportedAt = null;
     a.name = NAMES[u.id];
     a.lastActive = now;
     applied++;
@@ -89,6 +114,7 @@ if (arg === '--init') {
   let added = 0, skipped = 0;
   for (const e of Array.isArray(input.newEvents) ? input.newEvents : []) {
     if (!e || !NAMES[e.agentId] || typeof e.text !== 'string' || !e.text.trim()) { warn(`bad event ${JSON.stringify(e)} (skipped)`); continue; }
+    if (!REPORTED && e.source !== 'reported' && (protectedIds.has(e.agentId) || freshReport(state.agents.find((x) => x.id === e.agentId)))) { skipped++; continue; }
     const text = e.text.trim();
     const lastForAgent = [...state.events].reverse().find((x) => x.agentId === e.agentId);
     if (lastForAgent && lastForAgent.text === text) { skipped++; continue; }

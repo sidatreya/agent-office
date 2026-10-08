@@ -3,6 +3,8 @@ REPO="${PAGES_REPO:-sidatreya/agent-office}"
 BRANCH="gh-pages"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PAGES="$ROOT/.pages"
+PUB="$ROOT/.publish"   # throttle state: last-publish epoch, pending marker, locks
+mkdir -p "$PUB" "$ROOT/logs"
 GIT_NAME="sidatreya"
 GIT_EMAIL="65660574+sidatreya@users.noreply.github.com"
 # authenticate git over https via the logged-in gh CLI (no token stored in files)
@@ -27,5 +29,9 @@ commit_and_push() { # $1 = message
   fi
   git -C "$PAGES" commit -q -m "$1"
   git "${GITC[@]}" -C "$PAGES" push -q origin "$BRANCH"
+  date +%s > "$PUB/last-publish"
   echo "published: $1 ($(git -C "$PAGES" rev-parse --short HEAD))"
 }
+
+# serialise all git work in .pages (publish-status, publish-site, throttled jobs)
+git_lock() { exec 9>"$PUB/git.lock"; flock -w 180 9 || { echo "publish: timed out waiting for git lock" >&2; exit 1; }; }

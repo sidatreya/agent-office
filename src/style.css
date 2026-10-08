@@ -50,7 +50,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); c
 
 /* sidebar */
 #sidebar {
-  position: fixed; left: 14px; top: 72px; width: 252px; z-index: 5;
+  position: fixed; left: 14px; top: 72px; width: 228px; z-index: 5;
   display: flex; flex-direction: column; gap: 8px;
   max-height: calc(100% - 120px); overflow-y: auto;
 }
@@ -68,7 +68,7 @@ html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); c
 .pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 .pill.working { color: var(--working); background: rgba(74, 222, 128, 0.12); }
 .pill.idle { color: var(--idle); background: rgba(148, 163, 184, 0.12); }
-.agent-card .task { font-size: 11.5px; color: var(--muted); margin-top: 5px; line-height: 1.35; }
+.agent-card .task { font-size: 11px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--muted); margin-top: 5px; line-height: 1.35; }
 .bar { height: 3px; border-radius: 3px; background: rgba(255,255,255,0.08); margin-top: 7px; overflow: hidden; }
 .bar > i { display: block; height: 100%; background: var(--c); transition: width .6s; box-shadow: 0 0 8px var(--c); }
 
@@ -117,4 +117,11 @@ kbd { font-family: ui-monospace, Menlo, monospace; font-size: 10.5px; padding: 0
   #sidebar { width: 200px; }
   .stats .chip.live, .stats .chip:nth-child(3) { display: none; }
   #infocard { width: calc(100% - 32px); top: auto; bottom: 50px; }
+}
+
+.room-label {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(226, 222, 255, 0.78); padding: 3px 10px; border-radius: 999px;
+  background: rgba(14, 13, 40, 0.55); border: 1px solid rgba(192, 132, 252, 0.3);
+  pointer-events: none; white-space: nowrap;
 }

@@ -8,3 +8,5 @@ logs/
 public-url.txt
 public/status.json
 clicktest.mjs
+.publish/
+state/

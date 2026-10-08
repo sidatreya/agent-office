@@ -12,7 +12,7 @@ import { AGENTS } from './agents.js';
 
 const DEFAULT_TASK = 'Waiting for first check-in';
 
-export function createLiveFeed({ url = './status.json', intervalMs = 20000 } = {}) {
+export function createLiveFeed({ url = './status.json', intervalMs = 15000 } = {}) {
   const listeners = new Set();
   const history = [];
   const state = new Map(AGENTS.map((a) => [a.id, { status: 'idle', task: DEFAULT_TASK, progress: 0, lastActive: null }]));
@@ -75,6 +75,9 @@ export function createLiveFeed({ url = './status.json', intervalMs = 20000 } = {
         task: typeof a.task === 'string' && a.task.trim() ? a.task : DEFAULT_TASK,
         progress: Number.isFinite(p) ? Math.max(0, Math.min(1, p)) : status === 'working' ? 0 : 0,
         hasProgress: Number.isFinite(p),
+        detail: typeof a.detail === 'string' && a.detail.trim() ? a.detail.trim() : null,
+        source: a.source === 'reported' ? 'reported' : 'inferred',
+        reportedAt: a.reportedAt ? new Date(a.reportedAt) : null,
         lastActive: a.lastActive ? new Date(a.lastActive) : null,
       });
     }
