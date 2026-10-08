@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T10:23:26.996Z",
+  "updatedAt": "2026-10-08T10:28:08.647Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
-      "status": "working",
-      "task": "Helping Sidatreya on a voice call",
-      "lastActive": "2026-10-08T10:23:26.996Z"
+      "status": "idle",
+      "task": "Wrapped up a voice call with Sidatreya",
+      "lastActive": "2026-10-08T10:28:08.647Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished a round of BTC and ASTER chart analysis",
-      "lastActive": "2026-10-08T10:23:26.996Z"
+      "lastActive": "2026-10-08T10:28:08.647Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
       "task": "Finished revising the final site zoning diagram",
-      "lastActive": "2026-10-08T10:23:26.996Z"
+      "lastActive": "2026-10-08T10:28:08.647Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-08T10:23:26.996Z"
+      "lastActive": "2026-10-08T10:28:08.647Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "idle",
       "task": "Finished rendering design options for the study built-in",
-      "lastActive": "2026-10-08T10:23:26.996Z"
+      "lastActive": "2026-10-08T10:28:08.647Z"
     }
   ],
   "events": [
