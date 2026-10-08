@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T00:10:00.477Z",
+  "updatedAt": "2026-10-08T00:26:33.810Z",
   "agents": [
     {
       "id": "gk",
@@ -18,9 +18,10 @@
     {
       "id": "grok-bot",
       "name": "Grok Bot",
-      "status": "idle",
-      "task": "Waiting for first check-in",
-      "lastActive": null
+      "status": "working",
+      "task": "Publish test (temporary)",
+      "lastActive": "2026-10-08T00:26:33.810Z",
+      "progress": 0.5
     },
     {
       "id": "linkedin",
@@ -42,6 +43,11 @@
       "time": "2026-10-08T00:10:00.477Z",
       "agentId": "gk",
       "text": "Office went live"
+    },
+    {
+      "time": "2026-10-08T00:26:33.810Z",
+      "agentId": "grok-bot",
+      "text": "Publish test - please ignore"
     }
   ]
 }
