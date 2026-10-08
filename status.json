@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T07:29:53.330Z",
+  "updatedAt": "2026-10-08T07:38:45.239Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "idle",
       "task": "Keeping the live office updated",
-      "lastActive": "2026-10-08T07:29:53.330Z"
+      "lastActive": "2026-10-08T07:38:45.239Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished a round of BTC and ASTER chart analysis",
-      "lastActive": "2026-10-08T07:29:53.330Z"
+      "lastActive": "2026-10-08T07:38:45.239Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "working",
-      "task": "Updating house plan drawings after a voice call",
-      "lastActive": "2026-10-08T07:29:53.330Z"
+      "task": "Finalising the site zoning diagram for the house plan",
+      "lastActive": "2026-10-08T07:38:45.239Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-08T07:29:53.330Z"
+      "lastActive": "2026-10-08T07:38:45.239Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "working",
-      "task": "Rendering design options for the study built-in",
-      "lastActive": "2026-10-08T07:29:53.330Z"
+      "task": "Rendering and costing design options for the study built-in",
+      "lastActive": "2026-10-08T07:38:45.239Z"
     }
   ],
   "events": [
@@ -117,6 +117,16 @@
       "time": "2026-10-08T07:29:53.330Z",
       "agentId": "grok-bot",
       "text": "Had a voice call and started revising house plan drawings"
+    },
+    {
+      "time": "2026-10-08T07:38:45.239Z",
+      "agentId": "grok-bot",
+      "text": "Produced a final zoning diagram for the house site"
+    },
+    {
+      "time": "2026-10-08T07:38:45.239Z",
+      "agentId": "furniture-designer",
+      "text": "Started costing the study built-in design options"
     }
   ]
 }
