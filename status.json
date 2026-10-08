@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T06:12:09.221Z",
+  "updatedAt": "2026-10-08T06:22:03.849Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "idle",
       "task": "Keeping the live office updated",
-      "lastActive": "2026-10-08T06:12:09.221Z"
+      "lastActive": "2026-10-08T06:22:03.849Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished a round of BTC and ASTER chart analysis",
-      "lastActive": "2026-10-08T06:12:09.221Z"
+      "lastActive": "2026-10-08T06:22:03.849Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
       "task": "Reviewed elevation and clerestory options for the house",
-      "lastActive": "2026-10-08T06:12:09.221Z"
+      "lastActive": "2026-10-08T06:22:03.849Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-08T06:12:09.221Z"
+      "lastActive": "2026-10-08T06:22:03.849Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "idle",
       "task": "Shared new photorealistic renders of the study",
-      "lastActive": "2026-10-08T06:12:09.221Z"
+      "lastActive": "2026-10-08T06:22:03.849Z"
     }
   ],
   "events": [
