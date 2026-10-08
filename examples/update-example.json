@@ -1,0 +1,11 @@
+{
+  "agents": [
+    { "id": "gk", "status": "working", "task": "Coordinating today's agent work", "progress": 0.4 },
+    { "id": "grok-bot", "status": "working", "task": "Wiring the office to live status data" },
+    { "id": "pro-trader", "status": "idle", "task": "Waiting for the market open" }
+  ],
+  "newEvents": [
+    { "agentId": "gk", "text": "Delegated the live-office upgrade to Grok Bot" },
+    { "agentId": "grok-bot", "text": "Started: live status.json feed" }
+  ]
+}

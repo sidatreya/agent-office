@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.pages/
+logs/
+*.log
+*.png
+*.zip
+public-url.txt
+public/status.json
+clicktest.mjs
