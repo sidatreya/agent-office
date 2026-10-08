@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T11:03:47.750Z",
+  "updatedAt": "2026-10-08T11:09:17.751Z",
   "agents": [
     {
       "id": "gk",
@@ -13,9 +13,9 @@
     {
       "id": "pro-trader",
       "name": "Pro Trader",
-      "status": "working",
-      "task": "Checking live ASTER market data",
-      "lastActive": "2026-10-08T11:03:47.750Z",
+      "status": "idle",
+      "task": "Checked live ASTER market data",
+      "lastActive": "2026-10-08T11:09:17.751Z",
       "source": "inferred",
       "reportedAt": null
     },
