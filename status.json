@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T07:38:45.239Z",
+  "updatedAt": "2026-10-08T07:51:01.103Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "idle",
       "task": "Keeping the live office updated",
-      "lastActive": "2026-10-08T07:38:45.239Z"
+      "lastActive": "2026-10-08T07:51:01.103Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished a round of BTC and ASTER chart analysis",
-      "lastActive": "2026-10-08T07:38:45.239Z"
+      "lastActive": "2026-10-08T07:51:01.103Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
-      "status": "working",
-      "task": "Finalising the site zoning diagram for the house plan",
-      "lastActive": "2026-10-08T07:38:45.239Z"
+      "status": "idle",
+      "task": "Finished the final site zoning diagram for the house plan",
+      "lastActive": "2026-10-08T07:51:01.103Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-08T07:38:45.239Z"
+      "lastActive": "2026-10-08T07:51:01.103Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "working",
-      "task": "Rendering and costing design options for the study built-in",
-      "lastActive": "2026-10-08T07:38:45.239Z"
+      "task": "Producing working drawings and renders for the study built-in",
+      "lastActive": "2026-10-08T07:51:01.103Z"
     }
   ],
   "events": [
@@ -127,6 +127,11 @@
       "time": "2026-10-08T07:38:45.239Z",
       "agentId": "furniture-designer",
       "text": "Started costing the study built-in design options"
+    },
+    {
+      "time": "2026-10-08T07:51:01.103Z",
+      "agentId": "furniture-designer",
+      "text": "Drew up updated working drawings for the study built-in"
     }
   ]
 }
