@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidatreya's Office</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c3aed'/><rect x='8' y='9' width='16' height='12' rx='4' fill='white'/><circle cx='13' cy='15' r='2' fill='%237c3aed'/><circle cx='19' cy='15' r='2' fill='%237c3aed'/></svg>" />
+    <script type="module" crossorigin src="./assets/index-BKrlI8q-.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DMSeDCEM.css">
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <header id="topbar">
+      <div class="brand">
+        <div class="logo"><span></span></div>
+        <div>
+          <div class="title" id="title"></div>
+          <div class="subtitle" id="subtitle"></div>
+        </div>
+      </div>
+      <div class="stats">
+        <span class="chip"><i class="dot working"></i><b id="count-working">0</b> working</span>
+        <span class="chip"><i class="dot idle"></i><b id="count-idle">0</b> idle</span>
+        <span class="chip"><i class="dot total"></i><b id="count-total">0</b> agents</span>
+        <span class="chip clock" id="clock">--:--:--</span>
+        <span class="chip live" id="live-chip"><i class="dot live-dot"></i><span id="live-label">connecting…</span></span>
+      </div>
+    </header>
+
+    <aside id="sidebar"></aside>
+
+    <div id="infocard" class="hidden"></div>
+
+    <div id="hint">Drag to rotate · Scroll to zoom · Right-drag to pan · Click a robot to focus · <kbd>R</kbd> reset view</div>
+
+  </body>
+</html>

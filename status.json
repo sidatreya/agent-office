@@ -1,0 +1,47 @@
+{
+  "updatedAt": "2026-10-08T00:10:00.477Z",
+  "agents": [
+    {
+      "id": "gk",
+      "name": "GK",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "lastActive": null
+    },
+    {
+      "id": "pro-trader",
+      "name": "Pro Trader",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "lastActive": null
+    },
+    {
+      "id": "grok-bot",
+      "name": "Grok Bot",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "lastActive": null
+    },
+    {
+      "id": "linkedin",
+      "name": "Linkedin",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "lastActive": null
+    },
+    {
+      "id": "furniture-designer",
+      "name": "Furniture Designer",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "lastActive": null
+    }
+  ],
+  "events": [
+    {
+      "time": "2026-10-08T00:10:00.477Z",
+      "agentId": "gk",
+      "text": "Office went live"
+    }
+  ]
+}
