@@ -1,40 +1,40 @@
 {
-  "updatedAt": "2026-10-08T00:10:00.477Z",
+  "updatedAt": "2026-10-08T00:29:56.052Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
-      "status": "idle",
-      "task": "Waiting for first check-in",
-      "lastActive": null
+      "status": "working",
+      "task": "Bringing the live office online",
+      "lastActive": "2026-10-08T00:29:56.052Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
-      "status": "idle",
-      "task": "Waiting for first check-in",
-      "lastActive": null
+      "status": "working",
+      "task": "Redoing BTC and ASTER chart analysis from your call",
+      "lastActive": "2026-10-08T00:29:56.052Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
-      "task": "Waiting for first check-in",
-      "lastActive": null
+      "task": "Three Vastu house options ready, waiting for your pick",
+      "lastActive": "2026-10-08T00:29:56.052Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
-      "task": "Waiting for first check-in",
-      "lastActive": null
+      "task": "Developer build brief for the LinkedIn tool delivered",
+      "lastActive": "2026-10-08T00:29:56.052Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "idle",
-      "task": "Waiting for first check-in",
-      "lastActive": null
+      "task": "Study furniture design and cost sheets delivered",
+      "lastActive": "2026-10-08T00:29:56.052Z"
     }
   ],
   "events": [
@@ -42,6 +42,31 @@
       "time": "2026-10-08T00:10:00.477Z",
       "agentId": "gk",
       "text": "Office went live"
+    },
+    {
+      "time": "2026-10-08T00:29:56.052Z",
+      "agentId": "gk",
+      "text": "Office is live on GitHub Pages"
+    },
+    {
+      "time": "2026-10-08T00:29:56.052Z",
+      "agentId": "pro-trader",
+      "text": "Started reworking BTC and ASTER scenario charts"
+    },
+    {
+      "time": "2026-10-08T00:29:56.052Z",
+      "agentId": "grok-bot",
+      "text": "Shared three Vastu-aligned house combinations"
+    },
+    {
+      "time": "2026-10-08T00:29:56.052Z",
+      "agentId": "linkedin",
+      "text": "Finished the developer build brief"
+    },
+    {
+      "time": "2026-10-08T00:29:56.052Z",
+      "agentId": "furniture-designer",
+      "text": "Delivered study drawings, cut list and costs"
     }
   ]
 }
