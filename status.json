@@ -1,12 +1,12 @@
 {
-  "updatedAt": "2026-10-10T15:45:56.793Z",
+  "updatedAt": "2026-10-10T16:10:06.507Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "idle",
       "task": "Finished the office upgrade: glass, ocean view, big screens",
-      "lastActive": "2026-10-10T15:45:56.793Z",
+      "lastActive": "2026-10-10T16:10:06.507Z",
       "source": "inferred",
       "reportedAt": "2026-10-08T10:44:15.276Z"
     },
@@ -15,7 +15,7 @@
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished updating ASTER charts with channels and scenarios",
-      "lastActive": "2026-10-10T15:45:56.793Z",
+      "lastActive": "2026-10-10T16:10:06.507Z",
       "source": "inferred",
       "reportedAt": null
     },
@@ -24,7 +24,7 @@
       "name": "Grok Bot",
       "status": "idle",
       "task": "Finished interior views and material palettes for the house",
-      "lastActive": "2026-10-10T15:45:56.793Z",
+      "lastActive": "2026-10-10T16:10:06.507Z",
       "source": "inferred",
       "reportedAt": "2026-10-08T10:44:15.033Z"
     },
@@ -33,7 +33,7 @@
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-10T15:45:56.793Z",
+      "lastActive": "2026-10-10T16:10:06.507Z",
       "source": "inferred",
       "reportedAt": null
     },
@@ -42,7 +42,7 @@
       "name": "Furniture Designer",
       "status": "idle",
       "task": "Finished rendering design options for the study built-in",
-      "lastActive": "2026-10-10T15:45:56.793Z",
+      "lastActive": "2026-10-10T16:10:06.507Z",
       "source": "inferred",
       "reportedAt": null
     }
