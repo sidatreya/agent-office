@@ -1,237 +1,57 @@
 {
-  "updatedAt": "2026-10-13T01:22:31.136Z",
+  "updatedAt": "2026-10-14T22:27:42.705Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
       "status": "idle",
       "task": "Finished the office upgrade: glass, ocean view, big screens",
-      "lastActive": "2026-10-13T01:22:31.136Z",
       "source": "inferred",
-      "reportedAt": "2026-10-08T10:44:15.276Z"
+      "reportedAt": null,
+      "lastActive": "2026-10-14T22:27:42.705Z"
     },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "idle",
       "task": "Finished updating ASTER charts with channels and scenarios",
-      "lastActive": "2026-10-13T01:22:31.136Z",
       "source": "inferred",
-      "reportedAt": null
+      "reportedAt": null,
+      "lastActive": "2026-10-14T22:27:42.705Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
       "task": "Finished interior views and material palettes for the house",
-      "lastActive": "2026-10-13T01:22:31.136Z",
       "source": "inferred",
-      "reportedAt": "2026-10-08T10:44:15.033Z"
+      "reportedAt": null,
+      "lastActive": "2026-10-14T22:27:42.705Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "idle",
       "task": "Worked on setting up LinkedIn access in the browser",
-      "lastActive": "2026-10-13T01:22:31.136Z",
       "source": "inferred",
-      "reportedAt": null
+      "reportedAt": null,
+      "lastActive": "2026-10-14T22:27:42.705Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "idle",
       "task": "Finished rendering design options for the study built-in",
-      "lastActive": "2026-10-13T01:22:31.136Z",
       "source": "inferred",
-      "reportedAt": null
+      "reportedAt": null,
+      "lastActive": "2026-10-14T22:27:42.705Z"
     }
   ],
   "events": [
     {
-      "time": "2026-10-08T00:10:00.477Z",
+      "time": "2026-10-14T05:27:00.747Z",
       "agentId": "gk",
       "text": "Office went live"
-    },
-    {
-      "time": "2026-10-08T00:29:56.052Z",
-      "agentId": "gk",
-      "text": "Office is live on GitHub Pages"
-    },
-    {
-      "time": "2026-10-08T00:29:56.052Z",
-      "agentId": "pro-trader",
-      "text": "Started reworking BTC and ASTER scenario charts"
-    },
-    {
-      "time": "2026-10-08T00:29:56.052Z",
-      "agentId": "grok-bot",
-      "text": "Shared three Vastu-aligned house combinations"
-    },
-    {
-      "time": "2026-10-08T00:29:56.052Z",
-      "agentId": "linkedin",
-      "text": "Finished the developer build brief"
-    },
-    {
-      "time": "2026-10-08T00:29:56.052Z",
-      "agentId": "furniture-designer",
-      "text": "Delivered study drawings, cut list and costs"
-    },
-    {
-      "time": "2026-10-08T00:35:49.510Z",
-      "agentId": "grok-bot",
-      "text": "Shared golden-hour renders of options A and B"
-    },
-    {
-      "time": "2026-10-08T00:35:49.510Z",
-      "agentId": "furniture-designer",
-      "text": "Updating study design to keep the wall mirror"
-    },
-    {
-      "time": "2026-10-08T00:41:33.498Z",
-      "agentId": "linkedin",
-      "text": "Started setting up LinkedIn access in the browser"
-    },
-    {
-      "time": "2026-10-08T01:00:13.329Z",
-      "agentId": "pro-trader",
-      "text": "Pulled up fresh charts for the BTC and ASTER review"
-    },
-    {
-      "time": "2026-10-08T01:25:31.466Z",
-      "agentId": "furniture-designer",
-      "text": "Started photorealistic 3D renders of the study built-in"
-    },
-    {
-      "time": "2026-10-08T01:44:21.445Z",
-      "agentId": "furniture-designer",
-      "text": "Saved an updated 3D render scene for the study"
-    },
-    {
-      "time": "2026-10-08T01:59:56.910Z",
-      "agentId": "furniture-designer",
-      "text": "Shared new photorealistic study renders"
-    },
-    {
-      "time": "2026-10-08T03:10:43.353Z",
-      "agentId": "grok-bot",
-      "text": "Looking over elevation and clerestory design options"
-    },
-    {
-      "time": "2026-10-08T07:26:58.827Z",
-      "agentId": "furniture-designer",
-      "text": "Started rendering new study built-in design options"
-    },
-    {
-      "time": "2026-10-08T07:29:53.330Z",
-      "agentId": "grok-bot",
-      "text": "Had a voice call and started revising house plan drawings"
-    },
-    {
-      "time": "2026-10-08T07:38:45.239Z",
-      "agentId": "grok-bot",
-      "text": "Produced a final zoning diagram for the house site"
-    },
-    {
-      "time": "2026-10-08T07:38:45.239Z",
-      "agentId": "furniture-designer",
-      "text": "Started costing the study built-in design options"
-    },
-    {
-      "time": "2026-10-08T07:51:01.103Z",
-      "agentId": "furniture-designer",
-      "text": "Drew up updated working drawings for the study built-in"
-    },
-    {
-      "time": "2026-10-08T07:57:50.754Z",
-      "agentId": "furniture-designer",
-      "text": "Put together the v2 drawing set and cost sheet for the study built-in"
-    },
-    {
-      "time": "2026-10-08T08:02:47.148Z",
-      "agentId": "furniture-designer",
-      "text": "Shared the v2 drawings and started rendering design options for the study"
-    },
-    {
-      "time": "2026-10-08T10:13:49.062Z",
-      "agentId": "grok-bot",
-      "text": "Started another revision of the site zoning diagram"
-    },
-    {
-      "time": "2026-10-08T10:23:26.996Z",
-      "agentId": "gk",
-      "text": "Took a voice call with Sidatreya"
-    },
-    {
-      "time": "2026-10-08T10:30:47.440Z",
-      "agentId": "grok-bot",
-      "text": "Started the ocean-view + big-screens upgrade"
-    },
-    {
-      "time": "2026-10-08T10:36:48.457Z",
-      "agentId": "grok-bot",
-      "text": "Published office v3: glass walls, ocean view, big task screens"
-    },
-    {
-      "time": "2026-10-08T10:44:15.276Z",
-      "agentId": "gk",
-      "text": "Shipped the three-room festive office upgrade"
-    },
-    {
-      "time": "2026-10-08T11:03:47.750Z",
-      "agentId": "pro-trader",
-      "text": "Pulled live ASTER market data for a fresh read"
-    },
-    {
-      "time": "2026-10-08T12:31:06.661Z",
-      "agentId": "grok-bot",
-      "text": "Started new 3D views of the house after a quick call"
-    },
-    {
-      "time": "2026-10-08T12:38:53.731Z",
-      "agentId": "grok-bot",
-      "text": "Refreshed house plans, sections and 3D model"
-    },
-    {
-      "time": "2026-10-08T12:45:54.190Z",
-      "agentId": "grok-bot",
-      "text": "Packaged final house plans, 3D renders and model"
-    },
-    {
-      "time": "2026-10-08T12:54:11.192Z",
-      "agentId": "grok-bot",
-      "text": "Archived the two-storey design and started a new revision"
-    },
-    {
-      "time": "2026-10-08T13:02:57.206Z",
-      "agentId": "grok-bot",
-      "text": "Rendered final plans, sections and 3D views for the revised design"
-    },
-    {
-      "time": "2026-10-08T13:17:15.016Z",
-      "agentId": "grok-bot",
-      "text": "Packaged and shared the final drawings, 3D model and views"
-    },
-    {
-      "time": "2026-10-08T13:30:59.671Z",
-      "agentId": "grok-bot",
-      "text": "Started test renders of interior room views"
-    },
-    {
-      "time": "2026-10-08T18:04:16.206Z",
-      "agentId": "grok-bot",
-      "text": "Packaged room descriptions and material palettes for the interiors"
-    },
-    {
-      "time": "2026-10-08T19:11:26.436Z",
-      "agentId": "pro-trader",
-      "text": "Shared a live ASTER update with charts"
-    },
-    {
-      "time": "2026-10-08T20:01:48.412Z",
-      "agentId": "pro-trader",
-      "text": "Shared updated ASTER charts and a zone analysis"
     }
   ]
 }
