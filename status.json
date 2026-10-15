@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T11:54:46.218Z",
+  "updatedAt": "2026-10-15T12:18:41.366Z",
   "agents": [
     {
       "id": "gk",
@@ -8,7 +8,7 @@
       "task": "Finished the office upgrade: glass, ocean view, big screens",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-15T11:54:46.218Z"
+      "lastActive": "2026-10-15T12:18:41.366Z"
     },
     {
       "id": "pro-trader",
@@ -17,7 +17,7 @@
       "task": "Finished updating ASTER charts with channels and scenarios",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-15T11:54:46.218Z"
+      "lastActive": "2026-10-15T12:18:41.366Z"
     },
     {
       "id": "grok-bot",
@@ -26,7 +26,7 @@
       "task": "Finished interior views and material palettes for the house",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-15T11:54:46.218Z"
+      "lastActive": "2026-10-15T12:18:41.366Z"
     },
     {
       "id": "linkedin",
@@ -35,7 +35,7 @@
       "task": "Worked on setting up LinkedIn access in the browser",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-15T11:54:46.218Z"
+      "lastActive": "2026-10-15T12:18:41.366Z"
     },
     {
       "id": "furniture-designer",
@@ -44,7 +44,7 @@
       "task": "Finished rendering design options for the study built-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-15T11:54:46.218Z"
+      "lastActive": "2026-10-15T12:18:41.366Z"
     }
   ],
   "events": [
