@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-17T20:03:46.753Z",
+  "updatedAt": "2026-10-17T20:13:40.257Z",
   "agents": [
     {
       "id": "gk",
@@ -8,7 +8,7 @@
       "task": "Finished the office upgrade: glass, ocean view, big screens",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:03:46.753Z"
+      "lastActive": "2026-10-17T20:13:40.257Z"
     },
     {
       "id": "pro-trader",
@@ -17,7 +17,7 @@
       "task": "Finished updating ASTER charts with channels and scenarios",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:03:46.753Z"
+      "lastActive": "2026-10-17T20:13:40.257Z"
     },
     {
       "id": "grok-bot",
@@ -26,16 +26,16 @@
       "task": "Finished interior views and material palettes for the house",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:03:46.753Z"
+      "lastActive": "2026-10-17T20:13:40.257Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
-      "status": "idle",
-      "task": "Finished comparing LinkedIn sales and prospecting tools",
+      "status": "working",
+      "task": "Building and testing a LinkedIn prospecting app prototype",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:03:46.753Z"
+      "lastActive": "2026-10-17T20:13:40.257Z"
     },
     {
       "id": "furniture-designer",
@@ -44,7 +44,7 @@
       "task": "Finished rendering design options for the study built-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:03:46.753Z"
+      "lastActive": "2026-10-17T20:13:40.257Z"
     }
   ],
   "events": [
@@ -57,6 +57,11 @@
       "time": "2026-10-17T19:59:37.520Z",
       "agentId": "linkedin",
       "text": "Put together a comparison of LinkedIn sales tools"
+    },
+    {
+      "time": "2026-10-17T20:13:40.257Z",
+      "agentId": "linkedin",
+      "text": "Shared a prototype build with test screenshots"
     }
   ]
 }
