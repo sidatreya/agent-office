@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sidatreya's Office</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237c3aed'/><rect x='8' y='9' width='16' height='12' rx='4' fill='white'/><circle cx='13' cy='15' r='2' fill='%237c3aed'/><circle cx='19' cy='15' r='2' fill='%237c3aed'/></svg>" />
-    <script type="module" crossorigin src="./assets/index-CJ53-v0p.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Cgr4YPq9.css">
+    <script type="module" crossorigin src="./assets/index-DGe4gjyi.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Bhm-QSb2.css">
   </head>
   <body>
     <div id="app"></div>
@@ -28,11 +28,14 @@
       </div>
     </header>
 
+    <nav id="floorbar" aria-label="Floors"></nav>
+    <div id="viewbtns"><button id="btn-screens">▦ Screens</button><button id="btn-markets">📈 Markets</button></div>
     <aside id="sidebar"></aside>
+    <div id="overlay" class="hidden"><div class="ov-panel"><div class="ov-top"><span class="ov-title"></span><button class="ov-close" title="Close">×</button></div><div class="ov-body"></div></div></div>
 
     <div id="infocard" class="hidden"></div>
 
-    <div id="hint">Drag to rotate · Scroll to zoom · Right-drag to pan · Click a robot to focus · <kbd>R</kbd> reset view</div>
+    <div id="hint">Drag to rotate · Scroll to zoom · Right-drag to pan · Pick a floor at the top · Click a robot or screen to focus · <kbd>R</kbd> reset view</div>
 
   </body>
 </html>
