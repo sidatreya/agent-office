@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-10-17T20:16:29.474Z",
+  "updatedAt": "2026-10-17T20:23:47.324Z",
   "agents": [
     {
       "id": "gk",
       "name": "GK",
-      "status": "idle",
-      "task": "Finished the office upgrade: glass, ocean view, big screens",
+      "status": "working",
+      "task": "Just finished a short voice call",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:16:29.474Z"
+      "lastActive": "2026-10-17T20:23:47.324Z"
     },
     {
       "id": "pro-trader",
@@ -17,7 +17,7 @@
       "task": "Finished updating ASTER charts with channels and scenarios",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:16:29.474Z"
+      "lastActive": "2026-10-17T20:23:47.324Z"
     },
     {
       "id": "grok-bot",
@@ -26,16 +26,16 @@
       "task": "Finished interior views and material palettes for the house",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:16:29.474Z"
+      "lastActive": "2026-10-17T20:23:47.324Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
-      "status": "idle",
-      "task": "Finished a LinkedIn prospecting app prototype build",
+      "status": "working",
+      "task": "Ranking brand names and domains for Rankora",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:16:29.474Z"
+      "lastActive": "2026-10-17T20:23:47.324Z"
     },
     {
       "id": "furniture-designer",
@@ -44,7 +44,7 @@
       "task": "Finished rendering design options for the study built-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:16:29.474Z"
+      "lastActive": "2026-10-17T20:23:47.324Z"
     }
   ],
   "events": [
@@ -62,6 +62,16 @@
       "time": "2026-10-17T20:13:40.257Z",
       "agentId": "linkedin",
       "text": "Shared a prototype build with test screenshots"
+    },
+    {
+      "time": "2026-10-17T20:23:47.324Z",
+      "agentId": "gk",
+      "text": "Finished a short voice call with Sidatreya"
+    },
+    {
+      "time": "2026-10-17T20:23:47.324Z",
+      "agentId": "linkedin",
+      "text": "Wrapped a call and ranked Rankora brand names"
     }
   ]
 }
