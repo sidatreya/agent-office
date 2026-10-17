@@ -1,15 +1,6 @@
 {
-  "updatedAt": "2026-10-17T20:23:47.324Z",
+  "updatedAt": "2026-10-17T20:28:26.397Z",
   "agents": [
-    {
-      "id": "gk",
-      "name": "GK",
-      "status": "working",
-      "task": "Just finished a short voice call",
-      "source": "inferred",
-      "reportedAt": null,
-      "lastActive": "2026-10-17T20:23:47.324Z"
-    },
     {
       "id": "pro-trader",
       "name": "Pro Trader",
@@ -17,7 +8,58 @@
       "task": "Finished updating ASTER charts with channels and scenarios",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:23:47.324Z"
+      "lastActive": "2026-10-17T20:28:26.397Z",
+      "taskSince": "2026-10-17T20:23:47.324Z"
+    },
+    {
+      "id": "gk",
+      "name": "GK",
+      "status": "idle",
+      "task": "Finished a short voice call with Sidatreya",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": "2026-10-17T20:28:26.397Z",
+      "taskSince": "2026-10-17T20:28:26.397Z"
+    },
+    {
+      "id": "linkedin",
+      "name": "Linkedin",
+      "status": "idle",
+      "task": "Finished ranking brand names and domains for Rankora",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": "2026-10-17T20:28:26.397Z",
+      "taskSince": "2026-10-17T20:28:26.397Z"
+    },
+    {
+      "id": "whatsapp-manager",
+      "name": "Whatsapp Manager",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": null,
+      "taskSince": "2026-10-17T20:27:23.093Z"
+    },
+    {
+      "id": "developer",
+      "name": "Developer",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": null,
+      "taskSince": "2026-10-17T20:27:23.093Z"
+    },
+    {
+      "id": "developer-whatsapp",
+      "name": "Developer Whatsapp Manager",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": null,
+      "taskSince": "2026-10-17T20:27:23.093Z"
     },
     {
       "id": "grok-bot",
@@ -26,16 +68,8 @@
       "task": "Finished interior views and material palettes for the house",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:23:47.324Z"
-    },
-    {
-      "id": "linkedin",
-      "name": "Linkedin",
-      "status": "working",
-      "task": "Ranking brand names and domains for Rankora",
-      "source": "inferred",
-      "reportedAt": null,
-      "lastActive": "2026-10-17T20:23:47.324Z"
+      "lastActive": "2026-10-17T20:28:26.397Z",
+      "taskSince": "2026-10-17T20:23:47.324Z"
     },
     {
       "id": "furniture-designer",
@@ -44,7 +78,28 @@
       "task": "Finished rendering design options for the study built-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T20:23:47.324Z"
+      "lastActive": "2026-10-17T20:28:26.397Z",
+      "taskSince": "2026-10-17T20:23:47.324Z"
+    },
+    {
+      "id": "landscape-designer",
+      "name": "Landscape Designer",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": null,
+      "taskSince": "2026-10-17T20:27:23.093Z"
+    },
+    {
+      "id": "boq",
+      "name": "BOQ",
+      "status": "idle",
+      "task": "Waiting for first check-in",
+      "source": "inferred",
+      "reportedAt": null,
+      "lastActive": null,
+      "taskSince": "2026-10-17T20:27:23.093Z"
     }
   ],
   "events": [
