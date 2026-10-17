@@ -26,11 +26,14 @@
       </div>
     </header>
 
+    <nav id="floorbar" aria-label="Floors"></nav>
+    <div id="viewbtns"><button id="btn-screens">▦ Screens</button><button id="btn-markets">📈 Markets</button></div>
     <aside id="sidebar"></aside>
+    <div id="overlay" class="hidden"><div class="ov-panel"><div class="ov-top"><span class="ov-title"></span><button class="ov-close" title="Close">×</button></div><div class="ov-body"></div></div></div>
 
     <div id="infocard" class="hidden"></div>
 
-    <div id="hint">Drag to rotate · Scroll to zoom · Right-drag to pan · Click a robot to focus · <kbd>R</kbd> reset view</div>
+    <div id="hint">Drag to rotate · Scroll to zoom · Right-drag to pan · Pick a floor at the top · Click a robot or screen to focus · <kbd>R</kbd> reset view</div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

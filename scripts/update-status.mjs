@@ -6,13 +6,16 @@
 //   node scripts/update-status.mjs - [--reported]            read the input from stdin
 //   node scripts/update-status.mjs --init                    reset to the seed state
 //
-// input: { agents: [{ id, status: 'working'|'idle', task, progress?, detail?, source? }], newEvents: [{ agentId, text }] }
+// input: { agents: [{ id, status: 'working'|'idle', task, progress?, detail?, screenshot?, source? }], newEvents: [{ agentId, text }] }
+// screenshot: relative URL under the site (e.g. "shots/grok-bot.jpg?v=123"), or null to clear.
+// An entry with only { id, screenshot } just sets the picture (allowed even for protected agents).
 // Both keys are optional. Agents not listed keep their previous state.
 //
 // Report protection: an agent whose state came from a report (source 'reported') less than
 // 30 minutes ago is NOT changed by inferred updates (its agent entry and events are skipped).
 // Per-agent fields written: status, task, progress?, detail?, source ('reported'|'inferred'),
-// reportedAt (time of the last report), lastActive.
+// reportedAt (time of the last report), lastActive, taskSince (when status/task last changed), screenshot?.
+// The roster (ids + names) comes from src/data/agents.js.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -21,19 +24,14 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TARGETS = [path.join(ROOT, 'dist', 'status.json'), path.join(ROOT, 'public', 'status.json')];
 const MAX_EVENTS = 40;
 const FRESH_MS = 30 * 60 * 1000;
-const ROSTER = [
-  ['gk', 'GK'],
-  ['pro-trader', 'Pro Trader'],
-  ['grok-bot', 'Grok Bot'],
-  ['linkedin', 'Linkedin'],
-  ['furniture-designer', 'Furniture Designer'],
-];
+const { AGENTS } = await import(path.join(ROOT, 'src', 'data', 'agents.js'));
+const ROSTER = AGENTS.map((a) => [a.id, a.name]);
 const NAMES = Object.fromEntries(ROSTER);
 
 function seed(now) {
   return {
     updatedAt: now,
-    agents: ROSTER.map(([id, name]) => ({ id, name, status: 'idle', task: 'Waiting for first check-in', source: 'inferred', reportedAt: null, lastActive: null })),
+    agents: ROSTER.map(([id, name]) => ({ id, name, status: 'idle', task: 'Waiting for first check-in', source: 'inferred', reportedAt: null, lastActive: null, taskSince: now })),
     events: [{ time: now, agentId: 'gk', text: 'Office went live' }],
   };
 }
@@ -73,7 +71,9 @@ if (arg === '--init') {
   state.events = Array.isArray(state.events) ? state.events : [];
 
   // ensure every roster agent exists
-  for (const [id, name] of ROSTER) if (!state.agents.find((a) => a.id === id)) state.agents.push({ id, name, status: 'idle', task: 'Waiting for first check-in', lastActive: null });
+  for (const [id, name] of ROSTER) if (!state.agents.find((a) => a.id === id)) state.agents.push({ id, name, status: 'idle', task: 'Waiting for first check-in', source: 'inferred', reportedAt: null, lastActive: null, taskSince: now });
+  state.agents = state.agents.filter((a) => NAMES[a.id]);
+  for (const a of state.agents) if (!a.taskSince) a.taskSince = a.lastActive || state.updatedAt || now;
 
   const warn = (m) => console.warn(`update-status: warning: ${m}`);
   let applied = 0;
@@ -83,13 +83,19 @@ if (arg === '--init') {
   for (const u of Array.isArray(input.agents) ? input.agents : []) {
     if (!u || !NAMES[u.id]) { warn(`unknown agent id ${JSON.stringify(u && u.id)} (skipped); valid: ${Object.keys(NAMES).join(', ')}`); continue; }
     const a = state.agents.find((x) => x.id === u.id);
+    const keys = Object.keys(u).filter((k) => k !== 'id' && k !== 'source');
+    if (keys.length === 1 && keys[0] === 'screenshot') { // picture-only update
+      if (u.screenshot === null) delete a.screenshot; else if (typeof u.screenshot === 'string') a.screenshot = u.screenshot;
+      applied++;
+      continue;
+    }
     const src = REPORTED || u.source === 'reported' ? 'reported' : 'inferred';
     if (src === 'inferred' && freshReport(a)) {
       protectedIds.add(u.id);
       console.log(`update-status: kept ${u.id} (reported ${a.reportedAt}, < 30 min old) — inferred update skipped`);
       continue;
     }
-    const prevTask = a.task;
+    const prevTask = a.task, prevStatus = a.status;
     if (u.status !== undefined) {
       if (u.status !== 'working' && u.status !== 'idle') { warn(`${u.id}: status must be 'working' or 'idle' (got ${JSON.stringify(u.status)})`); }
       else a.status = u.status;
@@ -103,6 +109,9 @@ if (arg === '--init') {
     } else if (u.status === 'idle') delete a.progress;
     if (u.detail === null || (u.detail === undefined && a.task !== prevTask)) delete a.detail;
     else if (typeof u.detail === 'string' && u.detail.trim()) a.detail = u.detail.trim().slice(0, 160);
+    if (u.screenshot === null) delete a.screenshot;
+    else if (typeof u.screenshot === 'string' && u.screenshot.trim()) a.screenshot = u.screenshot.trim();
+    if (a.task !== prevTask || a.status !== prevStatus) a.taskSince = now;
     a.source = src;
     if (src === 'reported') a.reportedAt = now;
     else if (a.reportedAt === undefined) a.reportedAt = null;

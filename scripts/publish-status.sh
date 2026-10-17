@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Publish the current dist/status.json to GitHub Pages (gh-pages branch).
-# Commits + pushes only if the file changed. Quiet; prints one line.
+# (and dist/shots/*). Commits + pushes only if something changed. Quiet; prints one line.
 set -euo pipefail
 source "$(dirname "$0")/pages-common.sh"
 SRC="$ROOT/dist/status.json"
@@ -11,4 +11,6 @@ if [ "${PUBLISH_DRY_RUN:-}" = 1 ]; then echo "dry-run: would publish status: $ST
 git_lock
 ensure_checkout
 cp "$SRC" "$PAGES/status.json"
+# live work screen pictures
+if [ -d "$ROOT/dist/shots" ]; then mkdir -p "$PAGES/shots" && cp -a "$ROOT/dist/shots/." "$PAGES/shots/"; fi
 commit_and_push "status: $STAMP"

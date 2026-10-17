@@ -5,6 +5,7 @@ source "$(dirname "$0")/pages-common.sh"
 cd "$ROOT"
 # keep the newest status.json across the rebuild (vite copies public/ into dist/)
 if [ -f dist/status.json ]; then cp dist/status.json public/status.json; fi
+if [ -d dist/shots ]; then mkdir -p public/shots && cp -a dist/shots/. public/shots/; fi
 [ -f public/status.json ] || node scripts/update-status.mjs --init >/dev/null
 npx vite build --logLevel error
 git_lock

@@ -7,11 +7,13 @@ import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer.js';
 
-import { AGENTS, OFFICE, ROOMS } from './data/agents.js';
+import { AGENTS, OFFICE, FLOORS } from './data/agents.js';
 import { createSimulatedFeed } from './data/feed.js';
 import { createLiveFeed } from './data/live.js';
-import { buildWorld, fmtTime } from './world.js';
+import { buildWorld, fmtTime, floorY } from './world/index.js';
+import { setupOverlays } from './overlays.js';
 
 // ── data source ──
 // Live: polls ./status.json every 15s. Add ?demo=1 to the URL for the simulated feed.
@@ -21,7 +23,8 @@ const feed = DEMO ? createSimulatedFeed({ intervalMs: 3200 }) : createLiveFeed({
 // ── renderer / scene / camera ──
 const app = document.getElementById('app');
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+const MOBILE = Math.min(window.innerWidth, window.innerHeight) < 700;
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, MOBILE ? 1.25 : 1.75));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
@@ -29,14 +32,32 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.0;
 app.appendChild(renderer.domElement);
 
+const cssRenderer = new CSS3DRenderer();
+cssRenderer.setSize(window.innerWidth, window.innerHeight);
+cssRenderer.domElement.className = 'css3d';
+app.appendChild(cssRenderer.domElement);
+const cssScene = new THREE.Scene();
+
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(window.innerWidth, window.innerHeight);
 labelRenderer.domElement.className = 'css2d';
 app.appendChild(labelRenderer.domElement);
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 300);
-const HOME = { pos: new THREE.Vector3(6.0, 13.2, 27.5), target: new THREE.Vector3(-1.6, 1.8, -2.0) };
+const camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 600);
+// camera views: whole building, or one floor (cut-away; floors above are hidden)
+function viewFor(fid) {
+  const portrait = window.innerWidth / window.innerHeight < 1;
+  const aspect = window.innerWidth / window.innerHeight;
+  const k = portrait ? Math.min(3.4, 1.5 / aspect) : window.innerWidth < 1000 ? 1.25 : 1;
+  if (!fid) return { pos: new THREE.Vector3(30 * k, 25 + 6 * k, 64 * k), target: new THREE.Vector3(0, floorY(1.5) - 1, 0) };
+  const y = floorY(FLOORS.find((f) => f.id === fid).level);
+  const up = fid === 'b1' ? 4.5 : 0;
+  return { pos: new THREE.Vector3(6.0 * k, y + (13.2 + up) * k, 27.5 * k), target: new THREE.Vector3(portrait ? 1.5 : -1.2, y + 1.8, -2.0) };
+}
+const params = new URLSearchParams(location.search);
+let currentFloor = FLOORS.some((f) => f.id === params.get('floor')) ? params.get('floor') : null;
+let HOME = viewFor(currentFloor);
 camera.position.copy(HOME.pos);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -44,7 +65,7 @@ controls.target.copy(HOME.target);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.minDistance = 4;
-controls.maxDistance = 34;
+controls.maxDistance = 150;
 controls.maxPolarAngle = Math.PI * 0.47;
 controls.update();
 
@@ -67,7 +88,8 @@ composer.addPass(new ShaderPass({
 }));
 composer.addPass(new OutputPass());
 
-const world = buildWorld(scene, AGENTS, { renderer, camPos: HOME.pos, rooms: ROOMS });
+const world = buildWorld(scene, AGENTS, FLOORS, { renderer, cssScene, onStationRedraw: (id) => renderAgent(id) });
+world.setFloor(currentFloor);
 
 // ── UI ──
 document.getElementById('title').textContent = OFFICE.title;
@@ -76,17 +98,46 @@ document.title = OFFICE.title;
 
 const sidebar = document.getElementById('sidebar');
 const cards = new Map();
-for (const a of AGENTS) {
-  const el = document.createElement('div');
-  el.className = 'agent-card';
-  el.style.setProperty('--c', a.color);
-  el.innerHTML = `
-    <div class="row"><div class="name"><span class="avatar"></span>${a.name}</div><span class="pill"></span></div>
-    <div class="task"></div>
-    <div class="bar"><i></i></div>`;
-  el.addEventListener('click', () => focusAgent(a.id));
-  sidebar.appendChild(el);
-  cards.set(a.id, el);
+for (const f of [...FLOORS].reverse()) {
+  const mine = AGENTS.filter((a) => a.floor === f.id);
+  const h = document.createElement('div');
+  h.className = 'floor-head'; h.textContent = `${f.label} · ${f.name}`;
+  h.addEventListener('click', () => selectFloor(f.id));
+  sidebar.appendChild(h);
+  if (!mine.length) { const e = document.createElement('div'); e.className = 'floor-empty'; e.textContent = 'Infrastructure · Floor Manager on duty'; sidebar.appendChild(e); }
+  for (const a of mine) {
+    const el = document.createElement('div');
+    el.className = 'agent-card';
+    el.style.setProperty('--c', a.color);
+    el.innerHTML = `
+      <div class="row"><div class="name"><span class="avatar"></span>${a.name}</div><span class="pill"></span></div>
+      <div class="task"></div>
+      <div class="bar"><i></i></div>`;
+    el.addEventListener('click', () => focusAgent(a.id));
+    sidebar.appendChild(el);
+    cards.set(a.id, el);
+  }
+}
+
+// floor selector (top = highest floor, like a lift panel)
+const floorBar = document.getElementById('floorbar');
+const floorBtns = new Map();
+for (const f of [{ id: null, label: 'ALL', name: 'All floors' }, ...[...FLOORS].reverse()]) {
+  const b = document.createElement('button');
+  b.innerHTML = `<b>${f.label}</b><span>${f.id ? f.name : 'Building'}</span>`;
+  b.title = f.name;
+  b.addEventListener('click', () => selectFloor(f.id));
+  floorBar.appendChild(b);
+  floorBtns.set(f.id, b);
+}
+function selectFloor(fid, { fly = true } = {}) {
+  currentFloor = fid;
+  world.setFloor(fid);
+  HOME = viewFor(fid);
+  floorBtns.forEach((b, k) => b.classList.toggle('on', k === fid));
+  document.body.dataset.floor = fid || 'all';
+  const u = new URL(location.href); if (fid) u.searchParams.set('floor', fid); else u.searchParams.delete('floor'); history.replaceState(null, '', u);
+  if (fly) { selected = null; cards.forEach((el) => el.classList.remove('selected')); info.classList.add('hidden'); flyTo(HOME.pos.clone(), HOME.target.clone()); }
 }
 
 function renderAgent(id) {
@@ -141,6 +192,8 @@ function flyTo(pos, target, ms = 900) {
   tween = { fromP: camera.position.clone(), fromT: controls.target.clone(), toP: pos, toT: target, t0: performance.now(), ms };
 }
 function focusAgent(id) {
+  const fl = AGENTS.find((a) => a.id === id)?.floor;
+  if (fl && fl !== currentFloor) selectFloor(fl, { fly: false });
   selected = id;
   cards.forEach((el, k) => el.classList.toggle('selected', k === id));
   // frame the agent's screen head-on so its text is crisp (screen fills ~half the view width)
@@ -163,6 +216,8 @@ window.addEventListener('keydown', (e) => {
   if (e.key === 'r' || e.key === 'R' || e.key === 'Escape') clearFocus();
 });
 
+// click picking (ignore drags); only objects on visible floors
+const visibleObj = (o) => { for (let p = o; p; p = p.parent) if (!p.visible && p !== o) return false; return true; };
 // click picking (ignore drags)
 const ray = new THREE.Raycaster();
 const ndc = new THREE.Vector2();
@@ -172,23 +227,27 @@ renderer.domElement.addEventListener('pointerup', (e) => {
   if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 5) return;
   ndc.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
   ray.setFromCamera(ndc, camera);
-  const hit = ray.intersectObjects(world.hitTargets, false)[0];
+  const hit = ray.intersectObjects(world.hitTargets.filter(visibleObj), false)[0];
   if (hit) focusAgent(hit.object.userData.agentId);
 });
 renderer.domElement.addEventListener('pointermove', (e) => {
   ndc.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
   ray.setFromCamera(ndc, camera);
-  renderer.domElement.style.cursor = ray.intersectObjects(world.hitTargets, false).length ? 'pointer' : '';
+  renderer.domElement.style.cursor = ray.intersectObjects(world.hitTargets.filter(visibleObj), false).length ? 'pointer' : '';
 });
 labelRenderer.domElement.addEventListener('click', (e) => {
   const tag = e.target.closest('.tag');
-  if (tag) focusAgent(tag.dataset.agent);
+  if (tag && tag.dataset.agent) focusAgent(tag.dataset.agent);
+  else if (tag && tag.classList.contains('manager-tag')) tag.classList.toggle('open');
 });
 
 // ── feed wiring ──
 AGENTS.forEach((a) => renderAgent(a.id));
 renderCounts();
+const overlays = setupOverlays({ agents: AGENTS, floors: FLOORS, world, feed });
 const drawWall = () => world.wallScreen.draw(feed.history, feed.getState);
+const renderManagers = () => world.updateManagers(feed.getState);
+renderManagers();
 drawWall();
 feed.subscribe((evt) => {
   if (evt.type === 'heartbeat' || evt.type === 'error') return renderLive();
@@ -196,6 +255,8 @@ feed.subscribe((evt) => {
   else AGENTS.forEach((a) => renderAgent(a.id));
   renderCounts();
   drawWall();
+  renderManagers();
+  overlays.refresh();
   renderLive();
 });
 feed.start();
@@ -221,7 +282,7 @@ const clockEl = document.getElementById('clock');
 let tickN = 0;
 const tickClock = () => {
   clockEl.textContent = fmtTime(new Date());
-  if (++tickN % 30 === 0) AGENTS.forEach((a) => renderAgent(a.id));
+  if (++tickN % 30 === 0) { AGENTS.forEach((a) => renderAgent(a.id)); renderManagers(); }
   drawWall();
   renderLive();
 };
@@ -235,6 +296,8 @@ window.addEventListener('resize', () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   composer.setSize(window.innerWidth, window.innerHeight);
   labelRenderer.setSize(window.innerWidth, window.innerHeight);
+  cssRenderer.setSize(window.innerWidth, window.innerHeight);
+  HOME = viewFor(currentFloor);
 });
 
 const t0 = performance.now();
@@ -251,8 +314,12 @@ renderer.setAnimationLoop(() => {
   controls.update();
   world.update(t);
   composer.render();
+  if (currentFloor === 'trading') cssRenderer.render(cssScene, camera);
   labelRenderer.render(scene, camera);
 });
 
 // handy for debugging / wiring real data from the console
-window.office = { feed, focusAgent, clearFocus, scene, camera };
+window.office = { feed, focusAgent, clearFocus, selectFloor, overlays, scene, camera, world, view: (p, t, ms = 10) => flyTo(new THREE.Vector3(...p), new THREE.Vector3(...t), ms) };
+
+selectFloor(currentFloor, { fly: false });
+camera.position.copy(HOME.pos); controls.target.copy(HOME.target); controls.update();

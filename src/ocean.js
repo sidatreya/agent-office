@@ -1,14 +1,14 @@
 // Ocean vista at dusk: sky dome with moon + glow + stars, animated water, distant city & boat lights.
 import * as THREE from 'three';
 
-const R = 46;            // dome radius (camera stays inside)
+const R = 160;            // dome radius (camera stays inside)
 const WATER_Y = -1.8;    // sea level (building plinth sits on it)
 
-export function buildOcean(scene) {
+export function buildOcean(scene, opts = {}) {
   const col = (h) => new THREE.Color(h);
   const uniforms = {
     uTime: { value: 0 },
-    uMoon: { value: new THREE.Vector3(-17, 3.4, -42) },
+    uMoon: { value: new THREE.Vector3(-62, 12.5, -152) },
     uHorizonY: { value: 0.4 },
     cTop: { value: col('#05051a') },
     cMid: { value: col('#2a1658') },
@@ -65,7 +65,11 @@ export function buildOcean(scene) {
   scene.add(sky);
 
   const water = new THREE.Mesh(
-    new THREE.CircleGeometry(R - 0.6, 96),
+    (() => { // sea with a hole for the tower's footprint (so the basement section view isn't covered)
+      const sh = new THREE.Shape(); sh.absarc(0, 0, R - 0.6, 0, Math.PI * 2, false);
+      const hole = new THREE.Path(); const f = opts.hole || { x0: -17, x1: 22, z0: -11, z1: 11 };
+      hole.moveTo(f.x0, -f.z1); hole.lineTo(f.x1, -f.z1); hole.lineTo(f.x1, -f.z0); hole.lineTo(f.x0, -f.z0); hole.lineTo(f.x0, -f.z1);
+      sh.holes.push(hole); return new THREE.ShapeGeometry(sh, 96); })(),
     new THREE.ShaderMaterial({
       uniforms: { ...uniforms, uR: { value: R - 0.6 } }, vertexShader: vert,
       fragmentShader: /* glsl */ `
@@ -83,7 +87,7 @@ export function buildOcean(scene) {
           float fres = pow(1.0 - max(dot(-V, nrm), 0.0), 3.0);
           vec3 c = mix(cWater, cWater2, fres);
           c += cHi * smoothstep(1.5, 2.3, n) * 0.10;
-          c += vec3(1.0, 0.86, 0.72) * spec * 1.6;
+          c += vec3(1.0, 0.86, 0.72) * spec * 0.6;
           c = mix(c, cHaze, smoothstep(uR * 0.6, uR, length(p)));
           gl_FragColor = vec4(c, 1.0);
         }`,
@@ -99,7 +103,7 @@ export function buildOcean(scene) {
   for (let i = 0; i < 260; i++) {
     const a = THREE.MathUtils.lerp(Math.PI * 0.95, Math.PI * 1.32, Math.random()); // azimuth around -x
     const r = R - 1.2;
-    const h = WATER_Y + 2.1 + Math.pow(Math.random(), 2.5) * 2.4;
+    const h = WATER_Y + 6.5 + Math.pow(Math.random(), 2.5) * 8;
     pts.push(Math.cos(a) * r, h, Math.sin(a) * r);
     const c = pal[(Math.random() * pal.length) | 0].clone().multiplyScalar(1.4 + Math.random());
     cols.push(c.r, c.g, c.b);
@@ -115,8 +119,8 @@ export function buildOcean(scene) {
     const hull = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.18, 0.3), new THREE.MeshBasicMaterial({ color: 0x0a0a18 }));
     const light = new THREE.Mesh(new THREE.SphereGeometry(0.09, 8, 6), new THREE.MeshBasicMaterial({ color: new THREE.Color(i % 2 ? '#ff4d6d' : '#ffe8a3').multiplyScalar(3) }));
     light.position.y = 0.35;
-    b.add(hull, light);
-    const ang = Math.PI * (1.05 + i * 0.12), rad = 24 + i * 3.5;
+    b.add(hull, light); b.scale.setScalar(2.2);
+    const ang = Math.PI * (1.05 + i * 0.12), rad = 40 + i * 9;
     b.position.set(Math.cos(ang) * rad, WATER_Y + 0.05, Math.sin(ang) * rad);
     b.userData = { ang, rad, speed: 0.004 + i * 0.0015, light };
     scene.add(b);

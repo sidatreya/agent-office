@@ -1,7 +1,20 @@
 # Sidatreya's Office — 3D agent office
 
-A glass-walled, three-room office on the ocean at dusk (Trading Room · Command Center · Creative Studio),
-with festive Diwali decor. Each agent has a large monitor that shows its live status and current task.
+A glass-walled office tower on the ocean at dusk with festive Diwali decor: a basement and four floors.
+Each agent has a large monitor showing its live status and current task (or its latest screenshot).
+
+| Floor | What's there |
+|---|---|
+| **04 · Property Management** | Department head cabin (Property Manager desk + 4-seat table), 12 modular desks on a raised floor with an overhead cable tray and 2 marked FUTURE BAYS (room for about 20), live monitoring wall (dashboard · parcel map · automation · news · hybrid on-site/cloud status, all **example data**), AI supervision desk, internal meeting room for 10 with dashboard and map screens, **client presentation room** next to the visitor waiting area at the lift lobby (clients never cross the open office), secure fire-rated deed records room (biometric door, climate panel) with the scan & intake station feeding the AI pipeline, video-call room, pantry, toilets, network closet |
+| **03 · Creative Studio** | Grok Bot (architect: drafting table and model), Furniture Designer, Landscape Designer, BOQ desk, Live Work Wall that mirrors each agent's screen, Studio Task Board, design team zone with NPC robots |
+| **02 · Admin Block** | GK (wide dual desk), Linkedin, Whatsapp Manager, Developer, Developer Whatsapp Manager, live activity feed wall, coffee bar, lounge |
+| **01 · Trading Room** | Pro Trader, live TradingView market wall (ticker, BTC/USD, USD/INR, market overview), recliner lounge, golf simulator, bot fuel bar (oil · electricity · electrolytes) |
+| **B1 · Server & Utilities** | Server room on a raised floor (2×10 racks, cold-aisle containment), 2 CRAC units, UPS and battery bank, 500 kVA backup generator, separate ISP A / ISP B fibre entries, biometric door, "Hybrid: on-site servers + cloud" sign and a cloud uplink panel |
+
+Every floor has a **Floor Manager** robot. It walks the floor and has a status board and a tooltip showing how many agents are working.
+It flags any agent that needs help (no update for 2h+ while working, idle for 6h+, or a task mentioning error/blocked).
+The floor selector at the top (ALL · 04 · 03 · 02 · 01 · B1, also `?floor=property` etc.) shows one floor as a cut-away.
+**Screens** opens every agent's screen as a list you can read on a phone. **Markets** opens the TradingView widgets.
 
 A browser-based 3D office (Three.js r186, bundled with Vite, works offline) showing your agents
 as robots at desks, a live activity feed on the wall screen, a status sidebar and a top bar.
@@ -22,7 +35,9 @@ dist/index.html straight from disk (file://) is blocked by browsers for ES modul
   (`subscribe`, `getState`, `history`, `start`, `stop`) can replace it in `src/main.js`,
   e.g. one backed by a WebSocket/SSE stream or a polled JSON endpoint.
   Event shape: `{ ts: Date, agentId, type: 'log'|'status', message, status?, task? }`.
-- `window.office` exposes `{ feed, focusAgent(id), clearFocus() }` in the console.
+- `window.office` exposes `{ feed, focusAgent(id), clearFocus(), selectFloor(id|null), overlays, view(pos, target) }`.
+- World code: `src/world/` (`index.js` builder, `building.js` shell/core/quay, `floors-a.js` 01–03, `floors-b.js` 04 + B1,
+  `station.js` agent desks, `manager.js` Floor Managers, `markets.js` TradingView wall, `props.js` furniture).
 
 ## Controls
 Drag to rotate · scroll to zoom · right-drag to pan · click a robot / name tag / sidebar card
@@ -70,6 +85,9 @@ Each agent's monitor shows: name, WORKING/IDLE, `LIVE · reported HH:MM` (report
     scripts/report.sh grok-bot idle "Finished the ocean-view office" "Published office v3"
     scripts/report.sh linkedin working "Drafting the Diwali campaign post"
     scripts/report.sh furniture-designer idle "Study built-in renders delivered" "Sent options A/B/C"
+    scripts/report.sh 6c94624b-cff0-445d-acf3-76a7780c90f3 working "Reviewing flagged deeds"   # Property Manager
+    scripts/report.sh --shot ~/render.png grok-bot working "Rendering elevations"            # with a screenshot
+    scripts/auto-shots.sh grok-bot /workspace/some-project                                    # newest image → screen
 
 - Writes status.json immediately as a **report** (`source: reported`, `reportedAt: now`); the local page
   (http://localhost:8080/) shows it within ~15 s.
