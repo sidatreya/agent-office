@@ -21,7 +21,7 @@ function getSheen() {
 }
 
 // glass curtain wall from p0 to p1 (local floor coords)
-export function curtain(parent, x0, z0, x1, z1, h, bay, { sill = true, top = true, accent = '#c084fc' } = {}) {
+export function curtain(parent, x0, z0, x1, z1, h, bay, { sill = true, top = true, accent = '#ffcf8a' } = {}) {
   const M = ctx.M;
   const len = Math.hypot(x1 - x0, z1 - z0), ang = Math.atan2(-(z1 - z0), x1 - x0);
   const g = new THREE.Group(); g.position.set(x0, 0, z0); g.rotation.y = ang;
@@ -30,7 +30,7 @@ export function curtain(parent, x0, z0, x1, z1, h, bay, { sill = true, top = tru
   const n = Math.max(1, Math.round(len / bay));
   for (let i = 0; i <= n; i++) g.add(box(0.07, h, 0.12, M.bronze, { x: (i / n) * len, y: h / 2, receive: false }));
   if (h > 3) g.add(box(len, 0.05, 0.1, M.bronze, { x: len / 2, y: 1.05, cast: false })); // transom
-  if (sill) { g.add(box(len, 0.14, 0.18, M.bronze, { x: len / 2, y: 0.07 })); g.add(box(len, 0.025, 0.03, neonMat('#8b5cf6', 2.4), { x: len / 2, y: 0.15, z: 0.08, cast: false })); }
+  if (sill) { g.add(box(len, 0.14, 0.18, M.bronze, { x: len / 2, y: 0.07 })); g.add(box(len, 0.025, 0.03, neonMat('#ffd59a', 2.0), { x: len / 2, y: 0.15, z: 0.08, cast: false })); }
   if (top) { g.add(box(len + 0.1, 0.18, 0.2, M.bronze, { x: len / 2, y: h })); g.add(box(len, 0.025, 0.03, neonMat(accent, 2.0), { x: len / 2, y: h - 0.1, z: 0.1, cast: false })); }
   parent.add(g);
   return g;
@@ -40,12 +40,12 @@ export function curtain(parent, x0, z0, x1, z1, h, bay, { sill = true, top = tru
 export function buildFloorShell(parent, floor, { finish } = {}) {
   const M = ctx.M;
   parent.add(box(FX * 2 + 0.6, 0.6, FZ * 2 + 0.6, M.plinth, { y: -0.3, cast: false }));
-  const fl = mesh(new THREE.PlaneGeometry(FX * 2, FZ * 2), finish || M.floor, { y: 0.001, cast: false });
+  const fl = mesh(new THREE.PlaneGeometry(FX * 2, FZ * 2), finish || (floor.level < 0 ? M.marbleFloor : M.floor), { y: 0.001, cast: false });
   fl.rotation.x = -Math.PI / 2; parent.add(fl);
-  const rim = neonMat('#a78bfa', 1.5);
+  const rim = neonMat('#ffd59a', 1.6);
   parent.add(box(FX * 2 + 0.6, 0.04, 0.04, rim, { y: 0.0, z: FZ + 0.3, cast: false, receive: false }));
   parent.add(box(0.04, 0.04, FZ * 2 + 0.6, rim, { x: FX + 0.3, y: 0.0, cast: false, receive: false }));
-  parent.add(box(FX * 2 + 0.6, 0.03, 0.03, neonMat('#6d5dfc', 1.1), { y: -0.58, z: FZ + 0.3, cast: false, receive: false }));
+  parent.add(box(FX * 2 + 0.6, 0.03, 0.03, neonMat('#ffc070', 1.2), { y: -0.58, z: FZ + 0.3, cast: false, receive: false }));
   if (floor.level < 0) { // basement: board-formed concrete walls, low upstand at the cut-away front
     const conc = new THREE.MeshStandardMaterial({ color: 0x3a3a48, roughness: 0.9 });
     parent.add(box(FX * 2, WH, 0.4, conc, { y: WH / 2, z: -FZ - 0.1 }));
@@ -58,8 +58,8 @@ export function buildFloorShell(parent, floor, { finish } = {}) {
   // ocean-view glass, floor to ceiling on the back (sea) and left; low glass balustrade on the open front/right edges
   curtain(parent, -FX, -FZ, FX, -FZ, WH, 2.5);
   curtain(parent, -FX, FZ, -FX, -FZ, WH, 3);
-  curtain(parent, -FX, FZ, FX, FZ, 1.05, 3, { sill: false, top: true, accent: '#a78bfa' });
-  curtain(parent, FX, FZ, FX, CORE.z1, 1.05, 3, { sill: false, top: true, accent: '#a78bfa' });
+  curtain(parent, -FX, FZ, FX, FZ, 1.05, 3, { sill: false, top: true, accent: '#ffcf8a' });
+  curtain(parent, FX, FZ, FX, CORE.z1, 1.05, 3, { sill: false, top: true, accent: '#ffcf8a' });
   parent.add(box(0.22, WH + 0.1, 0.22, M.bronze, { x: -FX, y: WH / 2, z: -FZ }));
   }
   // structural columns (slim, bronze-clad)
@@ -67,7 +67,7 @@ export function buildFloorShell(parent, floor, { finish } = {}) {
   // floor sign on the slab fascia
   const sign = signPanel(9.0, 0.5, (c, w, h) => {
     c.fillStyle = '#0d0b26'; c.fillRect(0, 0, w, h);
-    c.fillStyle = '#c4b5fd'; c.font = '800 70px system-ui'; c.textBaseline = 'middle';
+    c.fillStyle = '#f5c46b'; c.font = '800 70px system-ui'; c.textBaseline = 'middle';
     c.fillText(floor.label, 30, h / 2 + 3);
     c.fillStyle = '#f5f3ff'; c.font = '700 64px system-ui';
     c.fillText(floor.name.toUpperCase(), 150, h / 2 + 3);
@@ -79,7 +79,7 @@ export function buildFloorShell(parent, floor, { finish } = {}) {
   const lab = new CSS2DObject(el); lab.position.set(0, 0.05, FZ + 0.2); parent.add(lab);
 
   // lift/stair core segment for this storey (outside the right wall, opening into the floor)
-  const coreM = new THREE.MeshStandardMaterial({ color: 0x24223a, roughness: 0.55, metalness: 0.2 });
+  const coreM = new THREE.MeshStandardMaterial({ color: 0xece8e1, roughness: 0.4, metalness: 0.0 });
   const cw = CORE.x1 - CORE.x0, cd = CORE.z1 - CORE.z0, cx = (CORE.x0 + CORE.x1) / 2, cz = (CORE.z0 + CORE.z1) / 2;
   parent.add(box(cw, FH, cd, coreM, { x: cx, y: FH / 2 - 0.6, z: cz }));
   const doorM = new THREE.MeshStandardMaterial({ color: 0xb8b5c8, metalness: 1.0, roughness: 0.25 });
@@ -96,14 +96,14 @@ export function buildFloorShell(parent, floor, { finish } = {}) {
   parent.add(box(1.0, 2.3, 0.06, new THREE.MeshStandardMaterial({ color: 0x3b3556, roughness: 0.5 }), { x: cx + 0.8, y: 1.15, z: CORE.z1 + 0.03 }));
   const st = signPanel(1.0, 0.3, (c, w, h) => { c.fillStyle = '#065f46'; c.fillRect(0, 0, w, h); c.fillStyle = '#ecfdf5'; c.font = '800 40px system-ui'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('▲▼ STAIRS', w / 2, h / 2 + 2); }, { frame: false });
   st.position.set(cx + 0.8, 2.6, CORE.z1 + 0.04); parent.add(st);
-  parent.add(box(0.05, FH, 0.05, neonMat('#c084fc', 1.6), { x: CORE.x1 + 0.03, y: FH / 2 - 0.6, z: CORE.z1 + 0.03, cast: false }));
+  parent.add(box(0.05, FH, 0.05, neonMat('#ffd59a', 1.4), { x: CORE.x1 + 0.03, y: FH / 2 - 0.6, z: CORE.z1 + 0.03, cast: false }));
 }
 
 export function buildRoof(parent) {
   const M = ctx.M;
   parent.add(box(FX * 2 + 0.6, 0.6, FZ * 2 + 0.6, M.plinth, { y: 0.3, cast: false }));
-  parent.add(box(FX * 2 + 0.6, 0.04, 0.04, neonMat('#a78bfa', 1.5), { y: 0.62, z: FZ + 0.3, cast: false }));
-  parent.add(box(CORE.x1 - CORE.x0, 1.4, CORE.z1 - CORE.z0, new THREE.MeshStandardMaterial({ color: 0x24223a, roughness: 0.55 }), { x: (CORE.x0 + CORE.x1) / 2, y: 0.7, z: (CORE.z0 + CORE.z1) / 2 }));
+  parent.add(box(FX * 2 + 0.6, 0.04, 0.04, neonMat('#ffd59a', 1.6), { y: 0.62, z: FZ + 0.3, cast: false }));
+  parent.add(box(CORE.x1 - CORE.x0, 1.4, CORE.z1 - CORE.z0, new THREE.MeshStandardMaterial({ color: 0xece8e1, roughness: 0.4 }), { x: (CORE.x0 + CORE.x1) / 2, y: 0.7, z: (CORE.z0 + CORE.z1) / 2 }));
   // rooftop plant/solar hint
   const pv = new THREE.MeshStandardMaterial({ color: 0x1e3a8a, roughness: 0.25, metalness: 0.6 });
   for (let i = 0; i < 6; i++) for (let j = 0; j < 2; j++) { const p = box(3.2, 0.05, 1.6, pv, { x: -11 + i * 3.6, y: 1.0, z: -5 + j * 2.2 }); p.rotation.x = -0.25; parent.add(p); }
@@ -112,7 +112,7 @@ export function buildRoof(parent) {
 // podium / quay the tower stands on (hides the basement below the waterline; front piece is removable for the B1 section view)
 export const FOOT = { x0: -FX - 1.5, x1: CORE.x1 + 1.5, z0: -FZ - 1.5, z1: FZ + 1.5 };
 export function buildPodium(scene, y0, y1) {
-  const deck = new THREE.MeshStandardMaterial({ color: 0x2b2840, roughness: 0.8 });
+  const deck = new THREE.MeshStandardMaterial({ color: 0xd9d2c6, roughness: 0.7 });
   const h = y1 - y0, cy = (y0 + y1) / 2, X0 = -FX - 0.3, X1 = CORE.x1 + 0.3, Z0 = -FZ - 0.3, Z1 = FZ + 0.3, Q = 1.6;
   // narrow quay around the footprint (the sea comes right up to it)
   const parts = [
@@ -124,7 +124,7 @@ export function buildPodium(scene, y0, y1) {
   front.add(box(X1 - X0, h, Q, deck, { x: (X0 + X1) / 2, y: cy, z: Z1 + Q / 2, cast: false }));
   front.add(box(X1 - X0, h - 0.6, 0.2, deck, { x: (X0 + X1) / 2, y: cy - 0.3, z: Z1 - 0.1, cast: false })); // retaining wall (hidden in the B1 section view)
   [...parts, front].forEach((p) => scene.add(p));
-  const edge = neonMat('#7c3aed', 1.3);
+  const edge = neonMat('#ffc070', 1.3);
   scene.add(box(X1 - X0 + 2 * Q, 0.05, 0.05, edge, { x: (X0 + X1) / 2, y: y1, z: Z1 + Q, cast: false }));
   scene.add(box(0.05, 0.05, Z1 - Z0 + 2 * Q, edge, { x: X1 + Q, y: y1, cast: false }));
   // section fill shown in front of B1 when the front podium is cut away

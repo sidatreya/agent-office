@@ -50,7 +50,7 @@ function viewFor(fid) {
   const portrait = window.innerWidth / window.innerHeight < 1;
   const aspect = window.innerWidth / window.innerHeight;
   const k = portrait ? Math.min(3.4, 1.5 / aspect) : window.innerWidth < 1000 ? 1.25 : 1;
-  if (!fid) return { pos: new THREE.Vector3(30 * k, 25 + 6 * k, 64 * k), target: new THREE.Vector3(0, floorY(1.5) - 1, 0) };
+  if (!fid) return { pos: new THREE.Vector3(34 * k, 30 + 6 * k, 76 * k), target: new THREE.Vector3(1.5, floorY(2) + 0.6, 0) };
   const y = floorY(FLOORS.find((f) => f.id === fid).level);
   const up = fid === 'b1' ? 4.5 : 0;
   return { pos: new THREE.Vector3(6.0 * k, y + (13.2 + up) * k, 27.5 * k), target: new THREE.Vector3(portrait ? 1.5 : -1.2, y + 1.8, -2.0) };
@@ -80,8 +80,8 @@ composer.addPass(new ShaderPass({
   fragmentShader: `uniform sampler2D tDiffuse; varying vec2 vUv;
     void main(){ vec4 c = texture2D(tDiffuse, vUv);
       float l = dot(c.rgb, vec3(0.2126,0.7152,0.0722));
-      c.rgb = mix(c.rgb, c.rgb * vec3(1.04,0.98,1.06), 0.6);              // slight warm-magenta grade
-      c.rgb += vec3(0.004,0.002,0.012) * (1.0 - smoothstep(0.0, 0.25, l));  // lift shadows towards indigo
+      c.rgb = mix(c.rgb, c.rgb * vec3(1.05,1.0,0.94), 0.6);               // warm grade
+      c.rgb += vec3(0.010,0.006,0.002) * (1.0 - smoothstep(0.0, 0.25, l));  // lift shadows towards indigo
       float v = smoothstep(0.95, 0.35, distance(vUv, vec2(0.5)));
       c.rgb *= mix(0.72, 1.0, v);
       gl_FragColor = c; }`,
@@ -314,7 +314,7 @@ renderer.setAnimationLoop(() => {
   controls.update();
   world.update(t);
   composer.render();
-  if (currentFloor === 'trading') cssRenderer.render(cssScene, camera);
+  if (currentFloor === 'trading' || !currentFloor) cssRenderer.render(cssScene, camera);
   labelRenderer.render(scene, camera);
 });
 

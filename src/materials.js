@@ -73,16 +73,46 @@ export function fabricTexture(color, repeat = [4, 4]) {
   }, repeat);
 }
 
+// Wooden decking: long warm-teak planks with staggered butt joints, grain and fine gaps.
+export function deckTexture(repeat = [5, 3]) {
+  return canvasTex(1024, (g, S) => {
+    const rows = 8, ph = S / rows;
+    const tones = ['#8a5a36', '#9a6840', '#7c4f2e', '#a3714a', '#8f5f3a', '#835532'];
+    for (let r = 0; r < rows; r++) {
+      let x = -rand() * S * 0.5;
+      while (x < S) {
+        const len = S * (0.45 + rand() * 0.4);
+        g.fillStyle = tones[Math.floor(rand() * tones.length)];
+        g.fillRect(x, r * ph, len, ph);
+        for (let k = 0; k < 14; k++) {
+          const y0 = r * ph + rand() * ph;
+          g.strokeStyle = rand() < 0.6 ? 'rgba(60,32,16,0.35)' : 'rgba(210,160,110,0.25)';
+          g.lineWidth = 0.6 + rand() * 1.6;
+          g.beginPath();
+          for (let xx = x; xx <= x + len; xx += 12) g.lineTo(xx, y0 + Math.sin(xx * 0.01 + k) * 2.5);
+          g.stroke();
+        }
+        g.fillStyle = 'rgba(30,16,8,0.85)'; g.fillRect(x, r * ph, 3, ph); // butt joint
+        x += len;
+      }
+      g.fillStyle = 'rgba(25,12,6,0.9)'; g.fillRect(0, r * ph, S, 4); // plank gap
+    }
+  }, repeat);
+}
+
 export function makeMaterials() {
   const walnut = woodTexture();
   const oak = woodTexture('#b08356', '#7a5432', '#cfa577');
   return {
     walnut: new THREE.MeshStandardMaterial({ map: walnut, roughness: 0.42, metalness: 0.0 }),
     oak: new THREE.MeshStandardMaterial({ map: oak, roughness: 0.5 }),
-    floor: new THREE.MeshStandardMaterial({ map: marbleTexture([7.5, 4.5]), roughness: 0.34, metalness: 0.05, envMapIntensity: 0.8 }),
+    floor: new THREE.MeshStandardMaterial({ map: deckTexture([4, 3]), roughness: 0.38, metalness: 0.0, envMapIntensity: 0.9 }),
+    marbleFloor: new THREE.MeshStandardMaterial({ map: marbleTexture([7.5, 4.5]), roughness: 0.34, metalness: 0.05, envMapIntensity: 0.8 }),
     marbleWhite: new THREE.MeshStandardMaterial({ map: whiteMarbleTexture(), roughness: 0.15, metalness: 0.0 }),
-    plinth: new THREE.MeshStandardMaterial({ color: 0x14132b, roughness: 0.7 }),
-    bronze: new THREE.MeshStandardMaterial({ color: 0x3a3048, roughness: 0.35, metalness: 0.85 }),
+    plinth: new THREE.MeshPhysicalMaterial({ color: 0xf3f0ea, roughness: 0.32, clearcoat: 0.7, clearcoatRoughness: 0.25 }),
+    shell: new THREE.MeshPhysicalMaterial({ color: 0xf6f3ee, roughness: 0.26, clearcoat: 0.9, clearcoatRoughness: 0.18, side: THREE.DoubleSide }),
+    bronze: new THREE.MeshStandardMaterial({ color: 0xd9d4cb, roughness: 0.3, metalness: 0.55 }),
+    bullBronze: new THREE.MeshStandardMaterial({ color: 0x7a4e26, roughness: 0.36, metalness: 1.0 }),
     brass: new THREE.MeshStandardMaterial({ color: 0xc9a227, roughness: 0.28, metalness: 1.0 }),
     blackMetal: new THREE.MeshStandardMaterial({ color: 0x1b1b24, roughness: 0.4, metalness: 0.7 }),
     whiteMatte: new THREE.MeshStandardMaterial({ color: 0xf0eff6, roughness: 0.55 }),
@@ -98,7 +128,7 @@ export function makeMaterials() {
     leaf: new THREE.MeshStandardMaterial({ color: 0x2f7d4a, roughness: 0.55, side: THREE.DoubleSide }),
     leaf2: new THREE.MeshStandardMaterial({ color: 0x3f9a5a, roughness: 0.55, side: THREE.DoubleSide }),
     glass: new THREE.MeshPhysicalMaterial({
-      color: 0xbfcaff, transparent: true, opacity: 0.1, roughness: 0.05, metalness: 0.0,
+      color: 0xcfe0ee, transparent: true, opacity: 0.12, roughness: 0.05, metalness: 0.0,
       envMapIntensity: 0.5, side: THREE.DoubleSide, depthWrite: false,
     }),
   };
@@ -110,7 +140,7 @@ export function makeEnvironment(renderer) {
   c.width = 1024; c.height = 512;
   const g = c.getContext('2d');
   const sky = g.createLinearGradient(0, 0, 0, 512);
-  sky.addColorStop(0, '#05051a'); sky.addColorStop(0.42, '#2a1658'); sky.addColorStop(0.5, '#c2416f'); sky.addColorStop(0.53, '#3a1d55'); sky.addColorStop(1, '#0a0820');
+  sky.addColorStop(0, '#3b4f7e'); sky.addColorStop(0.4, '#8a93b8'); sky.addColorStop(0.5, '#ffc89a'); sky.addColorStop(0.55, '#7a6a72'); sky.addColorStop(1, '#2a2622');
   g.fillStyle = sky; g.fillRect(0, 0, 1024, 512);
   const spot = (x, y, r, col) => { const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(x - r, y - r, r * 2, r * 2); };
   spot(330, 225, 22, 'rgba(255,240,220,0.4)');

@@ -277,7 +277,7 @@ export function buildProperty(g) {
   // decor
   P.artFrame(g, -14.65, 4.2, -5.8, Math.PI / 2, 1.6, 1.0, 1);
   P.plant(g, -7.2, 7.4, 1.0, 0); P.plant(g, 5.6, 5.6, 0.9, 1); P.plant(g, -7.2, -8.2, 1.0, 1);
-  P.acousticBaffles(g, -6, 6, 2.6, 6.2, 0x30304a);
+  P.acousticBaffles(g, -6, 6, 2.6, 6.2);
 
   let lastT = -1;
   return {

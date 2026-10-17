@@ -119,7 +119,7 @@ export function buildStudio(g, { agents, stations }) {
   const logo = signPanel(1.6, 0.9, (x, w, h) => { x.fillStyle = '#111'; x.fillRect(0, 0, w, h); x.strokeStyle = '#f97316'; x.lineWidth = 14; x.beginPath(); x.arc(w / 2, h / 2 - 10, 90, 0, Math.PI * 1.6); x.stroke(); x.fillStyle = '#fff'; x.font = '700 30px system-ui'; x.textAlign = 'center'; x.fillText('LOGO v4', w / 2, h - 18); });
   logo.position.set(11.4, 1.6, 6.9); logo.rotation.y = Math.PI; g.add(logo);
   P.labelSign(g, 'DESIGN TEAM', 11.4, 3.2, 7.6, Math.PI, { w: 2.2, h: 0.32, bg: '#3b0764', fg: '#f5d0fe', size: 44 });
-  P.acousticBaffles(g, -12, 12, -0.2, 6.2, 0x2f2a4f);
+  P.acousticBaffles(g, -12, 12, -0.2, 6.2);
   P.acousticWall(g, 14.6, 2.6, -1.2, -Math.PI / 2, 4, 3);
   P.artFrame(g, -14.6 + 0.2, 4.0, 4.4, Math.PI / 2, 1.8, 1.2, 2);
   P.plant(g, -14.2, 7.9, 1.1, 1); P.plant(g, 6.2, 7.9, 1.0, 0); P.plant(g, 14.2, -8.2, 1.0, 1);

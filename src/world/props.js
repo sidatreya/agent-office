@@ -283,7 +283,7 @@ export function fuelKiosks(p, x, z, rotY = 0) {
   return place(p, g, x, z, rotY);
 }
 
-export function acousticBaffles(p, x0, x1, z, y = 6.6, color = 0x3b2f5c) {
+export function acousticBaffles(p, x0, x1, z, y = 6.6, color = 0xefeae2) {
   const m = mat(color, { roughness: 1 });
   for (let x = x0; x <= x1; x += 0.9) {
     p.add(box(0.06, 0.7, 3.2, m, { x, y, z, cast: false }));
@@ -293,7 +293,7 @@ export function acousticBaffles(p, x0, x1, z, y = 6.6, color = 0x3b2f5c) {
 
 export function acousticWall(p, x, y, z, rotY = 0, cols = 6, rows = 3) {
   const g = new THREE.Group();
-  const pal = [0x4c1d95, 0x6d28d9, 0x312e81, 0x7e22ce, 0x1e1b4b];
+  const pal = [0xe9e2d6, 0xc8a27a, 0xf5f1ea, 0x9c6b45, 0xd9cbb5];
   const geo = new THREE.CylinderGeometry(0.3, 0.3, 0.06, 6);
   for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
     const h = mesh(geo, mat(pal[(r * 3 + c) % pal.length], { roughness: 1 }), { x: c * 0.54 + (r % 2) * 0.27, y: r * 0.47, cast: false });

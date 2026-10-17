@@ -8,6 +8,12 @@ const TV = 'https://s.tradingview.com/embed-widget';
 export const tvUrl = (kind, cfg) => `${TV}/${kind}/?locale=en#${encodeURIComponent(JSON.stringify(cfg))}`;
 
 export const WIDGETS = {
+  symbolOverview: () => tvUrl('symbol-overview', {
+    symbols: [['S&P 500', 'FOREXCOM:SPXUSD|1D'], ['Bitcoin', 'BITSTAMP:BTCUSD|1D'], ['USD/INR', 'FX_IDC:USDINR|1D'], ['Gold', 'TVC:GOLD|1D']],
+    chartOnly: false, width: '100%', height: '100%', locale: 'en', colorTheme: 'dark', autosize: true, showVolume: false,
+    hideDateRanges: false, scalePosition: 'right', scaleMode: 'Normal', fontSize: '12', noTimeScale: false, valuesTracking: '1',
+    changeMode: 'price-and-percent', chartType: 'area', lineColor: '#f5c46b', topColor: 'rgba(245,196,107,0.35)', bottomColor: 'rgba(245,196,107,0)',
+  }),
   ticker: () => tvUrl('ticker-tape', {
     symbols: [
       { proName: 'BITSTAMP:BTCUSD', title: 'BTC/USD' }, { proName: 'FX_IDC:USDINR', title: 'USD/INR' },
@@ -27,14 +33,14 @@ export const WIDGETS = {
   }),
 };
 
-function fallback(title, seed) {
+function fallback(title, seed, sub = 'TradingView · live on this floor') {
   return canvasTexture(1024, 640, (c, w, h) => {
     c.fillStyle = '#0a0f1f'; c.fillRect(0, 0, w, h);
     c.strokeStyle = 'rgba(255,255,255,0.06)';
     for (let x = 0; x < w; x += 64) { c.beginPath(); c.moveTo(x, 80); c.lineTo(x, h); c.stroke(); }
     for (let y = 80; y < h; y += 64) { c.beginPath(); c.moveTo(0, y); c.lineTo(w, y); c.stroke(); }
     c.fillStyle = '#e2e8f0'; c.font = '700 44px system-ui'; c.fillText(title, 32, 56);
-    c.fillStyle = '#64748b'; c.font = '500 26px system-ui'; c.textAlign = 'right'; c.fillText('TradingView · live on this floor', w - 32, 54); c.textAlign = 'left';
+    c.fillStyle = '#64748b'; c.font = '500 26px system-ui'; c.textAlign = 'right'; c.fillText(sub, w - 32, 54); c.textAlign = 'left';
     let y = h * 0.6, s = seed;
     const pts = [];
     for (let x = 0; x <= w; x += 16) { s = (s * 9301 + 49297) % 233280; y += (s / 233280 - 0.48) * 34; y = Math.max(140, Math.min(h - 40, y)); pts.push([x, y]); }
@@ -52,7 +58,7 @@ export function buildMarketWall(parent, cssScene, panels) {
   for (const [i, p] of panels.entries()) {
     const g = new THREE.Group(); g.position.set(p.x, p.y, p.z); g.rotation.y = p.rotY || 0; parent.add(g);
     g.add(box(p.w + 0.14, p.h + 0.14, 0.08, M.graphite, {}));
-    const fb = new THREE.Mesh(new THREE.PlaneGeometry(p.w, p.h), new THREE.MeshBasicMaterial({ map: fallback(p.title, 17 + i * 31), color: new THREE.Color(0.9, 0.9, 0.9) }));
+    const fb = new THREE.Mesh(new THREE.PlaneGeometry(p.w, p.h), new THREE.MeshBasicMaterial({ map: fallback(p.title, 17 + i * 31, p.sub), color: new THREE.Color(0.9, 0.9, 0.9) }));
     fb.position.z = 0.045; g.add(fb);
     g.add(box(p.w, 0.03, 0.03, neonMat('#22c55e', 1.6), { y: -p.h / 2 - 0.1, z: 0.05, cast: false }));
     const el = document.createElement('div');

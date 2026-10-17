@@ -13,23 +13,44 @@ export function makeRobot(color, { scale = 1.3, ring = true, manager = false } =
   const accent = new THREE.MeshPhysicalMaterial({ color: col, roughness: 0.3, clearcoat: 0.5, emissive: col, emissiveIntensity: 0.1 });
   const dark = new THREE.MeshStandardMaterial({ color: 0x14142e, roughness: 0.15, metalness: 0.4 });
   const eyeMat = new THREE.MeshBasicMaterial({ color: col.clone().multiplyScalar(2.2) });
+  // streetwear: pick an outfit from the colour so each agent keeps a stable look
+  let hsh = 0; for (const ch of String(color)) hsh = (hsh * 31 + ch.charCodeAt(0)) >>> 0;
+  const style = hsh % 4;
+  const SNEAK = [['#ffffff', '#ef4444'], ['#22c55e', '#f8fafc'], ['#f97316', '#111827'], ['#38bdf8', '#fde047'], ['#f472b6', '#ffffff'], ['#facc15', '#1f2937']][hsh % 6];
+  const pants = new THREE.MeshStandardMaterial({ color: [0x2f4a6d, 0x1f2329, 0xb9a47e, 0x3b4252][style], roughness: 0.85 });
+  const soleM = new THREE.MeshStandardMaterial({ color: 0xf8f8f4, roughness: 0.5 });
+  const upperM = new THREE.MeshStandardMaterial({ color: SNEAK[0], roughness: 0.45 });
+  const swooshM = new THREE.MeshStandardMaterial({ color: SNEAK[1], roughness: 0.4, emissive: SNEAK[1], emissiveIntensity: 0.15 });
   const legs = [];
   for (const sx of [-1, 1]) {
     const leg = new THREE.Group(); leg.position.set(sx * 0.15, 0.46, 0);
-    leg.add(mesh(G('leg', () => new THREE.CylinderGeometry(0.08, 0.08, 0.42, 12)), dark, { y: -0.21 }));
-    leg.add(rbox(0.2, 0.1, 0.28, 0.04, accent, { y: -0.41, z: 0.03 }));
+    leg.add(mesh(G('leg', () => new THREE.CylinderGeometry(0.095, 0.085, 0.4, 12)), pants, { y: -0.2 }));
+    leg.add(rbox(0.22, 0.06, 0.34, 0.025, soleM, { y: -0.44, z: 0.04 }));          // chunky sole
+    leg.add(rbox(0.2, 0.1, 0.28, 0.045, upperM, { y: -0.37, z: 0.03 }));           // upper
+    leg.add(rbox(0.21, 0.035, 0.16, 0.015, swooshM, { y: -0.37, z: 0.04 }));       // side stripe
+    leg.add(rbox(0.17, 0.04, 0.08, 0.02, soleM, { y: -0.34, z: 0.15 }));           // toe cap
     robot.add(leg); legs.push(leg);
   }
   const body = new THREE.Group(); body.position.y = 0.5; robot.add(body);
-  body.add(rbox(0.66, 0.62, 0.48, 0.16, accent, { y: 0.32 }));
-  body.add(rbox(0.38, 0.28, 0.06, 0.05, white, { y: 0.32, z: 0.23 }));
+  const jacketM = new THREE.MeshStandardMaterial({ color: [0x111827, 0x1f2937, 0x7c2d12, 0x0f3d3e][hsh % 4], roughness: 0.55 });
+  body.add(rbox(0.68, 0.64, 0.5, 0.16, style === 1 ? jacketM : accent, { y: 0.32 }));   // hoodie / bomber
+  if (style === 1) { // open bomber jacket over a colour tee
+    body.add(rbox(0.3, 0.56, 0.05, 0.04, accent, { y: 0.32, z: 0.235 }));
+    body.add(rbox(0.7, 0.07, 0.52, 0.03, swooshM, { y: 0.03 }));
+  } else { // hoodie: kangaroo pocket, drawstrings, hood behind the neck
+    body.add(rbox(0.4, 0.18, 0.05, 0.05, new THREE.MeshStandardMaterial({ color: col.clone().multiplyScalar(0.7), roughness: 0.7 }), { y: 0.16, z: 0.24 }));
+    for (const dx of [-0.06, 0.06]) body.add(mesh(G('string', () => new THREE.CylinderGeometry(0.012, 0.012, 0.2, 6)), white, { x: dx, y: 0.5, z: 0.255 }));
+    const hood = mesh(G('hood', () => new THREE.TorusGeometry(0.22, 0.08, 8, 18, Math.PI)), accent, { y: 0.66, z: -0.12 }); hood.rotation.x = -0.4; body.add(hood);
+  }
+  body.add(rbox(0.3, 0.12, 0.05, 0.04, white, { y: 0.45, z: 0.24 }));
   body.add(mesh(G('chest', () => new THREE.CircleGeometry(0.05, 16)), eyeMat, { y: 0.36, z: 0.265, cast: false }));
   const arms = [];
   for (const sx of [-1, 1]) {
     const pivot = new THREE.Group();
     pivot.position.set(sx * 0.4, 0.52, 0);
-    pivot.add(mesh(G('arm', () => new THREE.CapsuleGeometry(0.075, 0.32, 4, 10)), white, { y: -0.2 }));
-    pivot.add(mesh(G('hand', () => new THREE.SphereGeometry(0.09, 12, 10)), accent, { y: -0.42 }));
+    pivot.add(mesh(G('arm', () => new THREE.CapsuleGeometry(0.085, 0.32, 4, 10)), style === 1 ? jacketM : accent, { y: -0.2 }));
+    pivot.add(mesh(G('cuff', () => new THREE.CylinderGeometry(0.09, 0.09, 0.05, 12)), white, { y: -0.36 }));
+    pivot.add(mesh(G('hand', () => new THREE.SphereGeometry(0.085, 12, 10)), white, { y: -0.43 }));
     pivot.rotation.z = sx * 0.12;
     body.add(pivot); arms.push(pivot);
   }
@@ -40,6 +61,21 @@ export function makeRobot(color, { scale = 1.3, ring = true, manager = false } =
   for (const sx of [-1, 1]) { const e = mesh(G('eye', () => new THREE.CapsuleGeometry(0.045, 0.06, 4, 8)), eyeMat, { x: sx * 0.14, y: 0.01, z: 0.345, cast: false }); head.add(e); eyes.push(e); }
   for (const sx of [-1, 1]) { const ear = cyl(0.1, 0.1, 0.08, accent, { x: sx * 0.43 }, 16); ear.rotation.z = Math.PI / 2; head.add(ear); }
   head.add(cyl(0.015, 0.015, 0.22, dark, { y: 0.4 }, 6));
+  if (!manager) {
+    const capM = new THREE.MeshStandardMaterial({ color: SNEAK[1] === '#ffffff' || SNEAK[1] === '#f8fafc' ? 0x111827 : SNEAK[1], roughness: 0.6 });
+    if (style === 0 || style === 2) { // baseball cap (style 2 worn backwards)
+      const cap = new THREE.Group(); cap.position.y = 0.27; cap.rotation.y = style === 2 ? Math.PI : 0;
+      cap.add(mesh(G('capdome', () => new THREE.SphereGeometry(0.36, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2)), capM, {}));
+      const brim = mesh(G('brim', () => new THREE.CylinderGeometry(0.24, 0.24, 0.025, 20, 1, false, -Math.PI / 2, Math.PI)), capM, { z: 0.26, y: 0.01 }); brim.scale.z = 1.1; cap.add(brim);
+      head.add(cap);
+    } else if (style === 3) { // over-ear headphones
+      const band = mesh(G('hp', () => new THREE.TorusGeometry(0.42, 0.03, 8, 24, Math.PI)), capM, { y: 0.02 }); band.rotation.y = Math.PI / 2; head.add(band);
+      for (const sx of [-1, 1]) { const cup = cyl(0.13, 0.13, 0.08, capM, { x: sx * 0.45 }, 16); cup.rotation.z = Math.PI / 2; head.add(cup); }
+    } else { // beanie
+      head.add(mesh(G('beanie', () => new THREE.SphereGeometry(0.37, 20, 10, 0, Math.PI * 2, 0, Math.PI / 2)), capM, { y: 0.24 }));
+      head.add(cyl(0.375, 0.375, 0.1, capM, { y: 0.25 }, 20));
+    }
+  }
   const bulb = mesh(G('bulb', () => new THREE.SphereGeometry(0.06, 14, 10)), eyeMat, { y: 0.53, cast: false });
   head.add(bulb);
   if (manager) {

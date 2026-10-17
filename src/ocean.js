@@ -10,14 +10,14 @@ export function buildOcean(scene, opts = {}) {
     uTime: { value: 0 },
     uMoon: { value: new THREE.Vector3(-62, 12.5, -152) },
     uHorizonY: { value: 0.4 },
-    cTop: { value: col('#05051a') },
-    cMid: { value: col('#2a1658') },
-    cHor: { value: col('#c2416f') },
-    cGlow: { value: col('#ff8a5c') },
-    cWater: { value: col('#060a22') },
-    cWater2: { value: col('#1a1446') },
-    cHaze: { value: col('#3a1d55') },
-    cHi: { value: col('#8b5cf6') },
+    cTop: { value: col('#1a2747') },
+    cMid: { value: col('#45507e') },
+    cHor: { value: col('#f0a070') },
+    cGlow: { value: col('#ffc08a') },
+    cWater: { value: col('#0b1630') },
+    cWater2: { value: col('#26365a') },
+    cHaze: { value: col('#7a7096') },
+    cHi: { value: col('#ffd2a0') },
   };
 
   const vert = /* glsl */ `varying vec3 vW; void main(){ vec4 w = modelMatrix * vec4(position,1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`;
