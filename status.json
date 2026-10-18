@@ -1,36 +1,36 @@
 {
-  "updatedAt": "2026-10-18T06:19:14.524Z",
+  "updatedAt": "2026-10-18T06:25:54.877Z",
   "agents": [
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "working",
-      "task": "Warren Buffet: pivot engine live on 11 instruments, routines on",
+      "task": "Warren Buffet: pivot alerts and intraday scans running live",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:19:14.524Z",
-      "taskSince": "2026-10-18T06:19:14.524Z",
+      "lastActive": "2026-10-18T06:25:54.877Z",
+      "taskSince": "2026-10-18T06:25:54.877Z",
       "progress": 1
     },
     {
       "id": "gk",
       "name": "GK",
       "status": "working",
-      "task": "PA Sid Atreya: office updates and routing",
+      "task": "PA Sid Atreya: rolled out the new org chart, routing office updates",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:19:14.524Z",
-      "taskSince": "2026-10-18T06:19:14.524Z"
+      "lastActive": "2026-10-18T06:25:54.877Z",
+      "taskSince": "2026-10-18T06:25:54.877Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
       "status": "working",
-      "task": "Marketing Maniac: Rankora rename trademark checks",
+      "task": "Marketing Maniac: first trademark screen for brand names done",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:19:14.524Z",
-      "taskSince": "2026-10-18T06:19:14.524Z"
+      "lastActive": "2026-10-18T06:25:54.877Z",
+      "taskSince": "2026-10-18T06:25:54.877Z"
     },
     {
       "id": "whatsapp-manager",
@@ -65,12 +65,12 @@
     {
       "id": "grok-bot",
       "name": "Grok Bot",
-      "status": "idle",
-      "task": "Hierarchy update waiting on Sidatreya's approval card",
+      "status": "working",
+      "task": "Grok Bot: Gajar south entry options study (PE-01)",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:19:14.524Z",
-      "taskSince": "2026-10-18T06:19:14.524Z"
+      "lastActive": "2026-10-18T06:25:54.877Z",
+      "taskSince": "2026-10-18T06:25:54.877Z"
     },
     {
       "id": "furniture-designer",
@@ -86,11 +86,11 @@
       "id": "landscape-designer",
       "name": "Landscape Designer",
       "status": "working",
-      "task": "Gajar landscape concept done (L-01, L-02); tree decision pending",
+      "task": "Gajar landscape plan L-01 and planting palette L-02 delivered",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:19:14.524Z",
-      "taskSince": "2026-10-18T06:19:14.524Z",
+      "lastActive": "2026-10-18T06:25:54.877Z",
+      "taskSince": "2026-10-18T06:25:54.877Z",
       "progress": 1
     },
     {
@@ -107,11 +107,11 @@
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Property Manager",
       "status": "working",
-      "task": "Asset Manager: mapping Vastu rules into vastu-tool",
+      "task": "Asset Manager: Vastu rules v2 merged, iPhone fixes tested",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:19:14.524Z",
-      "taskSince": "2026-10-18T06:19:14.524Z"
+      "lastActive": "2026-10-18T06:25:54.877Z",
+      "taskSince": "2026-10-18T06:25:54.877Z"
     }
   ],
   "events": [
@@ -174,6 +174,36 @@
       "time": "2026-10-18T06:19:14.524Z",
       "agentId": "gk",
       "text": "Status refresh 11:50 IST: Trading Desk live, Gajar landscape done, Vastu iPhone fixes underway"
+    },
+    {
+      "time": "2026-10-18T06:25:54.877Z",
+      "agentId": "gk",
+      "text": "Rolled out the new org structure with a CEO and CCO"
+    },
+    {
+      "time": "2026-10-18T06:25:54.877Z",
+      "agentId": "pro-trader",
+      "text": "Pivot alert engine and intraday scanner ran fresh passes"
+    },
+    {
+      "time": "2026-10-18T06:25:54.877Z",
+      "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
+      "text": "Merged Vastu rules v2 and passed iPhone re-tests"
+    },
+    {
+      "time": "2026-10-18T06:25:54.877Z",
+      "agentId": "linkedin",
+      "text": "Finished a first trademark screen for three brand names"
+    },
+    {
+      "time": "2026-10-18T06:25:54.877Z",
+      "agentId": "landscape-designer",
+      "text": "Delivered the Gajar landscape plan and planting palette"
+    },
+    {
+      "time": "2026-10-18T06:25:54.877Z",
+      "agentId": "grok-bot",
+      "text": "Drew two south entry options for the Gajar house"
     }
   ]
 }
