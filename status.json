@@ -1,36 +1,36 @@
 {
-  "updatedAt": "2026-10-18T06:25:54.877Z",
+  "updatedAt": "2026-10-18T07:20:42.154Z",
   "agents": [
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "working",
-      "task": "Warren Buffet: pivot alerts and intraday scans running live",
+      "task": "Warren Buffet: intraday scanner upgraded, signals verified",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:25:54.877Z",
-      "taskSince": "2026-10-18T06:25:54.877Z",
+      "lastActive": "2026-10-18T07:20:42.154Z",
+      "taskSince": "2026-10-18T07:20:42.154Z",
       "progress": 1
     },
     {
       "id": "gk",
       "name": "GK",
       "status": "working",
-      "task": "PA Sid Atreya: rolled out the new org chart, routing office updates",
+      "task": "PA Sid Atreya: handled a personal research request for Sidatreya",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:25:54.877Z",
-      "taskSince": "2026-10-18T06:25:54.877Z"
+      "lastActive": "2026-10-18T07:20:42.154Z",
+      "taskSince": "2026-10-18T07:20:42.154Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
-      "status": "working",
-      "task": "Marketing Maniac: first trademark screen for brand names done",
+      "status": "idle",
+      "task": "Marketing Maniac: trademark screen done, awaiting next step",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:25:54.877Z",
-      "taskSince": "2026-10-18T06:25:54.877Z"
+      "lastActive": "2026-10-18T07:20:42.154Z",
+      "taskSince": "2026-10-18T07:20:42.154Z"
     },
     {
       "id": "whatsapp-manager",
@@ -66,11 +66,11 @@
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "working",
-      "task": "Grok Bot: Gajar south entry options study (PE-01)",
+      "task": "Grok Bot: Gajar entry Option B set as working scheme",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:25:54.877Z",
-      "taskSince": "2026-10-18T06:25:54.877Z"
+      "lastActive": "2026-10-18T07:20:42.154Z",
+      "taskSince": "2026-10-18T07:20:42.154Z"
     },
     {
       "id": "furniture-designer",
@@ -85,13 +85,12 @@
     {
       "id": "landscape-designer",
       "name": "Landscape Designer",
-      "status": "working",
-      "task": "Gajar landscape plan L-01 and planting palette L-02 delivered",
+      "status": "idle",
+      "task": "Gajar landscape plan L-01 and palette L-02 delivered",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:25:54.877Z",
-      "taskSince": "2026-10-18T06:25:54.877Z",
-      "progress": 1
+      "lastActive": "2026-10-18T07:20:42.154Z",
+      "taskSince": "2026-10-18T07:20:42.154Z"
     },
     {
       "id": "boq",
@@ -106,12 +105,12 @@
     {
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Property Manager",
-      "status": "working",
-      "task": "Asset Manager: Vastu rules v2 merged, iPhone fixes tested",
+      "status": "idle",
+      "task": "Asset Manager: Vastu rules v2 live, landbook app running",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T06:25:54.877Z",
-      "taskSince": "2026-10-18T06:25:54.877Z"
+      "lastActive": "2026-10-18T07:20:42.154Z",
+      "taskSince": "2026-10-18T07:20:42.154Z"
     }
   ],
   "events": [
@@ -204,6 +203,21 @@
       "time": "2026-10-18T06:25:54.877Z",
       "agentId": "grok-bot",
       "text": "Drew two south entry options for the Gajar house"
+    },
+    {
+      "time": "2026-10-18T07:20:42.154Z",
+      "agentId": "gk",
+      "text": "Delivered a personal research brief to Sidatreya on a call"
+    },
+    {
+      "time": "2026-10-18T07:20:42.154Z",
+      "agentId": "pro-trader",
+      "text": "Intraday scanner got several fixes; a new signal was verified"
+    },
+    {
+      "time": "2026-10-18T07:20:42.154Z",
+      "agentId": "grok-bot",
+      "text": "Applied CCO decisions: entry Option B and snow guard rows"
     }
   ]
 }
