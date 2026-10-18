@@ -1,26 +1,26 @@
 {
-  "updatedAt": "2026-10-18T08:23:52.818Z",
+  "updatedAt": "2026-10-18T09:16:33.889Z",
   "agents": [
     {
       "id": "pro-trader",
       "name": "Pro Trader",
       "status": "working",
-      "task": "Warren Buffet: scanner filters tuned, order-book feed hardened",
+      "task": "Warren Buffet: scanner fix, one signal withdrawn after re-check",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T08:23:52.818Z",
-      "taskSince": "2026-10-18T08:23:52.818Z",
+      "lastActive": "2026-10-18T09:16:33.889Z",
+      "taskSince": "2026-10-18T09:16:33.889Z",
       "progress": 1
     },
     {
       "id": "gk",
       "name": "GK",
-      "status": "working",
-      "task": "PA Sid Atreya: gave Sidatreya a ready-to-test product rundown",
+      "status": "idle",
+      "task": "PA Sid Atreya: running hourly office check-ins",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T08:23:52.818Z",
-      "taskSince": "2026-10-18T08:23:52.818Z"
+      "lastActive": "2026-10-18T09:16:33.889Z",
+      "taskSince": "2026-10-18T09:16:33.889Z"
     },
     {
       "id": "linkedin",
@@ -228,6 +228,11 @@
       "time": "2026-10-18T08:23:52.818Z",
       "agentId": "pro-trader",
       "text": "Scanner filters updated and verified; order-book watchdog added"
+    },
+    {
+      "time": "2026-10-18T09:16:33.889Z",
+      "agentId": "pro-trader",
+      "text": "Intraday scanner patched; a signal was re-verified and withdrawn"
     }
   ]
 }
