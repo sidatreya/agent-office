@@ -4,7 +4,7 @@
 import * as THREE from 'three';
 
 export const hhmm = (d) => (d ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '--:--');
-const FRESH_MS = 30 * 60 * 1000;
+const FRESH_MS = 75 * 60 * 1000; // matches STALE_MS in src/main.js
 
 // shared screenshot loader (same image used by the desk monitor, the live wall and the overlay)
 const imgCache = new Map();

@@ -12,7 +12,7 @@
 // Both keys are optional. Agents not listed keep their previous state.
 //
 // Report protection: an agent whose state came from a report (source 'reported') less than
-// 30 minutes ago is NOT changed by inferred updates (its agent entry and events are skipped).
+// 75 minutes ago is NOT changed by inferred updates (its agent entry and events are skipped).
 // Per-agent fields written: status, task, progress?, detail?, source ('reported'|'inferred'),
 // reportedAt (time of the last report), lastActive, taskSince (when status/task last changed), screenshot?.
 // The roster (ids + names) comes from src/data/agents.js.
@@ -23,7 +23,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TARGETS = [path.join(ROOT, 'dist', 'status.json'), path.join(ROOT, 'public', 'status.json')];
 const MAX_EVENTS = 40;
-const FRESH_MS = 30 * 60 * 1000;
+const FRESH_MS = 75 * 60 * 1000; // matches STALE_MS in src/main.js
 const { AGENTS, ID_ALIASES = {}, RETIRED_IDS = [] } = await import(path.join(ROOT, 'src', 'data', 'agents.js'));
 const ROSTER = AGENTS.map((a) => [a.id, a.name]);
 const NAMES = Object.fromEntries(ROSTER);
@@ -99,7 +99,7 @@ if (arg === '--init') {
     const src = REPORTED || u.source === 'reported' ? 'reported' : 'inferred';
     if (src === 'inferred' && freshReport(a)) {
       protectedIds.add(u.id);
-      console.log(`update-status: kept ${u.id} (reported ${a.reportedAt}, < 30 min old) — inferred update skipped`);
+      console.log(`update-status: kept ${u.id} (reported ${a.reportedAt}, < 75 min old) — inferred update skipped`);
       continue;
     }
     const prevTask = a.task, prevStatus = a.status;

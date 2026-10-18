@@ -84,7 +84,7 @@ GitHub Pages has a soft limit of ~10 builds/hour, so batch updates rather than p
 ## status.json fields (per agent)
 `id, name, status ('working'|'idle'), task, progress? (0..1), detail? (optional short second line shown
 under the task on the agent's screen), source ('reported'|'inferred'), reportedAt (ISO of last report), lastActive`.
-Each agent's monitor shows: name, WORKING/IDLE, `LIVE · reported HH:MM` (report < 30 min old) or
+Each agent's monitor shows: name, WORKING/IDLE, `LIVE · reported HH:MM` (report < 75 min old) or
 `estimated from activity` (inferred), `updated HH:MM`, the task (up to 3 lines), `detail`, and the latest 2 events.
 
 ## Near-real-time reporting (any agent on this computer)
@@ -107,7 +107,7 @@ Each agent's monitor shows: name, WORKING/IDLE, `LIVE · reported HH:MM` (report
   Every successful push (report, routine, publish-site) records `.publish/last-publish`, so the throttle counts all
   of them → at most ~10 Pages builds/hour. Log: `logs/publish.log`. `REPORT_NO_PUBLISH=1` skips publishing.
 - **Report protection:** `update-status.mjs` treats input as *inferred* by default (e.g. the 5-minute file-activity
-  check-in). Inferred updates **skip any agent with a report < 30 min old** (its entry and its events), so guesses
+  check-in). Inferred updates **skip any agent with a report < 75 min old** (its entry and its events), so guesses
   never overwrite a fresh first-hand report. Use `--reported` (or `"source":"reported"` per agent) for reports.
 - All git work in `.pages/` is serialised with a lock (`.publish/git.lock`).
 

@@ -73,30 +73,14 @@ export function fabricTexture(color, repeat = [4, 4]) {
   }, repeat);
 }
 
-// Wooden decking: long warm-teak planks with staggered butt joints, grain and fine gaps.
-export function deckTexture(repeat = [5, 3]) {
-  return canvasTex(1024, (g, S) => {
-    const rows = 8, ph = S / rows;
-    const tones = ['#8a5a36', '#9a6840', '#7c4f2e', '#a3714a', '#8f5f3a', '#835532'];
-    for (let r = 0; r < rows; r++) {
-      let x = -rand() * S * 0.5;
-      while (x < S) {
-        const len = S * (0.45 + rand() * 0.4);
-        g.fillStyle = tones[Math.floor(rand() * tones.length)];
-        g.fillRect(x, r * ph, len, ph);
-        for (let k = 0; k < 14; k++) {
-          const y0 = r * ph + rand() * ph;
-          g.strokeStyle = rand() < 0.6 ? 'rgba(60,32,16,0.35)' : 'rgba(210,160,110,0.25)';
-          g.lineWidth = 0.6 + rand() * 1.6;
-          g.beginPath();
-          for (let xx = x; xx <= x + len; xx += 12) g.lineTo(xx, y0 + Math.sin(xx * 0.01 + k) * 2.5);
-          g.stroke();
-        }
-        g.fillStyle = 'rgba(30,16,8,0.85)'; g.fillRect(x, r * ph, 3, ph); // butt joint
-        x += len;
-      }
-      g.fillStyle = 'rgba(25,12,6,0.9)'; g.fillRect(0, r * ph, S, 4); // plank gap
-    }
+// Dark stone floor (no wood): black terrazzo with ~4% fine gold/ivory chips and faint large stone tiles.
+// One shared 256 px canvas, tiled (see concept/materials_lighting.md, "Rule zero").
+export function stoneFloorTexture(repeat = [10, 6]) {
+  return canvasTex(256, (g, S) => {
+    g.fillStyle = '#1d1d20'; g.fillRect(0, 0, S, S);
+    for (let i = 0; i < 900; i++) { const v = 20 + Math.floor(rand() * 26); g.fillStyle = `rgba(${v},${v},${v + 3},0.55)`; g.fillRect(rand() * S, rand() * S, 2 + rand() * 3, 2 + rand() * 3); }
+    for (let i = 0; i < 160; i++) { g.fillStyle = rand() < 0.6 ? 'rgba(201,162,39,0.55)' : 'rgba(239,232,216,0.35)'; g.fillRect(rand() * S, rand() * S, 1 + rand() * 1.6, 1 + rand() * 1.6); }
+    g.strokeStyle = 'rgba(0,0,0,0.55)'; g.lineWidth = 1.5; g.strokeRect(0.75, 0.75, S - 1.5, S - 1.5); // tile joint
   }, repeat);
 }
 
@@ -106,7 +90,7 @@ export function makeMaterials() {
   return {
     walnut: new THREE.MeshStandardMaterial({ map: walnut, roughness: 0.42, metalness: 0.0 }),
     oak: new THREE.MeshStandardMaterial({ map: oak, roughness: 0.5 }),
-    floor: new THREE.MeshStandardMaterial({ map: deckTexture([4, 3]), roughness: 0.38, metalness: 0.0, envMapIntensity: 0.9 }),
+    floor: new THREE.MeshStandardMaterial({ map: stoneFloorTexture([10, 6]), roughness: 0.4, metalness: 0.05, envMapIntensity: 0.9 }), // black terrazzo (was teak decking)
     marbleFloor: new THREE.MeshStandardMaterial({ map: marbleTexture([7.5, 4.5]), roughness: 0.34, metalness: 0.05, envMapIntensity: 0.8 }),
     marbleWhite: new THREE.MeshStandardMaterial({ map: whiteMarbleTexture(), roughness: 0.15, metalness: 0.0 }),
     plinth: new THREE.MeshPhysicalMaterial({ color: 0xf3f0ea, roughness: 0.32, clearcoat: 0.7, clearcoatRoughness: 0.25 }),
