@@ -5,10 +5,10 @@ Each agent has a large monitor showing its live status and current task (or its 
 
 | Floor | What's there |
 |---|---|
-| **04 · Property Management** | Department head cabin (Property Manager desk + 4-seat table), 12 modular desks on a raised floor with an overhead cable tray and 2 marked FUTURE BAYS (room for about 20), live monitoring wall (dashboard · parcel map · automation · news · hybrid on-site/cloud status, all **example data**), AI supervision desk, internal meeting room for 10 with dashboard and map screens, **client presentation room** next to the visitor waiting area at the lift lobby (clients never cross the open office), secure fire-rated deed records room (biometric door, climate panel) with the scan & intake station feeding the AI pipeline, video-call room, pantry, toilets, network closet |
-| **03 · Creative Studio** | Grok Bot (architect: drafting table and model), Furniture Designer, Landscape Designer, BOQ desk, Live Work Wall that mirrors each agent's screen, Studio Task Board, design team zone with NPC robots |
-| **02 · Admin Block** | GK (wide dual desk), Linkedin, Whatsapp Manager, Developer, Developer Whatsapp Manager, live activity feed wall, coffee bar, lounge |
-| **01 · Trading Room** | Pro Trader, live TradingView market wall (ticker, BTC/USD, USD/INR, market overview), recliner lounge, golf simulator, bot fuel bar (oil · electricity · electrolytes) |
+| **04 · Property Management** | Department head cabin (Asset Manager desk + 4-seat table), 12 modular desks on a raised floor with an overhead cable tray and 2 marked FUTURE BAYS (room for about 20), live monitoring wall (dashboard · parcel map · automation · news · hybrid on-site/cloud status, all **example data**), AI supervision desk, internal meeting room for 10 with dashboard and map screens, **client presentation room** next to the visitor waiting area at the lift lobby (clients never cross the open office), secure fire-rated deed records room (biometric door, climate panel) with the scan & intake station feeding the AI pipeline, video-call room, pantry, toilets, network closet |
+| **03 · Creative Studio** | Grok Bot (architect: drafting table and model), CCO, Furniture Deaigner, Landscape Desigener, DWG & Drafting Operator, Image Operator, Video Operator, Live Work Wall that mirrors each agent's screen, Studio Task Board, design team zone with NPC robots |
+| **02 · Admin Block** | PA Sid Atreya and CEO (wide dual desks), Archivist, Marketing Maniac, Whatsapp Manager, Geek Kid, Web & 3D Developer, live activity feed wall, coffee bar, lounge |
+| **01 · Trading Room** | Intraday Signal Trader, Swing HTF Trader, Warren Buffet, Risk & Verification, live TradingView market wall (ticker, BTC/USD, USD/INR, market overview), recliner lounge, golf simulator, bot fuel bar (oil · electricity · electrolytes) |
 | **B1 · Server & Utilities** | Server room on a raised floor (2×10 racks, cold-aisle containment), 2 CRAC units, UPS and battery bank, 500 kVA backup generator, separate ISP A / ISP B fibre entries, biometric door, "Hybrid: on-site servers + cloud" sign and a cloud uplink panel |
 
 Every floor has a **Floor Manager** robot. It walks the floor and has a status board and a tooltip showing how many agents are working.
@@ -45,7 +45,7 @@ to focus and open its info card · R or Esc resets the view.
 
 ## Live mode (status.json)
 The default build polls `./status.json` every 15 s (cache-busted). `?demo=1` switches to the simulated feed.
-Top-bar label: `live · updated HH:MM` (browser local time), or `stale · …` if older than 30 min.
+Top-bar label: `live · updated HH:MM` (browser local time), or `stale · …` if older than 75 min (`STALE_MS` in src/main.js).
 
 Push an update (merges into dist/status.json + public/status.json, atomic, de-dupes, keeps 40 events):
 
@@ -53,7 +53,17 @@ Push an update (merges into dist/status.json + public/status.json, atomic, de-du
     echo '{"newEvents":[{"agentId":"gk","text":"hi"}]}' | node scripts/update-status.mjs -
     node scripts/update-status.mjs --init      # reset to the seed state
 
-Agent ids: gk, pro-trader, grok-bot, linkedin, furniture-designer.
+Agent ids (desk names can change; ids never do):
+
+| Floor | id → desk name |
+|---|---|
+| 04 | `6c94624b-cff0-445d-acf3-76a7780c90f3` Asset Manager |
+| 03 | `grok-bot` Grok Bot · `cco` CCO · `furniture-designer` Furniture Deaigner · `landscape-designer` Landscape Desigener · `dwg-drafting-operator` DWG & Drafting Operator · `image-operator` Image Operator · `video-operator` Video Operator |
+| 02 | `gk` PA Sid Atreya · `ceo` CEO · `archivist` Archivist · `linkedin` Marketing Maniac · `whatsapp-manager` Whatsapp Manager · `developer` Geek Kid · `web-3d-developer` Web & 3D Developer |
+| 01 | `intraday-signal-trader` Intraday Signal Trader · `swing-htf-trader` Swing HTF Trader · `pro-trader` Warren Buffet · `risk-verification` Risk & Verification |
+
+Retired ids: `developer-whatsapp` is still accepted and mapped to `whatsapp-manager` (`ID_ALIASES` in src/data/agents.js);
+`boq` (no BOQ bot) is skipped with a note.
 
 ## Serving
 `scripts/server.mjs` serves dist/ on :8080 with `Cache-Control: no-store` for status.json and index.html.
@@ -85,7 +95,7 @@ Each agent's monitor shows: name, WORKING/IDLE, `LIVE · reported HH:MM` (report
     scripts/report.sh grok-bot idle "Finished the ocean-view office" "Published office v3"
     scripts/report.sh linkedin working "Drafting the Diwali campaign post"
     scripts/report.sh furniture-designer idle "Study built-in renders delivered" "Sent options A/B/C"
-    scripts/report.sh 6c94624b-cff0-445d-acf3-76a7780c90f3 working "Reviewing flagged deeds"   # Property Manager
+    scripts/report.sh 6c94624b-cff0-445d-acf3-76a7780c90f3 working "Reviewing flagged deeds"   # Asset Manager
     scripts/report.sh --shot ~/render.png grok-bot working "Rendering elevations"            # with a screenshot
     scripts/auto-shots.sh grok-bot /workspace/some-project                                    # newest image → screen
 

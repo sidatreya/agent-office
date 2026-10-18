@@ -58,7 +58,8 @@ export function buildAdmin(g, { agents }) {
   P.artFrame(g, 8.2, 4.4, -FZ + 0.3, 0, 1.6, 1.1, 2);
   P.plant(g, -14.2, -8.2, 1.1, 1); P.plant(g, 14.2, 7.9, 1.0, 0); P.plant(g, -4.2, -8.2, 1.0, 0); P.plant(g, 4.2, -8.2, 1.0, 0); P.plant(g, -6.8, 7.6, 0.9, 1);
   P.floorLamp(g, 13.8, 4.2);
-  return { feed, waypoints: [[-7, 0], [-2, 4.6], [6, 3.6], [7, 0], [-1, -1]], board: totem(g, -4.6, 6.4, 0.25), light: [[-6, 0], [6, 0]] };
+  // manager loop: aisle between the two desk rows (z -1.2), then through the gap at x -3.6 to the front lounge side
+  return { feed, waypoints: [[-3.6, -1.2], [-11.5, -1.2], [11.6, -1.2], [-3.6, -1.2], [-3.6, 3.9], [6.2, 3.9], [-3.6, 3.9]], board: totem(g, -4.6, 6.4, 0.25), light: [[-6, 0], [6, 0]] };
 }
 
 // ── 03 · Creative Studio ──
@@ -68,8 +69,10 @@ export function buildStudio(g, { agents, stations }) {
   const studio = agents.filter((a) => a.floor === 'studio');
   // Live Work Wall: mirrors each studio agent's own screen (same texture), plus a task board
   P.labelSign(g, 'LIVE WORK WALL', -3.6, 6.6, -FZ + 0.55, 0, { w: 3.4, h: 0.34, bg: '#1e1b4b', fg: '#e0e7ff', size: 44 });
+  // screens share the glass between x -14.4 and the task board (x ≥ 8.6), so they shrink as the studio grows
+  const pitch = Math.min(4.4, 22.8 / Math.max(1, studio.length));
   studio.forEach((a, i) => {
-    const w = 4.0, h = 2.5, x = -11.2 + i * 4.4;
+    const w = pitch - 0.3, h = w * 0.625, x = -14.4 + pitch * (i + 0.5);
     const grp = new THREE.Group(); grp.position.set(x, 4.85, -FZ + 0.5); g.add(grp);
     grp.add(rbox(w + 0.12, h + 0.12, 0.08, 0.03, M.graphite, {}));
     const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: stations.get(a.id).tex }));
@@ -87,14 +90,16 @@ export function buildStudio(g, { agents, stations }) {
     const x = c.getContext('2d');
     x.fillStyle = '#f8f5ee'; x.fillRect(0, 0, 1024, 768);
     x.fillStyle = '#1f1b3a'; x.font = '800 56px system-ui'; x.fillText('STUDIO TASK BOARD', 40, 80);
+    const rh = Math.min(150, 620 / Math.max(1, studio.length)), k2 = rh / 150; // row height scales with the team size
     studio.forEach((a, i) => {
-      const s = getState(a.id), y = 130 + i * 150;
-      x.fillStyle = a.color; roundRect(x, 40, y, 944, 130, 16); x.globalAlpha = 0.18; x.fill(); x.globalAlpha = 1;
-      x.fillStyle = a.color; x.fillRect(40, y, 14, 130);
-      x.fillStyle = '#1f1b3a'; x.font = '700 40px system-ui'; x.fillText(a.name, 76, y + 48);
-      x.textAlign = 'right'; x.fillStyle = s.status === 'working' ? '#15803d' : '#64748b'; x.fillText(s.status.toUpperCase(), 964, y + 48); x.textAlign = 'left';
-      x.fillStyle = '#334155'; x.font = '400 34px system-ui';
-      wrapLines(x, s.task, 880, 2).forEach((ln, k) => x.fillText(ln, 76, y + 92 + k * 36));
+      const s = getState(a.id), y = 120 + i * rh, bh = rh - 12;
+      x.fillStyle = a.color; roundRect(x, 40, y, 944, bh, 14); x.globalAlpha = 0.18; x.fill(); x.globalAlpha = 1;
+      x.fillStyle = a.color; x.fillRect(40, y, 14, bh);
+      x.fillStyle = '#1f1b3a'; x.font = `700 ${Math.round(40 * Math.max(0.8, k2))}px system-ui`; x.fillText(a.name, 76, y + 44 * k2 + 4);
+      x.textAlign = 'right'; x.fillStyle = s.status === 'working' ? '#15803d' : '#64748b'; x.fillText(s.status.toUpperCase(), 964, y + 44 * k2 + 4); x.textAlign = 'left';
+      x.fillStyle = '#334155'; x.font = `400 ${Math.round(34 * Math.max(0.78, k2))}px system-ui`;
+      const lines = rh >= 120 ? 2 : 1;
+      wrapLines(x, s.task, 880, lines).forEach((ln, k) => x.fillText(ln, 76, y + 88 * k2 + 6 + k * 36));
     });
     tb.needsUpdate = true;
   }

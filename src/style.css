@@ -115,9 +115,24 @@ kbd { font-family: ui-monospace, Menlo, monospace; font-size: 10.5px; padding: 0
 
 @media (max-width: 760px) {
   #sidebar { width: 200px; }
-  .stats .chip.live, .stats .chip:nth-child(3) { display: none; }
-  #infocard { width: calc(100% - 32px); top: auto; bottom: 50px; }
+  #infocard { width: calc(100% - 32px); top: auto; bottom: 108px; max-height: calc(100vh - 230px); overflow-y: auto; }
+  /* compact header: brand on the first line, every chip (incl. agents count + live/stale) wraps below */
+  #topbar { height: auto; min-height: 50px; flex-wrap: wrap; row-gap: 5px; padding: 6px 10px 7px; }
+  .brand { gap: 8px; }
+  .logo { width: 26px; height: 26px; border-radius: 8px; }
+  .title { font-size: 14px; }
+  .subtitle { display: none; }
+  .stats { flex-wrap: wrap; gap: 4px; font-size: 11px; width: 100%; }
+  .chip { padding: 3px 7px; gap: 4px; }
+  .dot { width: 7px; height: 7px; }
+  /* compact name tags; idle state is shown by the dim style only */
+  .tag { font-size: 10.5px; padding: 2px 7px 2px 5px; gap: 4px; }
+  .tag:not(.working):not(.manager-tag) .tag-state { display: none; }
 }
+@media (max-width: 420px) { .chip.clock { padding: 3px 6px; } }
+/* phones, all-floors view: 19 desk tags can't fit legibly — show floor labels only; pick a floor to see names */
+@media (max-width: 760px) { body[data-floor="all"] .tag[data-agent] { visibility: hidden !important; pointer-events: none !important; } }
+.tag.declutter-hidden { visibility: hidden !important; pointer-events: none !important; }
 
 .room-label {
   font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
@@ -146,9 +161,10 @@ kbd { font-family: ui-monospace, Menlo, monospace; font-size: 10.5px; padding: 0
 #floorbar button span { font-size: 10px; color: var(--muted); }
 #floorbar button:hover { background: rgba(139, 92, 246, 0.15); }
 #floorbar button.on { background: rgba(139, 92, 246, 0.32); border-color: rgba(192, 132, 252, 0.55); }
-#viewbtns { position: fixed; top: 64px; right: 14px; z-index: 6; display: flex; gap: 6px; }
+#viewbtns { position: fixed; top: 64px; right: 14px; z-index: 25; display: flex; gap: 6px; } /* above #overlay (20) so the buttons toggle it closed */
 #viewbtns button { flex-direction: row; font-size: 12.5px; font-weight: 600; background: rgba(12, 11, 36, 0.78); border-color: rgba(192, 132, 252, 0.25); padding: 8px 12px; }
 #viewbtns button:hover { background: rgba(139, 92, 246, 0.3); }
+#viewbtns button.on { background: rgba(139, 92, 246, 0.45); border-color: rgba(216, 180, 254, 0.8); }
 #sidebar .floor-head { font-size: 10.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #c4b5fd; margin: 10px 2px 4px; cursor: pointer; }
 #sidebar .floor-head:first-child { margin-top: 0; }
 #sidebar .floor-empty { font-size: 11px; color: var(--muted); margin: 0 2px 4px; }
@@ -180,5 +196,7 @@ kbd { font-family: ui-monospace, Menlo, monospace; font-size: 10.5px; padding: 0
   #hint { display: none; }
   .ov-grid { grid-template-columns: 1fr; }
   .ov-panel { width: 100vw; max-height: 100vh; height: 100vh; border-radius: 0; }
+  .ov-body { padding-bottom: 120px; } /* room for the Screens/Markets buttons that float above the panel */
+  .ov-close { font-size: 30px; padding: 0 6px; }
 }
 body[data-floor="all"] .tag.manager-tag { visibility: hidden !important; }

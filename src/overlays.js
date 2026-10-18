@@ -8,9 +8,13 @@ export function setupOverlays({ agents, floors, world, feed }) {
   let mode = null, timer = null;
   const canv = new Map();
 
-  function close() { mode = null; ov.classList.add('hidden'); clearInterval(timer); body.innerHTML = ''; canv.clear(); }
+  const btnS = document.getElementById('btn-screens'), btnM = document.getElementById('btn-markets');
+  const mark = () => { btnS.classList.toggle('on', mode === 'screens'); btnM.classList.toggle('on', mode === 'markets'); };
+  function close() { mode = null; ov.classList.add('hidden'); clearInterval(timer); body.innerHTML = ''; canv.clear(); mark(); }
   ov.querySelector('.ov-close').onclick = close;
-  window.addEventListener('keydown', (e) => e.key === 'Escape' && close());
+  window.addEventListener('keydown', (e) => e.key === 'Escape' && mode && close());
+  // tap/click on the dimmed backdrop (outside the panel) closes the overlay
+  ov.addEventListener('click', (e) => { if (e.target === ov) close(); });
 
   function openScreens() {
     mode = 'screens'; title.textContent = 'Agent screens'; body.innerHTML = ''; body.className = 'ov-body screens';
@@ -30,8 +34,8 @@ export function setupOverlays({ agents, floors, world, feed }) {
       }
     }
     refresh();
-    timer = setInterval(refresh, 4000);
-    ov.classList.remove('hidden');
+    clearInterval(timer); timer = setInterval(refresh, 4000);
+    ov.classList.remove('hidden'); mark();
   }
   function openMarkets() {
     mode = 'markets'; title.textContent = 'Markets · live (TradingView)'; body.className = 'ov-body markets';
@@ -43,13 +47,14 @@ export function setupOverlays({ agents, floors, world, feed }) {
       </div>
       <iframe class="tv-overview" src="${WIDGETS.overview()}" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
       <p class="tv-note">Market data by TradingView. Example dashboards on Floor 04 are placeholder data.</p>`;
-    ov.classList.remove('hidden');
+    clearInterval(timer); canv.clear();
+    ov.classList.remove('hidden'); mark();
   }
   function refresh() {
     if (mode !== 'screens') return;
     canv.forEach((c, id) => { const src = world.stations.get(id).tex.image; c.getContext('2d').drawImage(src, 0, 0); });
   }
-  document.getElementById('btn-screens').onclick = () => (mode === 'screens' ? close() : openScreens());
-  document.getElementById('btn-markets').onclick = () => (mode === 'markets' ? close() : openMarkets());
+  btnS.onclick = () => (mode === 'screens' ? close() : openScreens());
+  btnM.onclick = () => (mode === 'markets' ? close() : openMarkets());
   return { refresh, openScreens, openMarkets, close };
 }

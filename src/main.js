@@ -261,7 +261,8 @@ feed.subscribe((evt) => {
 });
 feed.start();
 
-// "live · updated HH:MM" label (browser local time); 'stale' if older than 30 min
+// "live · updated HH:MM" label (browser local time); 'stale' if older than STALE_MS (75 min)
+const STALE_MS = 75 * 60 * 1000;
 const liveEl = document.getElementById('live-label');
 const liveChip = document.getElementById('live-chip');
 const hhmm = (d) => d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -269,7 +270,7 @@ function renderLive() {
   let text, mode;
   if (DEMO) { text = 'demo · simulated feed'; mode = 'live'; }
   else if (!feed.updatedAt) { text = feed.error ? 'offline · no status data' : 'connecting…'; mode = 'stale'; }
-  else if (Date.now() - feed.updatedAt.getTime() > 30 * 60 * 1000) { text = `stale · updated ${hhmm(feed.updatedAt)}`; mode = 'stale'; }
+  else if (Date.now() - feed.updatedAt.getTime() > STALE_MS) { text = `stale · updated ${hhmm(feed.updatedAt)}`; mode = 'stale'; }
   else { text = `live · updated ${hhmm(feed.updatedAt)}`; mode = 'live'; }
   liveEl.textContent = text;
   liveChip.className = `chip ${mode}`;
@@ -316,7 +317,48 @@ renderer.setAnimationLoop(() => {
   composer.render();
   if (currentFloor === 'trading' || !currentFloor) cssRenderer.render(cssScene, camera);
   labelRenderer.render(scene, camera);
+  if (performance.now() - lastDeclutter > 120) declutterTags();
 });
+
+// ── name-tag declutter: on small screens desks in a row project onto the same pixels, so overlapping
+// tags are nudged up/down a line and kept inside the screen; any that still collide are hidden (they stay
+// in the sidebar / Screens list). On phones the all-floors view shows floor labels only (see style.css).
+let lastDeclutter = 0;
+let tagEls = [];
+function declutterTags() {
+  lastDeclutter = performance.now();
+  if (!tagEls.length) tagEls = [...labelRenderer.domElement.querySelectorAll('.tag')];
+  const steps = currentFloor ? [0, -1, 1, -2, 2, -3] : [0, -1, 1]; // all-floors view: stay near the own floor
+  const W = window.innerWidth;
+  const items = [];
+  for (const el of tagEls) {
+    el.classList.remove('declutter-hidden');
+    if (el.style.display === 'none') continue;
+    const r = el.getBoundingClientRect();
+    if (!r.width || getComputedStyle(el).visibility === 'hidden') continue;
+    const oy = parseFloat(el.dataset.oy || '0'), ox = parseFloat(el.dataset.ox || '0');
+    items.push({ el, x0: r.left - ox, x1: r.right - ox, y0: r.top - oy, y1: r.bottom - oy, mgr: el.classList.contains('manager-tag') });
+  }
+  // agent tags nearest the camera (lowest on screen) first; Floor Manager tags last
+  items.sort((a, b) => (a.mgr - b.mgr) || (b.y0 - a.y0));
+  const placed = [];
+  const hits = (x0, x1, y0, y1) => placed.some((p) => x0 < p.x1 + 2 && x1 > p.x0 - 2 && y0 < p.y1 + 1 && y1 > p.y0 - 1);
+  for (const it of items) {
+    const h = it.y1 - it.y0 + 3;
+    // keep the tag inside the screen horizontally (when its desk is on screen)
+    let dx = 0;
+    if (it.x1 > W - 4 && it.x0 < W) dx = W - 4 - it.x1; else if (it.x0 < 4 && it.x1 > 0) dx = 4 - it.x0;
+    const x0 = it.x0 + dx, x1 = it.x1 + dx;
+    let dy = null;
+    for (const k of steps) if (!hits(x0, x1, it.y0 + k * h, it.y1 + k * h)) { dy = k * h; break; }
+    if (dy === null) { it.el.classList.add('declutter-hidden'); dy = 0; dx = 0; }
+    else placed.push({ x0, x1, y0: it.y0 + dy, y1: it.y1 + dy });
+    if (String(dy) !== (it.el.dataset.oy || '0') || String(dx) !== (it.el.dataset.ox || '0')) {
+      it.el.dataset.oy = String(dy); it.el.dataset.ox = String(dx);
+      it.el.style.marginTop = `${dy}px`; it.el.style.marginLeft = `${dx}px`;
+    }
+  }
+}
 
 // handy for debugging / wiring real data from the console
 window.office = { feed, focusAgent, clearFocus, selectFloor, overlays, scene, camera, world, view: (p, t, ms = 10) => flyTo(new THREE.Vector3(...p), new THREE.Vector3(...t), ms) };

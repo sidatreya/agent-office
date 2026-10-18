@@ -62,13 +62,14 @@ export function buildManager(parent, floor, waypoints, { board } = {}) {
     g.fillStyle = '#1c1404'; g.font = '800 50px system-ui'; g.textBaseline = 'middle';
     g.fillText(`FLOOR ${floor.label} · STATUS`, 34, 50);
     g.textAlign = 'right'; g.font = '700 44px system-ui'; g.fillText(`${working}/${rows.length} working`, W - 34, 50); g.textAlign = 'left';
-    rows.slice(0, 6).forEach((r, i) => {
-      const y = 150 + i * 78;
-      g.fillStyle = r.a.color; roundRect(g, 34, y - 26, 16, 52, 6); g.fill();
-      g.fillStyle = '#f1f0ff'; g.font = '700 40px system-ui'; g.fillText(r.a.name.length > 22 ? r.a.name.slice(0, 21) + '…' : r.a.name, 68, y);
+    const rh = Math.min(78, 420 / Math.max(1, rows.length)), fs = rh / 78; // fit every desk on the board
+    rows.forEach((r, i) => {
+      const y = 150 + i * rh;
+      g.fillStyle = r.a.color; roundRect(g, 34, y - 26 * fs, 16, 52 * fs, 6); g.fill();
+      g.fillStyle = '#f1f0ff'; g.font = `700 ${Math.round(40 * fs)}px system-ui`; g.fillText(r.a.name.length > 24 ? r.a.name.slice(0, 23) + '…' : r.a.name, 68, y);
       g.textAlign = 'right';
       g.fillStyle = r.flag ? '#f87171' : r.s.status === 'working' ? '#4ade80' : '#94a3b8';
-      g.font = '700 36px system-ui'; g.fillText(r.flag ? `⚠ ${r.flag}` : r.s.status.toUpperCase(), W - 34, y);
+      g.font = `700 ${Math.round(36 * fs)}px system-ui`; g.fillText(r.flag ? `⚠ ${r.flag}` : r.s.status.toUpperCase(), W - 34, y);
       g.textAlign = 'left';
     });
     if (!flags.length) { g.fillStyle = '#4ade80'; g.font = '600 34px system-ui'; g.fillText('✓ Floor Manager: nobody needs help right now', 34, H - 40); }

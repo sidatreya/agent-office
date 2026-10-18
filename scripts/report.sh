@@ -9,6 +9,8 @@
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 IDS="$(node -e "import('$ROOT/src/data/agents.js').then(m=>console.log(m.AGENTS.map(a=>a.id).join(' ')))")"
+# retired ids still accepted: mapped to their successor desk (see ID_ALIASES in src/data/agents.js)
+ALIASES="$(node -e "import('$ROOT/src/data/agents.js').then(m=>console.log(Object.keys(m.ID_ALIASES||{}).join(' ')))")"
 usage() { echo "usage: $0 [--shot <image>] <agent-id> <working|idle> \"<task text>\" [\"<event text>\"]   (ids: $IDS)" >&2; exit 2; }
 shot=""; args=()
 while [ $# -gt 0 ]; do
@@ -20,6 +22,7 @@ while [ $# -gt 0 ]; do
 done
 [ ${#args[@]} -ge 3 ] || usage
 id="${args[0]}"; st="${args[1]}"; task="${args[2]}"; evt="${args[3]:-}"
+case " $ALIASES " in *" $id "*) id="$(node -e "import('$ROOT/src/data/agents.js').then(m=>console.log(m.resolveId(process.argv[1])))" "$id")"; echo "report: retired id mapped to $id" >&2 ;; esac
 case " $IDS " in *" $id "*) ;; *) echo "unknown agent id: $id" >&2; usage ;; esac
 case "$st" in working|idle) ;; *) echo "status must be working or idle" >&2; usage ;; esac
 [ -n "${task// }" ] || { echo "task text is required" >&2; usage; }

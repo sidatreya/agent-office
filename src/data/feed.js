@@ -17,6 +17,7 @@
 import { AGENTS, IDLE_TASKS } from './agents.js';
 
 const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const logsOf = (id) => (AGENTS.find((a) => a.id === id) || { logs: ['checked in'] }).logs;
 
 export function createSimulatedFeed({ intervalMs = 3200, historySize = 60 } = {}) {
   const listeners = new Set();
@@ -38,13 +39,13 @@ export function createSimulatedFeed({ intervalMs = 3200, historySize = 60 } = {}
   // Seed some believable history so the wall screen isn't empty on load.
   const now = Date.now();
   const seed = [
-    ['gk', 'Office opened \u2014 5 agents online'],
-    ['pro-trader', pick(AGENTS[1].logs)],
-    ['gk', AGENTS[0].logs[0]],
-    ['linkedin', pick(AGENTS[3].logs)],
-    ['grok-bot', pick(AGENTS[2].logs)],
-    ['furniture-designer', pick(AGENTS[4].logs)],
-    ['gk', AGENTS[0].logs[2]],
+    ['gk', `Office opened \u2014 ${AGENTS.length} agents online`],
+    ['pro-trader', pick(logsOf('pro-trader'))],
+    ['gk', logsOf('gk')[0]],
+    ['linkedin', pick(logsOf('linkedin'))],
+    ['grok-bot', pick(logsOf('grok-bot'))],
+    ['furniture-designer', pick(logsOf('furniture-designer'))],
+    ['gk', logsOf('gk')[2]],
   ];
   seed.forEach(([agentId, message], i) => {
     history.push({

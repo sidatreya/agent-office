@@ -24,9 +24,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TARGETS = [path.join(ROOT, 'dist', 'status.json'), path.join(ROOT, 'public', 'status.json')];
 const MAX_EVENTS = 40;
 const FRESH_MS = 30 * 60 * 1000;
-const { AGENTS } = await import(path.join(ROOT, 'src', 'data', 'agents.js'));
+const { AGENTS, ID_ALIASES = {}, RETIRED_IDS = [] } = await import(path.join(ROOT, 'src', 'data', 'agents.js'));
 const ROSTER = AGENTS.map((a) => [a.id, a.name]);
 const NAMES = Object.fromEntries(ROSTER);
+const RETIRED = new Set(RETIRED_IDS);
+// retired ids (e.g. developer-whatsapp) are mapped to their successor desk; ids with no successor (boq) are skipped quietly
+const resolve = (id) => ID_ALIASES[id] || id;
 
 function seed(now) {
   return {
@@ -73,6 +76,8 @@ if (arg === '--init') {
   // ensure every roster agent exists
   for (const [id, name] of ROSTER) if (!state.agents.find((a) => a.id === id)) state.agents.push({ id, name, status: 'idle', task: 'Waiting for first check-in', source: 'inferred', reportedAt: null, lastActive: null, taskSince: now });
   state.agents = state.agents.filter((a) => NAMES[a.id]);
+  for (const a of state.agents) a.name = NAMES[a.id]; // pick up desk renames
+  state.events = state.events.map((e) => ({ ...e, agentId: resolve(e.agentId) })).filter((e) => NAMES[e.agentId]);
   for (const a of state.agents) if (!a.taskSince) a.taskSince = a.lastActive || state.updatedAt || now;
 
   const warn = (m) => console.warn(`update-status: warning: ${m}`);
@@ -80,7 +85,9 @@ if (arg === '--init') {
   const nowMs = Date.parse(now);
   const freshReport = (a) => a && a.source === 'reported' && a.reportedAt && nowMs - Date.parse(a.reportedAt) < FRESH_MS;
   const protectedIds = new Set();
-  for (const u of Array.isArray(input.agents) ? input.agents : []) {
+  for (const u0 of Array.isArray(input.agents) ? input.agents : []) {
+    const u = u0 && u0.id ? { ...u0, id: resolve(u0.id) } : u0;
+    if (u && RETIRED.has(u.id)) { console.log(`update-status: ${u.id} desk was retired (skipped)`); continue; }
     if (!u || !NAMES[u.id]) { warn(`unknown agent id ${JSON.stringify(u && u.id)} (skipped); valid: ${Object.keys(NAMES).join(', ')}`); continue; }
     const a = state.agents.find((x) => x.id === u.id);
     const keys = Object.keys(u).filter((k) => k !== 'id' && k !== 'source');
@@ -121,7 +128,9 @@ if (arg === '--init') {
   }
 
   let added = 0, skipped = 0;
-  for (const e of Array.isArray(input.newEvents) ? input.newEvents : []) {
+  for (const e0 of Array.isArray(input.newEvents) ? input.newEvents : []) {
+    const e = e0 && e0.agentId ? { ...e0, agentId: resolve(e0.agentId) } : e0;
+    if (e && RETIRED.has(e.agentId)) { skipped++; continue; }
     if (!e || !NAMES[e.agentId] || typeof e.text !== 'string' || !e.text.trim()) { warn(`bad event ${JSON.stringify(e)} (skipped)`); continue; }
     if (!REPORTED && e.source !== 'reported' && (protectedIds.has(e.agentId) || freshReport(state.agents.find((x) => x.id === e.agentId)))) { skipped++; continue; }
     const text = e.text.trim();

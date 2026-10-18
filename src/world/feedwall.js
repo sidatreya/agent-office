@@ -58,14 +58,15 @@ export function buildFeedScreen(scene, agents) {
     g.fillStyle = '#1a1848'; roundRect(g, sx - 20, 150, W - sx - 30, H - 190, 18); g.fill();
     g.fillStyle = '#8b8bc4'; g.font = '700 36px system-ui, sans-serif';
     g.fillText('AGENTS', sx + 10, 212);
+    const rh = Math.min(60, (H - 300) / Math.max(1, agents.length)), fs = Math.max(0.72, rh / 60);
     agents.forEach((a, i) => {
       const s = getState(a.id);
-      const y = 270 + i * 60;
-      g.fillStyle = a.color; g.beginPath(); g.arc(sx + 20, y - 11, 11, 0, Math.PI * 2); g.fill();
-      g.fillStyle = '#ecebff'; g.font = '600 32px system-ui, sans-serif';
+      const y = 262 + i * rh;
+      g.fillStyle = a.color; g.beginPath(); g.arc(sx + 20, y - 11 * fs, 11 * fs, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#ecebff'; g.font = `600 ${Math.round(32 * fs)}px system-ui, sans-serif`;
       let nm = a.name; while (g.measureText(nm).width > 300 && nm.length > 3) nm = nm.slice(0, -1);
       g.fillText(nm === a.name ? nm : nm + '…', sx + 44, y);
-      g.fillStyle = s.status === 'working' ? '#4ade80' : '#94a3b8'; g.font = '600 28px system-ui, sans-serif';
+      g.fillStyle = s.status === 'working' ? '#4ade80' : '#94a3b8'; g.font = `600 ${Math.round(28 * fs)}px system-ui, sans-serif`;
       g.textAlign = 'right'; g.fillText(s.status === 'working' ? '● working' : '○ idle', W - 70, y); g.textAlign = 'left';
     });
     tex.needsUpdate = true;

@@ -8,7 +8,7 @@
 //   events: [{ time: ISO, agentId, text }] }
 // Written by scripts/update-status.mjs.
 // ─────────────────────────────────────────────────────────────
-import { AGENTS } from './agents.js';
+import { AGENTS, resolveId } from './agents.js';
 
 const DEFAULT_TASK = 'Waiting for first check-in';
 
@@ -66,8 +66,9 @@ export function createLiveFeed({ url = './status.json', intervalMs = 15000 } = {
   function apply(data) {
     const ts = data.updatedAt ? new Date(data.updatedAt) : null;
     api.updatedAt = ts && !isNaN(ts) ? ts : null;
-    for (const a of Array.isArray(data.agents) ? data.agents : []) {
-      if (!known.has(a.id)) continue;
+    for (const a0 of Array.isArray(data.agents) ? data.agents : []) {
+      const a = a0 && { ...a0, id: resolveId(a0.id) };
+      if (!a || !known.has(a.id) || a.id !== a0.id && data.agents.some((x) => x && x.id === a.id)) continue;
       const status = a.status === 'working' ? 'working' : 'idle';
       const p = Number(a.progress);
       state.set(a.id, {
@@ -82,8 +83,8 @@ export function createLiveFeed({ url = './status.json', intervalMs = 15000 } = {
       });
     }
     const evts = (Array.isArray(data.events) ? data.events : [])
-      .filter((e) => e && known.has(e.agentId) && e.text)
-      .map((e) => ({ ts: new Date(e.time), agentId: e.agentId, type: 'log', message: String(e.text) }))
+      .filter((e) => e && known.has(resolveId(e.agentId)) && e.text)
+      .map((e) => ({ ts: new Date(e.time), agentId: resolveId(e.agentId), type: 'log', message: String(e.text) }))
       .filter((e) => !isNaN(e.ts))
       .sort((a, b) => a.ts - b.ts)
       .slice(-40);
