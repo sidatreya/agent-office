@@ -1,115 +1,117 @@
 {
-  "updatedAt": "2026-10-18T05:51:34.126Z",
+  "updatedAt": "2026-10-18T06:19:14.524Z",
   "agents": [
     {
       "id": "pro-trader",
       "name": "Pro Trader",
-      "status": "idle",
-      "task": "Finished updating ASTER charts with channels and scenarios",
+      "status": "working",
+      "task": "Warren Buffet: pivot engine live on 11 instruments, routines on",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T21:22:23.191Z",
-      "taskSince": "2026-10-17T20:23:47.324Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z",
+      "progress": 1
     },
     {
       "id": "gk",
       "name": "GK",
-      "status": "idle",
-      "task": "Finished the office redesign and published the new look",
+      "status": "working",
+      "task": "PA Sid Atreya: office updates and routing",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T05:51:34.126Z",
-      "taskSince": "2026-10-18T05:51:34.126Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "linkedin",
       "name": "Linkedin",
-      "status": "idle",
-      "task": "Finished ranking brand names and domains for Rankora",
+      "status": "working",
+      "task": "Marketing Maniac: Rankora rename trademark checks",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T21:22:23.191Z",
-      "taskSince": "2026-10-17T20:28:26.397Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "whatsapp-manager",
       "name": "Whatsapp Manager",
       "status": "idle",
-      "task": "Waiting for first check-in",
+      "task": "Waiting on SIM/Android phone from Sidatreya",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": null,
-      "taskSince": "2026-10-17T20:27:23.093Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "developer",
       "name": "Developer",
       "status": "idle",
-      "task": "Waiting for first check-in",
+      "task": "Geek Kid: WhatsApp task manager built (119 tests); awaiting phone, OQC lists, office PC",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": null,
-      "taskSince": "2026-10-17T20:27:23.093Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "developer-whatsapp",
       "name": "Developer Whatsapp Manager",
       "status": "idle",
-      "task": "Waiting for first check-in",
+      "task": "Merged into Geek Kid and Whatsapp Manager",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": null,
-      "taskSince": "2026-10-17T20:27:23.093Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
-      "task": "Finished drafting an org chart plan for the agent team",
+      "task": "Hierarchy update waiting on Sidatreya's approval card",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T05:51:34.126Z",
-      "taskSince": "2026-10-18T05:51:34.126Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Designer",
       "status": "idle",
-      "task": "Finished rendering design options for the study built-in",
+      "task": "Waiting for brief from CCO",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-17T21:22:23.191Z",
-      "taskSince": "2026-10-17T20:23:47.324Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "landscape-designer",
       "name": "Landscape Designer",
-      "status": "idle",
-      "task": "Waiting for first check-in",
+      "status": "working",
+      "task": "Gajar landscape concept done (L-01, L-02); tree decision pending",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": null,
-      "taskSince": "2026-10-17T20:27:23.093Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z",
+      "progress": 1
     },
     {
       "id": "boq",
       "name": "BOQ",
       "status": "idle",
-      "task": "Waiting for first check-in",
+      "task": "Not staffed yet",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": null,
-      "taskSince": "2026-10-17T20:27:23.093Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     },
     {
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Property Manager",
-      "status": "idle",
-      "task": "Finished mobile upgrades to the floor plan checking tool",
+      "status": "working",
+      "task": "Asset Manager: mapping Vastu rules into vastu-tool",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-18T05:51:34.126Z",
-      "taskSince": "2026-10-18T05:51:34.126Z"
+      "lastActive": "2026-10-18T06:19:14.524Z",
+      "taskSince": "2026-10-18T06:19:14.524Z"
     }
   ],
   "events": [
@@ -167,6 +169,11 @@
       "time": "2026-10-18T05:51:34.126Z",
       "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "text": "Added mobile screens and tests to the floor plan tool"
+    },
+    {
+      "time": "2026-10-18T06:19:14.524Z",
+      "agentId": "gk",
+      "text": "Status refresh 11:50 IST: Trading Desk live, Gajar landscape done, Vastu iPhone fixes underway"
     }
   ]
 }
