@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-10-19T07:23:49.810Z",
+  "updatedAt": "2026-10-19T08:22:40.613Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
       "name": "Intraday Signal Trader",
-      "status": "working",
-      "task": "Scanning watchlist; sent midday alert bundle",
+      "status": "idle",
+      "task": "No new scans since the midday alert bundle",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
-      "taskSince": "2026-10-19T07:23:49.810Z"
+      "lastActive": "2026-10-19T08:22:40.613Z",
+      "taskSince": "2026-10-19T08:22:40.613Z"
     },
     {
       "id": "swing-htf-trader",
@@ -18,7 +18,7 @@
       "task": "Levels on auto-refresh; no new charts this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -28,18 +28,18 @@
       "task": "Order-book feed on; no new charts this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "risk-verification",
       "name": "Risk & Verification",
       "status": "working",
-      "task": "Order-book monitor collecting steadily",
+      "task": "Order-book monitor self-restarted; collecting steadily",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
-      "taskSince": "2026-10-19T07:23:49.810Z"
+      "lastActive": "2026-10-19T08:22:40.613Z",
+      "taskSince": "2026-10-19T08:22:40.613Z"
     },
     {
       "id": "gk",
@@ -48,7 +48,7 @@
       "task": "Hourly check-ins only; no new Sidatreya tasks",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -58,7 +58,7 @@
       "task": "No new activity this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -68,7 +68,7 @@
       "task": "Weekly archive done; standing by",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -78,7 +78,7 @@
       "task": "No new marketing work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -88,7 +88,7 @@
       "task": "No new WhatsApp tasks this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -98,7 +98,7 @@
       "task": "No new build work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -108,7 +108,7 @@
       "task": "Vastu tool live; no new work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -118,7 +118,7 @@
       "task": "Campus concept delivered; standing by",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -128,7 +128,7 @@
       "task": "No new creative direction this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -138,7 +138,7 @@
       "task": "No new furniture work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -148,7 +148,7 @@
       "task": "No new landscape work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -158,7 +158,7 @@
       "task": "Standing by for drafting tasks",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -168,7 +168,7 @@
       "task": "Mood stills delivered; standing by",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -178,7 +178,7 @@
       "task": "On demand; no task yet",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
@@ -188,7 +188,7 @@
       "task": "Vastu rulebook shipped; no new work",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T07:23:49.810Z",
+      "lastActive": "2026-10-19T08:22:40.613Z",
       "taskSince": "2026-10-19T07:23:49.810Z"
     }
   ],
@@ -272,6 +272,11 @@
       "time": "2026-10-19T07:23:49.810Z",
       "agentId": "risk-verification",
       "text": "Order-book collector restarted; snaps continuing"
+    },
+    {
+      "time": "2026-10-19T08:22:40.613Z",
+      "agentId": "risk-verification",
+      "text": "Order-book monitor auto-restarted at 13:52 and resynced"
     }
   ]
 }
