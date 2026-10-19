@@ -1,253 +1,198 @@
 {
-  "updatedAt": "2026-10-19T11:24:01.085Z",
+  "updatedAt": "2026-10-19T12:27:35.749Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
       "name": "Intraday Signal Trader",
       "status": "working",
-      "task": "Running intraday scans and chart-label dry runs",
+      "task": "Running intraday scans and redoing chart labels",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "working",
-      "task": "Refreshed swing level ladder charts",
+      "status": "idle",
+      "task": "Level ladder auto-refreshing; no new swing work",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "Producing new desk charts for today's coins",
+      "task": "New desk alert and volume charts for today's coins",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "risk-verification",
       "name": "Risk & Verification",
-      "status": "working",
-      "task": "Updating verification rules; order-book feed live",
+      "status": "idle",
+      "task": "Order-book collector running; no new reviews",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "gk",
       "name": "PA Sid Atreya",
-      "status": "working",
-      "task": "Took Sidatreya's Vastu tool feedback; relaying to team",
+      "status": "idle",
+      "task": "Waiting for the CEO's ready signal on the Vastu tool",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "ceo",
       "name": "CEO",
       "status": "idle",
-      "task": "No new files this hour",
+      "task": "No new activity this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "archivist",
       "name": "Archivist",
       "status": "working",
-      "task": "Keeping the Vastu overhaul changelog",
+      "task": "Logging Vastu sources and coverage corrections",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "linkedin",
       "name": "Marketing Maniac",
       "status": "working",
-      "task": "Rankora launch plan and build brief",
+      "task": "Gathering classical and academic Vastu sources",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "whatsapp-manager",
       "name": "Whatsapp Manager",
-      "status": "working",
-      "task": "Building Vastu test cases",
+      "status": "idle",
+      "task": "Vastu test cases delivered",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "developer",
       "name": "Geek Kid",
       "status": "working",
-      "task": "Drafting plan-upload backend and schema for Vastu",
+      "task": "Plan-upload backend and checker patches for Vastu",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "web-3d-developer",
       "name": "Web & 3D Developer",
       "status": "working",
-      "task": "Adding Vastu tool regression tests",
+      "task": "Wiring v4 engine, restyle and plan upload into tool",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "working",
-      "task": "Drafting the Vastu mandala placement spec",
+      "task": "Mandala placement engine tests on sample plans",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "cco",
       "name": "CCO",
       "status": "working",
-      "task": "Setting design direction for the Vastu tool",
+      "task": "Finalised design tokens and direction for Vastu tool",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Deaigner",
       "status": "working",
-      "task": "Vastu test interiors, report wording, remedies",
+      "task": "Vastu remedy library and report wording",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "landscape-designer",
       "name": "Landscape Desigener",
       "status": "working",
-      "task": "Drawing site-context symbols for the Vastu tool",
+      "task": "Site-context test cases for the Vastu tool",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "dwg-drafting-operator",
       "name": "DWG & Drafting Operator",
       "status": "working",
-      "task": "Extracting walls and openings for Vastu tests",
+      "task": "Patched the drawing extractor; verified before/after",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "image-operator",
       "name": "Image Operator",
-      "status": "idle",
-      "task": "No new image work this hour",
+      "status": "working",
+      "task": "Made Vastu Purush artwork; logo still pending",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "video-operator",
       "name": "Video Operator",
       "status": "working",
-      "task": "Storyboarded the Vastu tool walkthrough video",
+      "task": "Editing a walkthrough video of the Vastu tool",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     },
     {
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Asset Manager",
       "status": "working",
-      "task": "Building Vastu rulebook v4",
+      "task": "Vastu rules v4.1.1 merged; Landbook updates",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T11:24:01.085Z",
-      "taskSince": "2026-10-19T11:24:01.085Z"
+      "lastActive": "2026-10-19T12:27:35.749Z",
+      "taskSince": "2026-10-19T12:27:35.749Z"
     }
   ],
   "events": [
-    {
-      "time": "2026-10-19T02:19:11.391Z",
-      "agentId": "gk",
-      "text": "Office went live"
-    },
-    {
-      "time": "2026-10-19T02:20:11.464Z",
-      "agentId": "pro-trader",
-      "text": "Signed off the day's level rules"
-    },
-    {
-      "time": "2026-10-19T02:20:11.464Z",
-      "agentId": "swing-htf-trader",
-      "text": "Rolled daily and weekly levels for the new day"
-    },
-    {
-      "time": "2026-10-19T02:20:11.464Z",
-      "agentId": "intraday-signal-trader",
-      "text": "Fixed signal checks and passed dry runs"
-    },
-    {
-      "time": "2026-10-19T02:20:11.464Z",
-      "agentId": "risk-verification",
-      "text": "Updated recheck rules and logged an approval"
-    },
-    {
-      "time": "2026-10-19T03:17:55.797Z",
-      "agentId": "pro-trader",
-      "text": "Refreshed pivot alert charts four times"
-    },
-    {
-      "time": "2026-10-19T03:17:55.797Z",
-      "agentId": "intraday-signal-trader",
-      "text": "Sent a signal bundle to Warren Buffet for review"
-    },
-    {
-      "time": "2026-10-19T03:17:55.797Z",
-      "agentId": "risk-verification",
-      "text": "Restarted and resynced the order-book monitor"
-    },
-    {
-      "time": "2026-10-19T04:21:03.555Z",
-      "agentId": "pro-trader",
-      "text": "Refreshed pivot alert charts four more times"
-    },
-    {
-      "time": "2026-10-19T04:21:03.555Z",
-      "agentId": "intraday-signal-trader",
-      "text": "Ran 12 more scans and updated the bundle for review"
-    },
-    {
-      "time": "2026-10-19T04:21:03.555Z",
-      "agentId": "risk-verification",
-      "text": "Order-book monitor auto-restarted after a brief freeze"
-    },
     {
       "time": "2026-10-19T05:24:27.521Z",
       "agentId": "pro-trader",
@@ -377,6 +322,76 @@
       "time": "2026-10-19T11:24:01.085Z",
       "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "text": "Rulebook v4 build scripts"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "intraday-signal-trader",
+      "text": "Ran a multi-timeframe chart set for today's coins"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "pro-trader",
+      "text": "Posted fresh desk charts"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "cco",
+      "text": "Design tokens handed to the web team"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "archivist",
+      "text": "Updated the Vastu overhaul changelog"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "linkedin",
+      "text": "Compiled classical Vastu source notes"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "developer",
+      "text": "Checker patches for entrances and cuts"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "web-3d-developer",
+      "text": "Committed v4 engine and new report to the tool"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "grok-bot",
+      "text": "Mandala engine ported into the tool"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "furniture-designer",
+      "text": "Delivered a Vastu remedy library"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "landscape-designer",
+      "text": "Site test cases validated on v4 rules"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "dwg-drafting-operator",
+      "text": "Extractor patch sent with verification"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "image-operator",
+      "text": "Vastu Purush artwork v1 delivered"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "video-operator",
+      "text": "First 75-second walkthrough cut ready"
+    },
+    {
+      "time": "2026-10-19T12:27:35.749Z",
+      "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
+      "text": "Vastu rules v4.1.1 released"
     }
   ]
 }
