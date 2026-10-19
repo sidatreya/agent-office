@@ -1,195 +1,195 @@
 {
-  "updatedAt": "2026-10-19T06:24:53.613Z",
+  "updatedAt": "2026-10-19T07:23:49.810Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
       "name": "Intraday Signal Trader",
       "status": "working",
-      "task": "Intraday Signal Trader: scanning coins, sent two bundles to Warren",
+      "task": "Scanning watchlist; sent midday alert bundle",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T06:24:53.613Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
       "status": "idle",
-      "task": "Swing HTF Trader: today's levels set, no new charts this hour",
+      "task": "Levels on auto-refresh; no new charts this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T03:17:55.797Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "idle",
-      "task": "Warren Buffet: order-book feed running, no new charts this hour",
+      "task": "Order-book feed on; no new charts this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T06:24:53.613Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "risk-verification",
       "name": "Risk & Verification",
       "status": "working",
-      "task": "Risk & Verification: order-book monitor running steadily",
+      "task": "Order-book monitor collecting steadily",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T05:24:27.521Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "gk",
       "name": "PA Sid Atreya",
       "status": "idle",
-      "task": "PA Sid Atreya: hourly check-ins, no new tasks this hour",
+      "task": "Hourly check-ins only; no new Sidatreya tasks",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T03:17:55.797Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "ceo",
       "name": "CEO",
       "status": "idle",
-      "task": "CEO: no new activity overnight",
+      "task": "No new activity this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "archivist",
       "name": "Archivist",
       "status": "idle",
-      "task": "Archivist: weekly archive done, standing by",
+      "task": "Weekly archive done; standing by",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "linkedin",
       "name": "Marketing Maniac",
       "status": "idle",
-      "task": "Marketing Maniac: no new activity overnight",
+      "task": "No new marketing work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "whatsapp-manager",
       "name": "Whatsapp Manager",
       "status": "idle",
-      "task": "Whatsapp Manager: no new activity overnight",
+      "task": "No new WhatsApp tasks this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "developer",
       "name": "Geek Kid",
       "status": "idle",
-      "task": "Geek Kid: no new activity overnight",
+      "task": "No new build work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "web-3d-developer",
       "name": "Web & 3D Developer",
       "status": "idle",
-      "task": "Web & 3D Developer: Vastu tool v3.3 live, no new work",
+      "task": "Vastu tool live; no new work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
-      "task": "Grok Bot: campus concept delivered, no new work",
+      "task": "Campus concept delivered; standing by",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "cco",
       "name": "CCO",
       "status": "idle",
-      "task": "CCO: no new activity overnight",
+      "task": "No new creative direction this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Deaigner",
       "status": "idle",
-      "task": "Furniture Designer: no new activity overnight",
+      "task": "No new furniture work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "landscape-designer",
       "name": "Landscape Desigener",
       "status": "idle",
-      "task": "Landscape Designer: no new activity overnight",
+      "task": "No new landscape work this hour",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "dwg-drafting-operator",
       "name": "DWG & Drafting Operator",
       "status": "idle",
-      "task": "DWG & Drafting Operator: standing by for drafting tasks",
+      "task": "Standing by for drafting tasks",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "image-operator",
       "name": "Image Operator",
       "status": "idle",
-      "task": "Image Operator: mood stills delivered, standing by",
+      "task": "Mood stills delivered; standing by",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "video-operator",
       "name": "Video Operator",
       "status": "idle",
-      "task": "Video Operator: on demand, no task yet",
+      "task": "On demand; no task yet",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     },
     {
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Asset Manager",
       "status": "idle",
-      "task": "Asset Manager: Vastu rulebook v3.3 sent, no new work",
+      "task": "Vastu rulebook shipped; no new work",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T06:24:53.613Z",
-      "taskSince": "2026-10-19T02:20:11.464Z"
+      "lastActive": "2026-10-19T07:23:49.810Z",
+      "taskSince": "2026-10-19T07:23:49.810Z"
     }
   ],
   "events": [
@@ -262,6 +262,16 @@
       "time": "2026-10-19T06:24:53.613Z",
       "agentId": "intraday-signal-trader",
       "text": "Ran 13 more scans and sent two bundles to Warren"
+    },
+    {
+      "time": "2026-10-19T07:23:49.810Z",
+      "agentId": "intraday-signal-trader",
+      "text": "Four more scans since 11:54; midday alert bundle sent"
+    },
+    {
+      "time": "2026-10-19T07:23:49.810Z",
+      "agentId": "risk-verification",
+      "text": "Order-book collector restarted; snaps continuing"
     }
   ]
 }
