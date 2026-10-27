@@ -1,397 +1,202 @@
 {
-  "updatedAt": "2026-10-19T14:31:12.142Z",
+  "updatedAt": "2026-10-27T02:25:51.607Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
       "name": "Intraday Signal Trader",
-      "status": "working",
-      "task": "Fresh dry-run scans and charts for today's coins",
+      "status": "idle",
+      "task": "Scans paused; helps on the Live Chart when asked",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "idle",
-      "task": "Level ladder auto-refreshing; no new swing work",
+      "status": "working",
+      "task": "Daily level ladder built for today",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T12:27:35.749Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "New multi-market desk charts and HTF reads",
+      "task": "15-minute ASTER alerts and Sid's Epic desk one-pager",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "risk-verification",
       "name": "Risk & Verification",
-      "status": "working",
-      "task": "Signal rechecks done; order-book collector running",
+      "status": "idle",
+      "task": "ASTER checks paused",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "gk",
       "name": "PA Sid Atreya",
       "status": "working",
-      "task": "Watching for the new tool build to go live",
+      "task": "Routed Sid's Epic desk-wide build rule to the team",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "ceo",
       "name": "CEO",
-      "status": "working",
-      "task": "Reviewing tool screenshots; ready signal still held",
+      "status": "idle",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "archivist",
       "name": "Archivist",
       "status": "idle",
-      "task": "No new activity this hour",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T13:22:35.499Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "linkedin",
       "name": "Marketing Maniac",
-      "status": "working",
-      "task": "Drafted homeowner copy and filed UI screenshots",
+      "status": "idle",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "whatsapp-manager",
       "name": "Whatsapp Manager",
       "status": "idle",
-      "task": "No new activity this hour",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "developer",
       "name": "Geek Kid",
       "status": "idle",
-      "task": "Plan-extract patches delivered earlier; standing by",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "web-3d-developer",
       "name": "Web & 3D Developer",
-      "status": "working",
-      "task": "Purush v3 and badge follow-up built; not live yet",
+      "status": "idle",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
-      "task": "No new studio work this hour",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "cco",
       "name": "CCO",
-      "status": "working",
-      "task": "Directed Purush badge and tap-target follow-up",
+      "status": "idle",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Deaigner",
       "status": "idle",
-      "task": "Earlier test plans reused; no new work",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "landscape-designer",
       "name": "Landscape Desigener",
       "status": "idle",
-      "task": "No new activity this hour",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "dwg-drafting-operator",
       "name": "DWG & Drafting Operator",
       "status": "idle",
-      "task": "Test fixtures delivered earlier; standing by",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "image-operator",
       "name": "Image Operator",
       "status": "idle",
-      "task": "Purush art in; logo still pending",
+      "task": "No new activity seen",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "video-operator",
       "name": "Video Operator",
       "status": "idle",
-      "task": "Walkthrough filed earlier; standing by",
+      "task": "On demand; no new requests",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     },
     {
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Asset Manager",
       "status": "idle",
-      "task": "Landbook healthy; no new product work this hour",
+      "task": "Background services healthy; no new project work",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-10-19T14:31:12.142Z",
-      "taskSince": "2026-10-19T14:31:12.142Z"
+      "lastActive": "2026-10-27T02:25:51.607Z",
+      "taskSince": "2026-10-27T02:25:51.607Z"
     }
   ],
   "events": [
     {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "web-3d-developer",
-      "text": "Committed Vastu regression tests"
-    },
-    {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "grok-bot",
-      "text": "VPM spec draft and drafting review"
-    },
-    {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "furniture-designer",
-      "text": "Seven furnished test plans"
-    },
-    {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "landscape-designer",
-      "text": "Site symbol set drawn"
-    },
-    {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "dwg-drafting-operator",
-      "text": "Drafting review written"
-    },
-    {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "video-operator",
-      "text": "Walkthrough storyboard written"
-    },
-    {
-      "time": "2026-10-19T11:24:01.085Z",
-      "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
-      "text": "Rulebook v4 build scripts"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "intraday-signal-trader",
-      "text": "Ran a multi-timeframe chart set for today's coins"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "pro-trader",
-      "text": "Posted fresh desk charts"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "cco",
-      "text": "Design tokens handed to the web team"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "archivist",
-      "text": "Updated the Vastu overhaul changelog"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "linkedin",
-      "text": "Compiled classical Vastu source notes"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "developer",
-      "text": "Checker patches for entrances and cuts"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "web-3d-developer",
-      "text": "Committed v4 engine and new report to the tool"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "grok-bot",
-      "text": "Mandala engine ported into the tool"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "furniture-designer",
-      "text": "Delivered a Vastu remedy library"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "landscape-designer",
-      "text": "Site test cases validated on v4 rules"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "dwg-drafting-operator",
-      "text": "Extractor patch sent with verification"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "image-operator",
-      "text": "Vastu Purush artwork v1 delivered"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "video-operator",
-      "text": "First 75-second walkthrough cut ready"
-    },
-    {
-      "time": "2026-10-19T12:27:35.749Z",
-      "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
-      "text": "Vastu rules v4.1.1 released"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "pro-trader",
-      "text": "Posted a new set of desk charts"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "risk-verification",
-      "text": "Zone-break recheck logged"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "ceo",
-      "text": "First team check-in filed"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "cco",
-      "text": "Review notes on the v4 report sent to web team"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "developer",
-      "text": "Plan-extract and checker patch notes filed"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "web-3d-developer",
-      "text": "Report go-live fixes committed and tested"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "grok-bot",
-      "text": "Mandala review tools updated"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "furniture-designer",
-      "text": "Interior test plans and results filed"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "landscape-designer",
-      "text": "Added three new site test cases"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "dwg-drafting-operator",
-      "text": "Drawing test fixtures delivered"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "video-operator",
-      "text": "Walkthrough video with captions filed"
-    },
-    {
-      "time": "2026-10-19T13:22:35.499Z",
-      "agentId": "6c94624b-cff0-445d-acf3-76a7780c90f3",
-      "text": "Vastu rules v4.1.4 released"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
-      "agentId": "intraday-signal-trader",
-      "text": "Fresh dry-run scan pack filed"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
-      "agentId": "pro-trader",
-      "text": "New desk and HTF chart set posted"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
-      "agentId": "risk-verification",
-      "text": "Zone-break and pin rechecks logged"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
+      "time": "2026-10-27T02:25:19.252Z",
       "agentId": "gk",
-      "text": "Started a live-build watch after Sidatreya's ask"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
-      "agentId": "cco",
-      "text": "Purush badge follow-up directed and checked"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
-      "agentId": "linkedin",
-      "text": "Homeowner copy v1 and screenshot set filed"
-    },
-    {
-      "time": "2026-10-19T14:31:12.142Z",
-      "agentId": "web-3d-developer",
-      "text": "Purush v3 and badge build committed locally"
+      "text": "Office went live"
     }
   ]
 }
