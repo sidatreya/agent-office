@@ -1,4 +1,4 @@
-// World builder: ocean, podium, stacked floors (B1 + 01–04), stations, managers, decor.
+// World builder: ocean, podium, stacked floors (B1 + 01–05), stations, managers, decor.
 import * as THREE from 'three';
 import { makeMaterials, makeEnvironment } from '../materials.js';
 import { buildOcean } from '../ocean.js';
@@ -10,6 +10,7 @@ import { buildStation } from './station.js';
 import { buildManager } from './manager.js';
 import { buildTrading, buildAdmin, buildStudio } from './floors-a.js';
 import { buildProperty, buildB1 } from './floors-b.js';
+import { buildRecreation } from './floors-c.js';
 import { buildMarketWall, WIDGETS } from './markets.js';
 import * as Z from './zaha.js';
 
@@ -56,6 +57,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
     studio: buildStudio(byFloor.get('studio').group, ctxB),
     property: buildProperty(byFloor.get('property').group, ctxB),
     b1: buildB1(byFloor.get('b1').group, ctxB),
+    recreation: buildRecreation(byFloor.get('recreation').group, ctxB),
   };
   const roof = new THREE.Group(); roof.position.y = floorY(Math.max(...floors.map((f) => f.level)) + 1) - 0.6; scene.add(roof); buildRoof(roof);
   const roofDeck = new THREE.Group(); roofDeck.position.y = 0.62; roof.add(roofDeck); // top of the roof slab
@@ -73,7 +75,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   }
   const V = (x, y, z) => new THREE.Vector3(x, y, z);
   const fests = [];
-  for (const id of ['trading', 'admin', 'studio', 'property']) {
+  for (const id of ['trading', 'admin', 'studio', 'property', 'recreation']) {
     const fest = buildFestive(byFloor.get(id).group);
     fest.stringLights([[V(-FX + 0.25, 6.75, FZ - 0.1), V(-FX + 0.25, 6.75, -FZ + 0.2), 0.35, 3]]);
     fests.push({ id, fest });
@@ -84,8 +86,8 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   fests[0].fest.lantern(-11.2, 5.4, 5.6, '#ffb703');
   fests[3].fest.lantern(12.8, 5.2, -4.0, '#ff7b00'); fests[3].fest.diya(12.9, -3.0, 0.5);
 
-  // ── Sidatreya Designs redesign: zen gardens, bull, art, tickers, rangoli + diyas on every floor ──
-  const zUp = { trading: [], admin: [], studio: [], property: [], b1: [] };
+  // ── Sedathria redesign: zen gardens, bull, art, tickers, rangoli + diyas on every floor ──
+  const zUp = { trading: [], admin: [], studio: [], property: [], recreation: [], b1: [] };
   const G = (id) => byFloor.get(id).group;
   const fT = fests[0].fest, fP = fests[3].fest, fB = buildFestive(G('b1'));
   fests.push({ id: 'b1', fest: fB });
@@ -111,7 +113,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   zUp.property.push(Z.tickerStrip(G('property'), { x: 0, y: 5.6, z: -FZ + 0.42, w: 9.0, h: 0.3, items: Z.EXAMPLE_ITEMS }).update);
   // B1: rangoli + diyas at the lift lobby
   fB.rangoli(6.4, 0.2, 0.75, 2);
-  // roof: flowing canopy, rooftop zen terrace, SIDATREYA DESIGNS logo
+  // roof: flowing canopy, rooftop zen terrace, SEDATHRIA logo
   const zr = Z.zahaRoof(roof, roofFest, roofDeck);
   // exterior: live office banner on the quay, live market banner (TradingView ticker tape) under the logo,
   // live market billboard (TradingView symbol overview) on a sculpted pylon
@@ -125,7 +127,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   ]);
   const pylon = Z.billboardPylon(exterior, { x: 27.5, z: 3.5, rotY: -0.18, w: 12, h: 6.75, y: floorY(2) });
   const billboard = buildMarketWall(pylon, cssScene, [
-    { title: 'SIDATREYA DESIGNS · MARKETS', sub: 'TradingView · live feed', url: WIDGETS.symbolOverview(), x: 0, y: floorY(2), z: 0, w: 12, h: 6.75 },
+    { title: 'SEDATHRIA · MARKETS', sub: 'TradingView · live feed', url: WIDGETS.symbolOverview(), x: 0, y: floorY(2), z: 0, w: 12, h: 6.75 },
   ]);
 
   // floor visibility (cut-away: floors above the selected one are hidden)

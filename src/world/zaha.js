@@ -1,7 +1,7 @@
-// Zaha-Hadid-style redesign layer (Sidatreya Designs): flowing white parametric shell, swooping floor
+// Zaha-Hadid-style redesign layer (Sedathria): flowing white parametric shell, swooping floor
 // bands, sharp blades, warm cove lighting, zen gardens with skylight shafts, a bronze charging bull,
 // art installations, tickers (live where a real feed exists, otherwise clearly marked EXAMPLE DATA),
-// the rooftop "SIDATREYA DESIGNS" logo, a live market banner and a live market billboard.
+// the rooftop "SEDATHRIA" logo, a live market banner and a live market billboard.
 import * as THREE from 'three';
 import { ctx, FX, FZ, WH, FH, mesh, box, cyl, rbox, neonMat, canvasTexture, radialTexture } from './common.js';
 import { CORE } from './building.js';
@@ -233,7 +233,7 @@ export function zenGarden(parent, { x, z, rx = 3.2, rz = 2.0, fest, skylight = t
   for (let k = 0; k < 4; k++) { const c = mesh(new THREE.IcosahedronGeometry(0.13, 0), new THREE.MeshStandardMaterial({ color: 0x3d6b2c, flatShading: true }), { x: bx0 - 0.1 + k * 0.08, y: 0.5 + (k % 2) * 0.06, z: bz0 }); c.scale.y = 0.5; g.add(c); }
   // carved basalt sign
   if (sign) {
-    const st = canvasTexture(512, 256, (c, W, H) => { c.fillStyle = '#2b2b2e'; c.fillRect(0, 0, W, H); c.fillStyle = '#c9c5bd'; c.font = '600 46px Georgia, serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('SIDATREYA DESIGNS', W / 2, H / 2); });
+    const st = canvasTexture(512, 256, (c, W, H) => { c.fillStyle = '#2b2b2e'; c.fillRect(0, 0, W, H); c.fillStyle = '#c9c5bd'; c.font = '600 46px Georgia, serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('SEDATHRIA', W / 2, H / 2); });
     const s = rbox(1.3, 0.75, 0.22, 0.03, new THREE.MeshStandardMaterial({ color: 0x2b2b2e, roughness: 0.8 }), { x: 0.75 * rx, y: 0.38, z: 0.75 * rz }); s.rotation.set(-0.12, -0.5, 0); g.add(s);
     const f = mesh(new THREE.PlaneGeometry(1.2, 0.6), new THREE.MeshStandardMaterial({ map: st, roughness: 0.8 }), { z: 0.115, cast: false }); s.add(f);
   }
@@ -365,7 +365,7 @@ export function curvedWall(parent, { x, z, r, a0, a1, h = 2.6 }) {
   parent.add(ribbon(pts, false, (p) => ({ yb: h + 0.25 * Math.sin(p.u * Math.PI), yt: h + 0.03 + 0.25 * Math.sin(p.u * Math.PI), d0: 0.05, d1: 0.15 }), neonMat(WARM, 2.0), { cast: false }));
 }
 
-// ── roof: flowing canopy shell, rooftop zen terrace, SIDATREYA DESIGNS logo ──
+// ── roof: flowing canopy shell, rooftop zen terrace, SEDATHRIA logo ──
 export function zahaRoof(roof, fest, deck) {
   const M = ctx.M;
   const { cx, cz, A, B } = SHELL;
@@ -381,9 +381,9 @@ export function zahaRoof(roof, fest, deck) {
   const logoTex = canvasTexture(2400, 300, (c, W, H) => {
     c.clearRect(0, 0, W, H);
     c.font = '800 220px "Helvetica Neue", Arial, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
-    c.lineJoin = 'round'; c.lineWidth = 18; c.strokeStyle = 'rgba(40,26,12,0.9)'; c.strokeText('SIDATREYA DESIGNS', W / 2, H / 2 + 8);
+    c.lineJoin = 'round'; c.lineWidth = 18; c.strokeStyle = 'rgba(40,26,12,0.9)'; c.strokeText('SEDATHRIA', W / 2, H / 2 + 8);
     c.shadowColor = 'rgba(255,200,120,0.9)'; c.shadowBlur = 24; c.fillStyle = '#ffd98a';
-    c.fillText('SIDATREYA DESIGNS', W / 2, H / 2 + 8);
+    c.fillText('SEDATHRIA', W / 2, H / 2 + 8);
   });
   const logo = mesh(new THREE.PlaneGeometry(22, 2.75), new THREE.MeshBasicMaterial({ map: logoTex, transparent: true, color: new THREE.Color(1.12, 1.08, 1.0), depthWrite: false }), { x: cx - 2, y: 3.4, z: FZ + 1.6, cast: false });
   logo.rotation.x = -0.05; logo.renderOrder = 9; roof.add(logo);
@@ -414,7 +414,7 @@ export function officeBanner(parent, { x, y, z, w = 30, h = 0.7 }) {
       put('● LIVE OFFICE DATA', '#22c55e');
       put(`${agents.length} AGENTS`, '#f5f5f4'); put(`${working.length} WORKING`, '#86efac'); put(`${agents.length - working.length} IDLE`, '#fcd34d');
       for (const x of working.slice(0, 4)) put(`${x.a.name.toUpperCase()} ▶ ON TASK`, '#e5e7eb');
-      put('SIDATREYA DESIGNS', '#f5c46b');
+      put('SEDATHRIA', '#f5c46b');
     }
     tex.needsUpdate = true;
   }

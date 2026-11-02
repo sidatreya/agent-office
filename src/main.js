@@ -50,7 +50,7 @@ function viewFor(fid) {
   const portrait = window.innerWidth / window.innerHeight < 1;
   const aspect = window.innerWidth / window.innerHeight;
   const k = portrait ? Math.min(3.4, 1.5 / aspect) : window.innerWidth < 1000 ? 1.25 : 1;
-  if (!fid) return { pos: new THREE.Vector3(34 * k, 30 + 6 * k, 76 * k), target: new THREE.Vector3(1.5, floorY(2) + 0.6, 0) };
+  if (!fid) return { pos: new THREE.Vector3(37 * k, 34 + 6 * k, 84 * k), target: new THREE.Vector3(1.5, floorY(2.5) + 0.6, 0) }; // 6 storeys incl. 05 Recreation
   const y = floorY(FLOORS.find((f) => f.id === fid).level);
   const up = fid === 'b1' ? 4.5 : 0;
   return { pos: new THREE.Vector3(6.0 * k, y + (13.2 + up) * k, 27.5 * k), target: new THREE.Vector3(portrait ? 1.5 : -1.2, y + 1.8, -2.0) };

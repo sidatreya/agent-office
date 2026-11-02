@@ -8,7 +8,7 @@
 // ─────────────────────────────────────────────────────────────
 
 export const OFFICE = {
-  title: "Sidatreya's Office",
+  title: 'Sedathria',
   subtitle: 'Live view of your agents at work',
 };
 
@@ -18,6 +18,7 @@ export const FLOORS = [
   { id: 'admin', name: 'Admin Block', level: 1, label: '02' },
   { id: 'studio', name: 'Creative Studio', level: 2, label: '03' },
   { id: 'property', name: 'Property Management', level: 3, label: '04' },
+  { id: 'recreation', name: 'Recreation · Dab Lab & Dispensary', level: 4, label: '05' },
 ];
 
 const a = (o) => ({ status: 'idle', task: 'Waiting for first check-in', tasks: [o.role], logs: [`${o.name} checked in`], ...o });
