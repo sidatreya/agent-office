@@ -8,7 +8,7 @@
 // ─────────────────────────────────────────────────────────────
 
 export const OFFICE = {
-  title: 'Sedathria',
+  title: "Sidatreya's Office",
   subtitle: 'Live view of your agents at work',
 };
 

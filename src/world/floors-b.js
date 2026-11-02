@@ -221,7 +221,7 @@ export function buildProperty(g) {
   P.rug(g, 12.3, 2.1, 5.0, 3.8, M.rugSand);
   P.meetingTable(g, 11.8, 2.1, 2.4, 1.1, 6);
   const pres = panel(g, 2.9, 1.65, drawPresentation, { x: 14.75, y: 1.85, z: 2.1, rotY: -Math.PI / 2, px: 1100 });
-  const brand = signPanel(3.4, 0.7, (c, w, h) => { c.fillStyle = '#2a2140'; c.fillRect(0, 0, w, h); c.fillStyle = '#fbbf24'; c.font = '800 70px Georgia, serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('SEDATHRIA', w / 2, h * 0.38); c.fillStyle = '#e9d5ff'; c.font = '600 36px system-ui'; c.fillText('PROPERTY & LAND INTELLIGENCE', w / 2, h * 0.76); }, { frame: false });
+  const brand = signPanel(3.4, 0.7, (c, w, h) => { c.fillStyle = '#2a2140'; c.fillRect(0, 0, w, h); c.fillStyle = '#fbbf24'; c.font = '800 70px Georgia, serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('SIDATREYA', w / 2, h * 0.38); c.fillStyle = '#e9d5ff'; c.font = '600 36px system-ui'; c.fillText('PROPERTY & LAND INTELLIGENCE', w / 2, h * 0.76); }, { frame: false });
   brand.position.set(12.3, 2.2, 4.2); brand.rotation.y = Math.PI; g.add(brand);
   P.labelSign(g, 'CLIENT PRESENTATION ROOM', 12.3, 3.25, 0.0, 0, { w: 3.4, h: 0.3, bg: '#713f12', fg: '#fef3c7', size: 40 });
   P.plant(g, 10.1, 3.7, 0.8, 0);
@@ -296,7 +296,7 @@ function drawPresentation(c, w, h, t = 0) {
   const slide = Math.floor(t / 6) % 3;
   c.fillStyle = '#0f0a1e'; c.fillRect(0, 0, w, h);
   const grd = c.createLinearGradient(0, 0, w, h); grd.addColorStop(0, '#1e1145'); grd.addColorStop(1, '#3b1d0b'); c.fillStyle = grd; c.fillRect(0, 0, w, h);
-  c.fillStyle = '#fbbf24'; c.font = '800 50px Georgia, serif'; c.fillText('Sedathria · Property & Land Intelligence', 40, 80);
+  c.fillStyle = '#fbbf24'; c.font = '800 50px Georgia, serif'; c.fillText('Sidatreya · Property & Land Intelligence', 40, 80);
   c.fillStyle = '#e9d5ff'; c.font = '600 32px system-ui';
   c.fillText(['Portfolio overview', 'Site visual · Parcel cluster 7', 'Value growth (illustrative)'][slide], 40, 130);
   if (slide === 1) { // stylised site render: plot, buildings, trees

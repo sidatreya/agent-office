@@ -86,7 +86,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   fests[0].fest.lantern(-11.2, 5.4, 5.6, '#ffb703');
   fests[3].fest.lantern(12.8, 5.2, -4.0, '#ff7b00'); fests[3].fest.diya(12.9, -3.0, 0.5);
 
-  // ── Sedathria redesign: zen gardens, bull, art, tickers, rangoli + diyas on every floor ──
+  // ── Sidatreya Designs redesign: zen gardens, bull, art, tickers, rangoli + diyas on every floor ──
   const zUp = { trading: [], admin: [], studio: [], property: [], recreation: [], b1: [] };
   const G = (id) => byFloor.get(id).group;
   const fT = fests[0].fest, fP = fests[3].fest, fB = buildFestive(G('b1'));
@@ -113,7 +113,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   zUp.property.push(Z.tickerStrip(G('property'), { x: 0, y: 5.6, z: -FZ + 0.42, w: 9.0, h: 0.3, items: Z.EXAMPLE_ITEMS }).update);
   // B1: rangoli + diyas at the lift lobby
   fB.rangoli(6.4, 0.2, 0.75, 2);
-  // roof: flowing canopy, rooftop zen terrace, SEDATHRIA logo
+  // roof: flowing canopy, rooftop zen terrace, SIDATREYA DESIGNS logo
   const zr = Z.zahaRoof(roof, roofFest, roofDeck);
   // exterior: live office banner on the quay, live market banner (TradingView ticker tape) under the logo,
   // live market billboard (TradingView symbol overview) on a sculpted pylon
@@ -127,7 +127,7 @@ export function buildWorld(scene, agents, floors, { renderer, cssScene, onStatio
   ]);
   const pylon = Z.billboardPylon(exterior, { x: 27.5, z: 3.5, rotY: -0.18, w: 12, h: 6.75, y: floorY(2) });
   const billboard = buildMarketWall(pylon, cssScene, [
-    { title: 'SEDATHRIA · MARKETS', sub: 'TradingView · live feed', url: WIDGETS.symbolOverview(), x: 0, y: floorY(2), z: 0, w: 12, h: 6.75 },
+    { title: 'SIDATREYA DESIGNS · MARKETS', sub: 'TradingView · live feed', url: WIDGETS.symbolOverview(), x: 0, y: floorY(2), z: 0, w: 12, h: 6.75 },
   ]);
 
   // floor visibility (cut-away: floors above the selected one are hidden)
