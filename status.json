@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T14:21:57.798Z",
+  "updatedAt": "2026-11-09T14:22:07.092Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "Market alert charts through the evening",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T13:19:33.595Z",
+      "lastActive": "2026-11-09T14:22:07.092Z",
       "taskSince": "2026-11-09T12:23:16.515Z"
     },
     {
@@ -48,7 +48,7 @@
       "task": "Hourly office check-in only",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T13:19:33.595Z",
+      "lastActive": "2026-11-09T14:22:07.092Z",
       "taskSince": "2026-11-09T07:21:59.012Z"
     },
     {
@@ -185,11 +185,11 @@
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Asset Manager",
       "status": "idle",
-      "task": "Property app running steadily; no new work",
+      "task": "Routine health checks only",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": "2026-11-09T14:22:07.092Z",
+      "taskSince": "2026-11-09T14:22:07.092Z"
     }
   ],
   "events": [
