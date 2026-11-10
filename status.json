@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T04:17:56.825Z",
+  "updatedAt": "2026-11-10T05:22:22.059Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -8,28 +8,28 @@
       "task": "Scans paused; helps on the Live Chart when asked",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
+      "lastActive": "2026-11-10T05:22:22.059Z",
       "taskSince": "2026-11-08T02:19:38.947Z"
     },
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "working",
-      "task": "Refreshed the daily level ladder build",
+      "status": "idle",
+      "task": "Today's level ladder ready for the desk",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-10T02:24:21.182Z",
-      "taskSince": "2026-11-10T02:24:21.182Z"
+      "lastActive": "2026-11-10T05:22:22.059Z",
+      "taskSince": "2026-11-10T05:22:22.059Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "Producing ASTER alert charts and day-type read",
+      "task": "ASTER alert packages with trap charts through the morning",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-10T04:17:56.825Z",
-      "taskSince": "2026-11-10T04:17:56.825Z"
+      "lastActive": "2026-11-10T05:22:22.059Z",
+      "taskSince": "2026-11-10T05:22:22.059Z"
     },
     {
       "id": "risk-verification",
@@ -38,18 +38,18 @@
       "task": "ASTER checks paused",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
+      "lastActive": "2026-11-10T05:22:22.059Z",
       "taskSince": "2026-11-08T02:19:38.947Z"
     },
     {
       "id": "gk",
       "name": "PA Sid Atreya",
-      "status": "working",
-      "task": "Finished investor pack and property tools for Sidatreya",
+      "status": "idle",
+      "task": "Hourly office check-ins",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-10T02:24:21.182Z",
-      "taskSince": "2026-11-10T02:24:21.182Z"
+      "lastActive": "2026-11-10T05:22:22.059Z",
+      "taskSince": "2026-11-10T05:22:22.059Z"
     },
     {
       "id": "ceo",
