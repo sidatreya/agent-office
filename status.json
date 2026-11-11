@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T14:25:19.534Z",
+  "updatedAt": "2026-11-11T02:19:29.267Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -14,22 +14,22 @@
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "idle",
-      "task": "Waiting for the next daily build",
+      "status": "working",
+      "task": "Today's level ladder built for the desk",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-10T13:22:37.420Z",
-      "taskSince": "2026-11-10T07:23:58.560Z"
+      "lastActive": "2026-11-11T02:19:29.267Z",
+      "taskSince": "2026-11-11T02:19:29.267Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "ASTER alert packages with trap charts into the evening",
+      "task": "ASTER alert packages with charts through the night",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-10T14:25:19.534Z",
-      "taskSince": "2026-11-10T14:25:19.534Z"
+      "lastActive": "2026-11-11T02:19:29.267Z",
+      "taskSince": "2026-11-11T02:19:29.267Z"
     },
     {
       "id": "risk-verification",
