@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T04:19:20.189Z",
+  "updatedAt": "2026-11-11T05:20:13.186Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -14,22 +14,22 @@
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "working",
-      "task": "Today's level ladder built for the desk",
+      "status": "idle",
+      "task": "Waiting for the next daily build",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-11T02:19:29.267Z",
-      "taskSince": "2026-11-11T02:19:29.267Z"
+      "lastActive": "2026-11-11T05:20:13.186Z",
+      "taskSince": "2026-11-11T05:20:13.186Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "ASTER alert charts and pivot engine updates",
+      "task": "Running 15-minute market alerts and charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-11T04:19:20.189Z",
-      "taskSince": "2026-11-11T04:19:20.189Z"
+      "lastActive": "2026-11-11T05:20:13.186Z",
+      "taskSince": "2026-11-11T05:20:13.186Z"
     },
     {
       "id": "risk-verification",
@@ -45,11 +45,11 @@
       "id": "gk",
       "name": "PA Sid Atreya",
       "status": "idle",
-      "task": "Hourly office check-in",
+      "task": "Coordinating the office",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-10T14:25:19.534Z",
-      "taskSince": "2026-11-10T14:25:19.534Z"
+      "lastActive": "2026-11-11T05:20:13.186Z",
+      "taskSince": "2026-11-11T05:20:13.186Z"
     },
     {
       "id": "ceo",
