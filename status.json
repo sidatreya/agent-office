@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T12:21:56.373Z",
+  "updatedAt": "2026-11-11T13:22:09.931Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "ASTER alert packages with charts through the day",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-11T12:21:56.373Z",
+      "lastActive": "2026-11-11T13:22:09.931Z",
       "taskSince": "2026-11-11T12:21:56.373Z"
     },
     {
