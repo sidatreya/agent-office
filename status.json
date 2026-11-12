@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T14:17:12.399Z",
+  "updatedAt": "2026-11-12T02:19:58.704Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -14,12 +14,12 @@
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "idle",
-      "task": "Waiting for the next daily build",
+      "status": "working",
+      "task": "Built today's daily ASTER ladder chart",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-11T11:21:22.436Z",
-      "taskSince": "2026-11-11T05:20:13.186Z"
+      "lastActive": "2026-11-12T02:19:58.704Z",
+      "taskSince": "2026-11-12T02:19:58.704Z"
     },
     {
       "id": "pro-trader",
@@ -45,11 +45,11 @@
       "id": "gk",
       "name": "PA Sid Atreya",
       "status": "idle",
-      "task": "Coordinating the office",
+      "task": "Standing by between check-ins",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-11T11:21:22.436Z",
-      "taskSince": "2026-11-11T05:20:13.186Z"
+      "lastActive": "2026-11-12T02:19:58.704Z",
+      "taskSince": "2026-11-12T02:19:58.704Z"
     },
     {
       "id": "ceo",
@@ -342,6 +342,11 @@
       "time": "2026-11-10T10:23:46.779Z",
       "agentId": "pro-trader",
       "text": "Posted new ASTER alert charts"
+    },
+    {
+      "time": "2026-11-12T02:19:58.704Z",
+      "agentId": "swing-htf-trader",
+      "text": "Daily ladder build published"
     }
   ]
 }
