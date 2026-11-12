@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-12T11:24:41.702Z",
+  "updatedAt": "2026-11-12T12:21:22.414Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -25,11 +25,11 @@
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "Refreshing ASTER alert charts",
+      "task": "Running live ASTER alert charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-12T11:24:41.702Z",
-      "taskSince": "2026-11-12T11:24:41.702Z"
+      "lastActive": "2026-11-12T12:21:22.414Z",
+      "taskSince": "2026-11-12T12:21:22.414Z"
     },
     {
       "id": "risk-verification",
