@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T08:26:10.067Z",
+  "updatedAt": "2026-11-13T09:22:16.210Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "Running 15-minute market alert checks",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-13T08:26:10.067Z",
+      "lastActive": "2026-11-13T09:22:16.210Z",
       "taskSince": "2026-11-13T07:20:05.494Z"
     },
     {
