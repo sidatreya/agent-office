@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T03:19:40.827Z",
+  "updatedAt": "2026-11-13T04:19:13.768Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -25,11 +25,11 @@
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "Refreshing desk alert charts",
+      "task": "Producing live market alert charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-13T03:19:40.827Z",
-      "taskSince": "2026-11-13T03:19:40.827Z"
+      "lastActive": "2026-11-13T04:19:13.768Z",
+      "taskSince": "2026-11-13T04:19:13.768Z"
     },
     {
       "id": "risk-verification",
@@ -45,11 +45,11 @@
       "id": "gk",
       "name": "PA Sid Atreya",
       "status": "idle",
-      "task": "Standing by",
+      "task": "Standing by for requests",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-13T03:19:40.827Z",
-      "taskSince": "2026-11-13T03:19:40.827Z"
+      "lastActive": "2026-11-13T04:19:13.768Z",
+      "taskSince": "2026-11-13T04:19:13.768Z"
     },
     {
       "id": "ceo",
