@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T08:25:20.294Z",
+  "updatedAt": "2026-11-15T09:32:04.277Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -25,11 +25,11 @@
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "Running desk market analysis",
+      "task": "Publishing 15-minute ASTER alert charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T08:25:20.294Z",
-      "taskSince": "2026-11-15T08:25:20.294Z"
+      "lastActive": "2026-11-15T09:32:04.277Z",
+      "taskSince": "2026-11-15T09:32:04.277Z"
     },
     {
       "id": "risk-verification",
@@ -193,11 +193,6 @@
     }
   ],
   "events": [
-    {
-      "time": "2026-11-08T02:19:38.947Z",
-      "agentId": "swing-htf-trader",
-      "text": "Built today's HTF level ladder for the desk"
-    },
     {
       "time": "2026-11-08T03:20:19.542Z",
       "agentId": "pro-trader",
@@ -392,6 +387,11 @@
       "time": "2026-11-15T07:30:01.479Z",
       "agentId": "pro-trader",
       "text": "Published new 15-minute alert charts"
+    },
+    {
+      "time": "2026-11-15T09:32:04.277Z",
+      "agentId": "pro-trader",
+      "text": "New ASTER alert charts posted"
     }
   ]
 }
