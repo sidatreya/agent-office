@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T09:32:04.277Z",
+  "updatedAt": "2026-11-15T10:29:52.075Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -194,11 +194,6 @@
   ],
   "events": [
     {
-      "time": "2026-11-08T03:20:19.542Z",
-      "agentId": "pro-trader",
-      "text": "Published more ASTER analysis packages this morning"
-    },
-    {
       "time": "2026-11-08T04:23:34.075Z",
       "agentId": "pro-trader",
       "text": "Published more ASTER analysis packages this hour"
@@ -392,6 +387,11 @@
       "time": "2026-11-15T09:32:04.277Z",
       "agentId": "pro-trader",
       "text": "New ASTER alert charts posted"
+    },
+    {
+      "time": "2026-11-15T10:29:52.075Z",
+      "agentId": "pro-trader",
+      "text": "Published fresh ASTER alert charts"
     }
   ]
 }
