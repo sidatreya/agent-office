@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T13:28:50.024Z",
+  "updatedAt": "2026-11-16T14:31:07.575Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "Running desk market analysis",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-16T13:28:50.024Z",
+      "lastActive": "2026-11-16T14:31:07.575Z",
       "taskSince": "2026-11-16T09:30:21.474Z"
     },
     {
@@ -193,11 +193,6 @@
     }
   ],
   "events": [
-    {
-      "time": "2026-11-08T06:23:02.798Z",
-      "agentId": "pro-trader",
-      "text": "Four more ASTER alert packages with charts"
-    },
     {
       "time": "2026-11-08T07:26:38.943Z",
       "agentId": "pro-trader",
@@ -392,6 +387,11 @@
       "time": "2026-11-16T08:32:08.814Z",
       "agentId": "pro-trader",
       "text": "New alert charts produced"
+    },
+    {
+      "time": "2026-11-16T14:31:07.575Z",
+      "agentId": "pro-trader",
+      "text": "New market charts produced"
     }
   ]
 }
