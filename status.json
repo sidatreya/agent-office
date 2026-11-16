@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T06:24:35.297Z",
+  "updatedAt": "2026-11-16T07:25:58.698Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "Running desk market analysis",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-16T06:24:35.297Z",
+      "lastActive": "2026-11-16T07:25:58.698Z",
       "taskSince": "2026-11-16T06:24:35.297Z"
     },
     {
