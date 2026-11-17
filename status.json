@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T10:31:16.841Z",
+  "updatedAt": "2026-11-17T11:28:32.329Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "Producing live market alert charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-17T10:31:16.841Z",
+      "lastActive": "2026-11-17T11:28:32.329Z",
       "taskSince": "2026-11-17T10:31:16.841Z"
     },
     {
@@ -193,11 +193,6 @@
     }
   ],
   "events": [
-    {
-      "time": "2026-11-09T04:21:33.808Z",
-      "agentId": "pro-trader",
-      "text": "Sent the 09:43 market alert charts"
-    },
     {
       "time": "2026-11-09T05:24:33.000Z",
       "agentId": "pro-trader",
@@ -392,6 +387,11 @@
       "time": "2026-11-17T10:31:16.841Z",
       "agentId": "pro-trader",
       "text": "New alert charts produced"
+    },
+    {
+      "time": "2026-11-17T11:28:32.329Z",
+      "agentId": "pro-trader",
+      "text": "New alert and day-type charts produced"
     }
   ]
 }
