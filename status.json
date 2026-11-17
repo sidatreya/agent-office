@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T07:31:36.908Z",
+  "updatedAt": "2026-11-17T08:25:55.711Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
@@ -28,7 +28,7 @@
       "task": "Producing live market alert charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-17T07:31:36.908Z",
+      "lastActive": "2026-11-17T08:25:55.711Z",
       "taskSince": "2026-11-17T07:31:36.908Z"
     },
     {
