@@ -1,397 +1,202 @@
 {
-  "updatedAt": "2026-11-17T14:31:50.084Z",
+  "updatedAt": "2026-11-18T02:27:31.172Z",
   "agents": [
     {
       "id": "intraday-signal-trader",
       "name": "Intraday Signal Trader",
       "status": "idle",
-      "task": "Scans paused",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T02:32:21.399Z",
-      "taskSince": "2026-11-15T02:32:21.399Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "swing-htf-trader",
       "name": "Swing HTF Trader",
-      "status": "working",
-      "task": "Updating higher-timeframe levels",
+      "status": "idle",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T02:32:21.399Z",
-      "taskSince": "2026-11-15T02:32:21.399Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "pro-trader",
       "name": "Warren Buffet",
       "status": "working",
-      "task": "Producing live market alert charts",
+      "task": "Running morning market alert charts",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-17T14:31:50.084Z",
-      "taskSince": "2026-11-17T10:31:16.841Z"
+      "lastActive": "2026-11-18T02:27:31.172Z",
+      "taskSince": "2026-11-18T02:27:31.172Z"
     },
     {
       "id": "risk-verification",
       "name": "Risk & Verification",
       "status": "idle",
-      "task": "Standing by",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T02:32:21.399Z",
-      "taskSince": "2026-11-15T02:32:21.399Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "gk",
       "name": "PA Sid Atreya",
       "status": "idle",
-      "task": "Standing by",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-17T03:28:10.052Z",
-      "taskSince": "2026-11-17T03:28:10.052Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "ceo",
       "name": "CEO",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "archivist",
       "name": "Archivist",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "linkedin",
       "name": "Marketing Maniac",
       "status": "idle",
-      "task": "Holiday rental marketing plan done; no new work",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "whatsapp-manager",
       "name": "Whatsapp Manager",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "developer",
       "name": "Geek Kid",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "web-3d-developer",
       "name": "Web & 3D Developer",
       "status": "idle",
-      "task": "Standing by",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T02:32:21.399Z",
-      "taskSince": "2026-11-15T02:32:21.399Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "grok-bot",
       "name": "Grok Bot",
       "status": "idle",
-      "task": "Standing by",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T02:32:21.399Z",
-      "taskSince": "2026-11-15T02:32:21.399Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "cco",
       "name": "CCO",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "furniture-designer",
       "name": "Furniture Deaigner",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "landscape-designer",
       "name": "Landscape Desigener",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "dwg-drafting-operator",
       "name": "DWG & Drafting Operator",
       "status": "idle",
-      "task": "No new activity seen",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "image-operator",
       "name": "Image Operator",
       "status": "idle",
-      "task": "Logo still pending; no new work",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "video-operator",
       "name": "Video Operator",
       "status": "idle",
-      "task": "On demand; no new requests",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-09T02:23:41.254Z",
-      "taskSince": "2026-11-08T02:19:38.947Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     },
     {
       "id": "6c94624b-cff0-445d-acf3-76a7780c90f3",
       "name": "Asset Manager",
       "status": "idle",
-      "task": "Routine health checks",
+      "task": "Waiting for first check-in",
       "source": "inferred",
       "reportedAt": null,
-      "lastActive": "2026-11-15T02:32:21.399Z",
-      "taskSince": "2026-11-15T02:32:21.399Z"
+      "lastActive": null,
+      "taskSince": "2026-11-18T02:27:16.103Z"
     }
   ],
   "events": [
     {
-      "time": "2026-11-09T05:24:33.000Z",
-      "agentId": "pro-trader",
-      "text": "Sent the 10:47 market alert charts"
-    },
-    {
-      "time": "2026-11-09T07:21:59.012Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts at 11:16 and 12:05 IST"
-    },
-    {
-      "time": "2026-11-09T08:21:30.659Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts out at 13:50"
-    },
-    {
-      "time": "2026-11-09T09:21:53.554Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts at 14:05 and 14:30 IST"
-    },
-    {
-      "time": "2026-11-09T10:17:59.512Z",
-      "agentId": "pro-trader",
-      "text": "Refreshed daily chart analysis outputs"
-    },
-    {
-      "time": "2026-11-09T11:16:28.595Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts at 16:15 and 16:32 IST"
-    },
-    {
-      "time": "2026-11-09T12:23:16.515Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts at 17:47 IST"
-    },
-    {
-      "time": "2026-11-09T13:19:33.595Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts at 18:47 IST"
-    },
-    {
-      "time": "2026-11-09T14:21:57.798Z",
-      "agentId": "pro-trader",
-      "text": "Posted fresh ASTER alert charts"
-    },
-    {
-      "time": "2026-11-10T02:24:21.182Z",
-      "agentId": "pro-trader",
-      "text": "Morning alert run completed"
-    },
-    {
-      "time": "2026-11-10T02:24:21.182Z",
-      "agentId": "swing-htf-trader",
-      "text": "Daily ladder build refreshed"
-    },
-    {
-      "time": "2026-11-10T02:24:21.182Z",
+      "time": "2026-11-18T02:27:16.103Z",
       "agentId": "gk",
-      "text": "Investor pack and returns calculator published"
-    },
-    {
-      "time": "2026-11-10T04:17:56.825Z",
-      "agentId": "pro-trader",
-      "text": "Posted new ASTER alert charts"
-    },
-    {
-      "time": "2026-11-10T07:23:58.560Z",
-      "agentId": "pro-trader",
-      "text": "Midday alert charts published"
-    },
-    {
-      "time": "2026-11-10T08:17:15.273Z",
-      "agentId": "pro-trader",
-      "text": "Afternoon alert charts published"
-    },
-    {
-      "time": "2026-11-10T09:26:08.865Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh ASTER alert charts"
-    },
-    {
-      "time": "2026-11-10T10:23:46.779Z",
-      "agentId": "pro-trader",
-      "text": "Posted new ASTER alert charts"
-    },
-    {
-      "time": "2026-11-12T02:19:58.704Z",
-      "agentId": "swing-htf-trader",
-      "text": "Daily ladder build published"
-    },
-    {
-      "time": "2026-11-12T05:20:16.235Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh alert charts"
-    },
-    {
-      "time": "2026-11-12T06:17:14.131Z",
-      "agentId": "pro-trader",
-      "text": "Sent a fresh round of ASTER alert charts"
-    },
-    {
-      "time": "2026-11-12T07:21:45.457Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh alert charts"
-    },
-    {
-      "time": "2026-11-13T12:16:40.674Z",
-      "agentId": "pro-trader",
-      "text": "Sent a fresh round of desk alert charts"
-    },
-    {
-      "time": "2026-11-13T13:17:14.917Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh desk alert charts"
-    },
-    {
-      "time": "2026-11-14T02:22:55.421Z",
-      "agentId": "pro-trader",
-      "text": "Refreshed daily levels and one-pager draft"
-    },
-    {
-      "time": "2026-11-14T04:24:41.238Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts published"
-    },
-    {
-      "time": "2026-11-14T09:21:10.633Z",
-      "agentId": "pro-trader",
-      "text": "New ASTER alert charts published"
-    },
-    {
-      "time": "2026-11-15T02:32:21.399Z",
-      "agentId": "pro-trader",
-      "text": "Desk chart and level files refreshed"
-    },
-    {
-      "time": "2026-11-15T06:33:17.730Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh ASTER alert charts"
-    },
-    {
-      "time": "2026-11-15T07:30:01.479Z",
-      "agentId": "pro-trader",
-      "text": "Published new 15-minute alert charts"
-    },
-    {
-      "time": "2026-11-15T09:32:04.277Z",
-      "agentId": "pro-trader",
-      "text": "New ASTER alert charts posted"
-    },
-    {
-      "time": "2026-11-15T10:29:52.075Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh ASTER alert charts"
-    },
-    {
-      "time": "2026-11-16T02:27:18.308Z",
-      "agentId": "pro-trader",
-      "text": "Refreshed market analysis files"
-    },
-    {
-      "time": "2026-11-16T08:32:08.814Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts produced"
-    },
-    {
-      "time": "2026-11-16T14:31:07.575Z",
-      "agentId": "pro-trader",
-      "text": "New market charts produced"
-    },
-    {
-      "time": "2026-11-17T03:28:10.052Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh market alert charts"
-    },
-    {
-      "time": "2026-11-17T04:25:52.646Z",
-      "agentId": "pro-trader",
-      "text": "New market charts produced"
-    },
-    {
-      "time": "2026-11-17T07:31:36.908Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts produced"
-    },
-    {
-      "time": "2026-11-17T09:26:32.416Z",
-      "agentId": "pro-trader",
-      "text": "Published fresh market alert charts"
-    },
-    {
-      "time": "2026-11-17T10:31:16.841Z",
-      "agentId": "pro-trader",
-      "text": "New alert charts produced"
-    },
-    {
-      "time": "2026-11-17T11:28:32.329Z",
-      "agentId": "pro-trader",
-      "text": "New alert and day-type charts produced"
+      "text": "Office went live"
     }
   ]
 }
